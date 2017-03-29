@@ -1,0 +1,103 @@
+@import url(https://fonts.googleapis.com/css?family=Noto+Serif);
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: "Noto Serif", serif;
+	font-size: 20px;
+	background: #ecf0f1; /* White background */
+}
+
+.section {
+	min-width: 500px;
+	max-width: 900px;
+	padding: 50px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	margin: 0 auto; /* In the middle */
+	margin-top: 20px;
+	margin-bottom: 50px;
+	border-radius: 25px;
+	border-style: solid;
+	color: #ecf0f1;
+}
+
+#section-box-blue {
+	background: #3498db;
+	border-color: #2980b9;
+	border-width: 3px;
+}
+
+#section-box-red {
+	background: #e74c3c;
+	border-color: #c0392b;
+	border-width: 3px;
+}
+
+#section-box-green {
+	background: #26ad5e;
+	border-color: #1e8c4d;
+	border-width: 3px;
+}
+
+#footer {
+	background: #34495e;
+	color: #FFF;
+	padding: 20px;
+	padding-left: 50px;
+	margin: 0 auto;
+	position: relative;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+a {
+	color: #2c3e50; /* Blue color */
+	text-decoration: underline;
+	-webkit-transition: opacity 0.125s;
+	transition: opacity 0.125s;
+}
+
+a:hover {
+	opacity: 0.75;
+}
+
+p {
+	margin-top: 10px;
+}
+
+p > a > i.fa {
+	font-size: 42px;
+}
+
+.contact-icon {
+	color: #FFF;
+	transition: color 0.2s ease;
+	padding: 3px;
+}
+
+.contact-icon:hover {
+	color: #3498db;
+}
+
+#contact-icons-target {
+	background: #ecf0f1; /* White background */
+	color: black; /* Text color */
+	display: none;
+	border-radius: 3px;
+	padding: 10px;
+	margin-top: 10px;
+	font-size: 14px;
+}
+
+#avatar {
+	height: 250px;
+	width: 250px;
+	border-radius: 5px;
+	border-color: white;
+	border-style: solid;
+}
