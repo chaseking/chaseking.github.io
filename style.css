@@ -20,27 +20,30 @@ body {
 	margin: 0 auto; /* In the middle */
 	margin-top: 20px;
 	margin-bottom: 50px;
+	color: #ecf0f1;
 	border-radius: 25px;
 	border-style: solid;
-	color: #ecf0f1;
+	border-width: 3px;
 }
 
 #section-box-blue {
 	background: #3498db;
 	border-color: #2980b9;
-	border-width: 3px;
 }
 
 #section-box-red {
 	background: #e74c3c;
 	border-color: #c0392b;
-	border-width: 3px;
 }
 
 #section-box-green {
 	background: #26ad5e;
 	border-color: #1e8c4d;
-	border-width: 3px;
+}
+
+#section-box-yellow {
+	background: #f1c40f;
+	border-color: #f39c12;
 }
 
 #footer {
