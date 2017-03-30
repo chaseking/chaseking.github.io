@@ -42,8 +42,13 @@ body {
 }
 
 #section-box-yellow {
-	background: #f0c30e;
-	border-color: #f39c12;
+	background: #f39c12;
+	border-color: #d35400;
+}
+
+#section-box-purple {
+	background: #9b59b6;
+	border-color: #8e44ad;
 }
 
 #footer {
