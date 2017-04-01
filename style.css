@@ -31,7 +31,15 @@ body {
     border-radius: 50%;
     text-align: center;
     line-height: 50px;
-    transition: all .2s;
+    transition: all 500ms;
+}
+
+.navigation .navigation-trigger:hover {
+    background: #2ecc71;
+}
+
+.navigation.active .navigation-trigger:hover {
+    background: #95a5a6;
 }
 
 .navigation.active .navigation-trigger {
@@ -48,18 +56,18 @@ body {
     left: inherit;
     width: 50px;
     height: 50px;
-    background-color: #2980b9;
+    background: #2980b9;
     border-radius: 50%;
     color: white;
     text-align: center;
     line-height: 50px;
     z-index: 1;
     visibility: visible;
-    transition: all 50ms;
+    transition: all 0.5s;
 }
 
 .navigation .navigation-option:hover {
-    background-color: #3498db;
+    background: #3498db;
 }
 
 nav {
