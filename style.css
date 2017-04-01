@@ -11,6 +11,85 @@ body {
 	background: #ecf0f1; /* White background */
 }
 
+.navigation {
+     /* Stays relative to window (ignores scrolling) */
+    cursor: pointer;
+    top: 15px; /* Positioned in the top left */
+    left: 15px;
+}
+
+.navigation .navigation-trigger {
+    position: fixed;
+    top: inherit;
+    left: inherit;
+    z-index: 2; /* In front of other elements */
+    font-size: 32px;
+    color: white;
+    width: 50px;
+    height: 50px;
+    background: #27ae60;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    transition: all .2s;
+}
+
+.navigation.active .navigation-trigger {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 24px;
+    background: #7f8c8d;
+}
+
+.navigation .navigation-option {
+    position: fixed;
+    top: inherit;
+    left: inherit;
+    width: 50px;
+    height: 50px;
+    background-color: #2980b9;
+    border-radius: 50%;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    z-index: 1;
+    visibility: visible;
+    transition: all 50ms;
+}
+
+.navigation .navigation-option:hover {
+    background-color: #3498db;
+}
+
+nav {
+
+}
+
+nav .nav-background {
+    /* Background of the drop-down navigation menu */
+    position: absolute;
+    z-index: 1;
+    width: inherit;
+    height: 50px;
+    border-radius: 30px;
+    background: #34495e;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+nav.visible .nav-background {
+  height: 100%;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+}
+
+nav .nav-trigger {
+    position: absolute;
+    width: inherit;
+    z-index: 3;
+    text-align: center;
+    vertical-align: center;
+}
+
 .section {
 	min-width: 500px;
 	max-width: 900px;
@@ -26,27 +105,27 @@ body {
 	border-width: 3px;
 }
 
-#section-box-blue {
-	background: #3498db;
-	border-color: #2980b9;
-}
-
-#section-box-red {
+.red {
 	background: #e74c3c;
 	border-color: #c0392b;
 }
 
-#section-box-green {
-	background: #26ad5e;
-	border-color: #1e8c4d;
-}
-
-#section-box-yellow {
+.yellow {
 	background: #f39c12;
 	border-color: #d35400;
 }
 
-#section-box-purple {
+.green {
+	background: #26ad5e;
+	border-color: #1e8c4d;
+}
+
+.blue {
+	background: #3498db;
+	border-color: #2980b9;
+}
+
+.purple {
 	background: #9b59b6;
 	border-color: #8e44ad;
 }

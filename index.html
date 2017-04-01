@@ -6,36 +6,116 @@
 
 		<link rel="stylesheet" href="style.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="smoothscrolling.js" type="text/javascript"></script>
 	</head>
 
 	<body>
-		<div class="section" id="section-box-blue">
+        <div class="navigation">
+            <div class="navigation-trigger" onclick="toggleMenu()">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </div>
+
+            <a class="navigation-option" onclick="toggleMenu()" id="menuAbout" href="#about">
+                <i class="fa fa-user" title="About"></i>
+            </a>
+
+            <a class="navigation-option" onclick="toggleMenu()" href="#programming">
+                <i class="fa fa-terminal" title="Programming"></i>
+            </a>
+
+            <a class="navigation-option" onclick="toggleMenu()" href="#cycling">
+                <i class="fa fa-bicycle" title="Cycling"></i>
+            </a>
+        </div>
+
+        <!--
+                <li><a id="menuAbout" href="#about"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+                <li><a id="menuProgramming" href="#programming"><i class="fa fa-terminal" aria-hidden="true"></i></a></li>
+            </ul>
+        </nav>
+        -->
+
+        <script type="text/javascript">
+            /*
+            $(document).on('click', function(event){
+			( !$(event.target).is('.cd-nav-trigger') && !$(event.target).is('.cd-nav-trigger span') ) && stretchyNavs.removeClass('nav-is-visible');
+		      });
+              */
+
+            var nav = $(".navigation");
+            var trigger = $(".navigation .navigation-trigger");
+
+            $(window).click(function(){
+                //TODO - Close menu if clicked elsewhere
+            });
+
+            function toggleMenu(){
+                if(nav.hasClass("animating")) return; //No spam-clicking
+
+                nav.toggleClass("active");
+                nav.addClass("animating");
+                var active = nav.hasClass("active");
+                //list.slideToggle(400);
+
+                var offset = 50;
+                var animationTime = 500;
+
+                $(".navigation .navigation-option").each(function(){
+                    $(this).css("transition", "all " + animationTime + "ms cubic-bezier(0.680, -0.550, 0.265, 1.550)")
+
+                    if(active){
+                        //$(this).show();
+                        $(this).css("transform", "translate(0, " + offset + "px)")
+                    } else {
+                        $(this).css("transform", "initial")
+                    }
+
+                    offset += 65;
+                });
+
+                trigger.html("<i class=\"fa fa-" + (active ? "close" : "bars") + "\" aria-hidden=\"true\"></i>");
+
+                setTimeout(function(){
+                    //Animation complete
+                    nav.removeClass("animating");
+
+                    if(active === false){
+                        $(".navigation .navigation-option").each(function(){
+                            //$(this).hide();
+                        });
+                    }
+                }, animationTime);
+            }
+        </script>
+
+		<div id="about" class="section blue">
 			<img id="avatar" src="https://gravatar.com/avatar/0643d2a970fcbd4faa2dee2ca9013fd2.png?s=500">
 
 			<h1 style="margin-top: 20px;">Hi, I'm Chase.</h1>
 
-			<p>I'm passionate about all things computers and am always interested in expanding my programming repertoire. I also enjoy spending time outdoors on my road bike, both training and racing competitively.</p>
+			<p>I'm passionate about all things computers and am always looking to expand my programming repertoire. I also enjoy spending time outdoors on my road bike, both training and racing competitively.</p>
 			<p>I'm currently a high school junior at <a href="http://ma.org" target="_blank">Marin Academy</a> in San Rafael, California.</p>
 		</div>
 
-		<div class="section" id="section-box-red">
+		<div id="programming" class="section red">
 			<h1>Programming</h1>
 			<p>I was introduced to computers at a young age, and was rather generously gifted my first laptop when I was in the second grade. I have always been fascinated with computers and technology ever since. Several years later, an older student at my middle school published an iPhone app to the Apple App Store, and after meeting with him one weekend, he introduced me to web design and helped me set up my first website.</p>
 			<p>Since then, I have taken several programming camps learning C++, Java, and Objective-C, along with a few <a href="https://www.coursera.org" target="_blank">Coursera</a> courses on Swift. In my late middle school years, I used the popular computer game <a href="https://www.minecraft.net" target="_blank">Minecraft</a> to expand my Java programming experience, and became a well-recognized developer in the server community and even got my first paid job developing for a large server network hosting thousands of players.</p>
 		</div>
 
-		<div class="section" id="section-box-purple">
+		<div id="cycling" class="section purple">
 			<h1>Cycling</h1>
 			<p>Stuff goes here.</p>
 			<p>You can <a href="https://www.strava.com/athletes/chaseking" target="_blank">follow me on Strava</a> if you want to see all my rides.</p>
 		</div>
 
-		<div class="section" id="section-box-yellow">
+		<div class="section yellow">
 			<h1>Something else</h1>
 			<p>Stuff goes here.</p>
 		</div>
 
-		<div class="section" id="section-box-green">
+		<div class="section green">
 			<h1>Something else</h1>
 			<p>Stuff goes here.</p>
 		</div>
@@ -53,7 +133,6 @@
 			</p>
 
 			<div id="contact-icons-target"></div>
-
 			<br>
 			<p style="font-size: 16px;">Made by Chase King.</p>
 		</div>
@@ -79,7 +158,6 @@
 				}
 			}
 		</script>
-
 	</body>
 
 </html>
