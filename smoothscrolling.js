@@ -1,4 +1,4 @@
-var time = 600;
+var time = 750;
 
 $(function(){
     $('a[href*="#"]:not([href="#"])').click(function(){
