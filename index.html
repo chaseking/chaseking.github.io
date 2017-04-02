@@ -48,9 +48,13 @@
             var nav = $(".navigation");
             var trigger = $(".navigation .navigation-trigger");
 
-            $(window).click(function(){
-                //TODO - Close menu if clicked elsewhere
-            });
+            //Close menu if clicked elsewhere
+            $(document).click(function(event){
+                console.log("hi");
+                if(!$(event.target).is(".navigation") && nav.hasClass("active")){
+                    toggleMenu();
+                }
+		    });
 
             function toggleMenu(){
                 if(nav.hasClass("animating")) return; //No spam-clicking
@@ -97,7 +101,7 @@
 
 		<div id="about" class="section blue">
 			<img id="avatar" src="https://gravatar.com/avatar/0643d2a970fcbd4faa2dee2ca9013fd2.png?s=500">
-			<h1 style="margin-top: 20px;">Hi, I'm Chase. <i class="twa twa-smiley"></i></h1>
+			<h1 style="margin-top: 20px;">Hi, I'm Chase. <i class="twa twa-person-with-blond-hair-type-3"></i><i class="twa twa-sunrise-over-mountains"></i></h1>
 			<p>I'm passionate about all things computers and am always looking to expand my programming repertoire. I also enjoy spending time outdoors on my road bike, both training and racing competitively.</p>
 			<p>I'm currently a high school junior at <a href="http://ma.org" target="_blank">Marin Academy</a> in San Rafael, California.</p>
 		</div>
@@ -109,7 +113,7 @@
 		</div>
 
 		<div id="cycling" class="section purple">
-			<h1>Cycling <i class="twa twa-mountain-bicyclist"></i><i class="twa twa-sunrise-over-mountains"></i></h1>
+			<h1>Cycling <i class="twa twa-mountain-bicyclist"></i><i class="twa twa-trophy"></i></h1>
 			<p>Stuff goes here.</p>
 			<p>You can <a href="https://www.strava.com/athletes/chaseking" target="_blank">follow me on Strava</a> if you want to keep up-to-date on my riding.</p>
 		</div>
