@@ -22,7 +22,7 @@ body {
     position: fixed;
     top: inherit;
     left: inherit;
-    z-index: 2; /* In front of other elements */
+    z-index: 3; /* In front of other elements */
     font-size: 32px;
     color: white;
     width: 50px;
@@ -61,13 +61,52 @@ body {
     color: white;
     text-align: center;
     line-height: 50px;
-    z-index: 1;
-    visibility: visible;
-    transition: all 0.5s;
+    z-index: 2;
+    visibility: hidden;
+    transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550);
 }
 
 .navigation .navigation-option:hover {
     background: #3498db;
+}
+
+.navigation .navigation-option .tooltip {
+    display: inline-block;
+    visibility: hidden;
+    transition: opacity 500ms ease-in, transform 500ms;
+    top: 8px;
+    width: auto;
+    font-size: 18px;
+    line-height: 32px;
+    height: 32px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    padding-left: 15px;
+    padding-right: 15px;
+    transform: translateX(-40px);
+    opacity: 0;
+}
+
+.navigation .navigation-option:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(25px);
+}
+
+/* Arrow on the side of the tooltip: https://www.w3schools.com/css/css_tooltip.asp */
+.navigation .navigation-option:hover .tooltip::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
 }
 
 nav {

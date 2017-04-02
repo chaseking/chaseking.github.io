@@ -17,32 +17,29 @@
             </div>
 
             <a class="navigation-option" onclick="toggleMenu()" id="menuAbout" href="#about">
-                <i class="fa fa-user" title="About"></i>
+                <i class="fa fa-user"></i>
+                <div class="tooltip">About</div>
             </a>
 
             <a class="navigation-option" onclick="toggleMenu()" href="#programming">
-                <i class="fa fa-terminal" title="Programming"></i>
+                <i class="fa fa-keyboard-o"></i>
+                <div class="tooltip">Programming</div>
             </a>
 
             <a class="navigation-option" onclick="toggleMenu()" href="#cycling">
-                <i class="fa fa-bicycle" title="Cycling"></i>
+                <i class="fa fa-bicycle"></i>
+                <div class="tooltip">Cycling</div>
             </a>
+
+            <a class="navigation-option" onclick="toggleMenu()" href="#photos">
+                <i class="fa fa-camera"></i>
+                <div class="tooltip">Photos</div>
+            </a>
+
+            <!-- TODO - Race reports, photos? -->
         </div>
 
-        <!--
-                <li><a id="menuAbout" href="#about"><i class="fa fa-user" aria-hidden="true"></i></a></li>
-                <li><a id="menuProgramming" href="#programming"><i class="fa fa-terminal" aria-hidden="true"></i></a></li>
-            </ul>
-        </nav>
-        -->
-
         <script type="text/javascript">
-            /*
-            $(document).on('click', function(event){
-			( !$(event.target).is('.cd-nav-trigger') && !$(event.target).is('.cd-nav-trigger span') ) && stretchyNavs.removeClass('nav-is-visible');
-		      });
-              */
-
             var nav = $(".navigation");
             var trigger = $(".navigation .navigation-trigger");
 
@@ -63,9 +60,10 @@
 
                 $(".navigation .navigation-option").each(function(){
                     $(this).css("transition", "all " + animationTime + "ms cubic-bezier(0.680, -0.550, 0.265, 1.550)")
+                    //$(this).toggle(500);
 
                     if(active){
-                        //$(this).show();
+                        $(this).css("visibility", "visible");
                         $(this).css("transform", "translate(0, " + offset + "px)")
                     } else {
                         $(this).css("transform", "initial")
@@ -80,9 +78,10 @@
                     //Animation complete
                     nav.removeClass("animating");
 
-                    if(active === false){
+                    if(!active){
                         $(".navigation .navigation-option").each(function(){
                             //$(this).hide();
+                            $(this).css("visibility", "hidden");
                         });
                     }
                 }, animationTime);
@@ -107,18 +106,20 @@
 		<div id="cycling" class="section purple">
 			<h1>Cycling</h1>
 			<p>Stuff goes here.</p>
-			<p>You can <a href="https://www.strava.com/athletes/chaseking" target="_blank">follow me on Strava</a> if you want to see all my rides.</p>
+			<p>You can <a href="https://www.strava.com/athletes/chaseking" target="_blank">follow me on Strava</a> if you want to keep up-to-date on my riding.</p>
 		</div>
 
-		<div class="section yellow">
-			<h1>Something else</h1>
-			<p>Stuff goes here.</p>
+		<div id="photos" class="section yellow">
+			<h1>Photos</h1>
+			<p>Coming soon.</p>
 		</div>
 
+        <!--
 		<div class="section green">
 			<h1>Something else</h1>
 			<p>Stuff goes here.</p>
 		</div>
+        -->
 
 		<div id="footer">
 			<h2>Contact</h2>
