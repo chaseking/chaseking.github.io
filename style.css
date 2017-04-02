@@ -11,6 +11,11 @@ body {
 	background: #ecf0f1; /* White background */
 }
 
+.emoji {
+    font-family: "Segoe UI Emoji";
+    font-size: "3.5em"
+}
+
 .navigation {
      /* Stays relative to window (ignores scrolling) */
     cursor: pointer;
@@ -140,12 +145,8 @@ nav .nav-trigger {
 .section {
 	min-width: 500px;
 	max-width: 900px;
-	padding: 50px;
-	padding-top: 30px;
-	padding-bottom: 30px;
-	margin: 0 auto; /* In the middle */
-	margin-top: 20px;
-	margin-bottom: 50px;
+	padding: 30px 50px;
+	margin: 15px auto 50px auto; /* In the middle */
 	color: #ecf0f1;
 	border-radius: 25px;
 	border-style: solid;
