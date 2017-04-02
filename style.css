@@ -95,7 +95,7 @@ body {
     opacity: 0;
 }
 
-.navigation .navigation-option:hover .tooltip {
+.navigation.active .navigation-option:hover .tooltip {
     visibility: visible;
     opacity: 1;
     transform: translateX(25px);
