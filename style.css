@@ -23,7 +23,7 @@ body {
     top: inherit;
     left: inherit;
     z-index: 3; /* In front of other elements */
-    font-size: 32px;
+    font-size: 34px;
     color: white;
     width: 50px;
     height: 50px;
@@ -32,7 +32,7 @@ body {
     text-align: center;
     line-height: 50px;
     transition: all 500ms;
-    box-shadow: 2px 2px 3px #888888;
+    box-shadow: 2px 2px 2px #888888;
 }
 
 .navigation .navigation-trigger:hover {
@@ -129,8 +129,8 @@ nav .nav-background {
 }
 
 nav.visible .nav-background {
-  height: 100%;
-  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+    height: 100%;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
 }
 
 nav .nav-trigger {
@@ -142,8 +142,9 @@ nav .nav-trigger {
 }
 
 .section {
-	min-width: 500px;
+	min-width: 70%;
 	max-width: 900px;
+    height: auto;
 	padding: 30px 50px;
 	margin: 15px auto 50px auto; /* In the middle */
 	color: #ecf0f1;
@@ -206,6 +207,19 @@ p {
 
 p > a > i.fa {
 	font-size: 42px;
+}
+
+.stravafeed {
+    /*display: inline-block;*/
+    height: auto;
+    width: auto;
+    float: right;
+}
+
+.stravafeed iframe {
+    border-radius: 5px;
+    border-color: black;
+    border-width: 3px;
 }
 
 .contact-icon {
