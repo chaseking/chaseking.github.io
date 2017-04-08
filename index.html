@@ -9,11 +9,12 @@
         <link rel="stylesheet" href="css/twemoji.css">
         <!-- <link rel="stylesheet" href="https://afeld.github.io/emoji-css/emoji.css"> -->
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery-2.1.3.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script type="text/javascript" src="js/smoothscrolling.js"></script>
 
         <!-- Google Analytics TODO -->
-        <script>
+        <script async>
         (function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -61,11 +62,35 @@
         <!-- Emojis: http://www.character-code.com/emoticons-html-codes.php -->
 
 		<div id="about" class="section blue">
-			<img id="avatar" src="https://gravatar.com/avatar/0643d2a970fcbd4faa2dee2ca9013fd2.png?s=500">
-			<h1 style="margin-top: 20px;">Hi, I"m Chase. <i class="twa twa-person-with-blond-hair-type-3"></i><i class="twa twa-sunrise-over-mountains"></i></h1>
-			<p>I"m passionate about all things computers and am always looking to expand my programming repertoire. I also enjoy spending time outdoors on my road bike, both training and racing competitively.</p>
-			<p>I"m currently a high school junior at <a href="http://ma.org" target="_blank">Marin Academy</a> in San Rafael, California.</p>
+            <!-- Flexbox information: https://css-tricks.com/snippets/css/a-guide-to-flexbox/ -->
+            <div style="display: flex; justify-content: space-between;">
+                <img class="avatar" src="img/prof1.jpg">
+                <img class="avatar" src="img/prof2.jpg">
+                <img class="avatar" src="img/prof3.jpg">
+            </div>
+
+			<h1 style="margin-top: 20px;">I am <span id="infoText"></span>.</h1> <!-- <i class="twa twa-person-with-blond-hair-type-3"></i><i class="twa twa-sunrise-over-mountains"></i> -->
+			<p>Hi, I'm Chase. I'm passionate about all things computers and am always looking to expand my programming repertoire. I also enjoy spending time outdoors on my road bike, both training and racing competitively.</p>
+			<p>I'm currently a high school junior at <a href="http://ma.org" target="_blank">Marin Academy</a> in San Rafael, California.</p>
 		</div>
+
+        <script type="text/javascript">
+            const element = $("#infoText")
+            const words = [ "motivated and driven", "inquisitive", "a numbers guy", "creative", "a mathematician", "a code junkie", "a black belt", "hungry for more", "an engineer", "a cyclist" ];
+            const fadeTime = 750;
+            var index = Math.floor(Math.random() * words.length);
+
+            setInterval(updateText, 5000);
+            changeText();
+
+            function updateText(){
+                element.animate({ opacity: 0 }, fadeTime, changeText).animate({ opacity: 1 }, fadeTime)
+            }
+
+            function changeText(){
+                element.text(words[index++ % words.length]);
+            }
+        </script>
 
 		<div id="programming" class="section red">
 			<h1>Programming <i class="twa twa-computer"></i><i class="twa twa-bar-chart"></i></h1>
@@ -88,7 +113,81 @@
 		<div id="photos" class="section yellow">
 			<h1>Photos <i class="twa twa-camera"></i><i class="twa twa-rainbow"></i></h1>
 			<p>Coming soon.</p>
+
+            <button class="modalButton" id="photos" onclick="onModalButtonClick(this)">Open Modal</button>
+
+            <div class="modal" id="photos">
+                <div>
+                    <a class="close">&times;</a>
+                    <h2>Modal Box</h2>
+                </div>
+            </div>
 		</div>
+
+        <script type="text/javascript">
+            //Close window if clicked outside
+            //TODO
+            /*
+            $(document).click(function(event){
+                if(!$(event.target).is(".modal")){
+                    $(".modal#photos").removeClass("visible");
+                }
+            });
+            */
+
+            //TODO - Close if they hit escape
+
+            //TODO - Prevent scrolling
+
+            function onModalButtonClick(button){
+                console.log(button.id);
+                var modal = $(".modal#" + button.id);
+
+                modal.addClass("visible");
+
+                modal.find(".close").click(function(){
+                    modal.removeClass("visible");
+                });
+            }
+
+            $("button.modalButton").each(function(){
+                var button = $(this);
+                console.log(button.selector);
+                var modal = $(".modal#photos"); //TODO - GOOGLE: jQuery get element id
+
+                if(modal){
+                    console.log(modal);
+                }
+            });
+
+/*
+            // Get the modal
+            var modal = document.getElementById('myModal');
+
+            // Get the button that opens the modal
+            var btn = document.getElementById("myBtn");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks on the button, open the modal
+            btn.onclick = function() {
+            modal.style.display = "block";
+            };
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function(){
+            modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event){
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+            */
+        </script>
 
         <!--
 		<div class="section green">
@@ -111,7 +210,7 @@
 
 			<div id="contact-icons-target"></div>
 			<br>
-			<p style="font-size: 16px;">Made by Chase King.</p>
+			<p style="font-size: 16px;">Made by Chase King. Last updated April 2017.</p>
 		</div>
 
 		<script type="text/javascript">

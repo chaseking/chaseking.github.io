@@ -1,0 +1,23 @@
+@import url(https://fonts.googleapis.com/css?family=Noto+Serif);
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: "Noto Serif", serif;
+	font-size: 36px;
+	background: #ecf0f1; /* White background */
+}
+
+table {
+    padding: 50px;
+    border-color: black;
+    border-radius: 3px;
+    border-style: dashed;
+}
+
+tr {
+    padding: 50px;
+}
