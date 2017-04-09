@@ -76,7 +76,13 @@
 
         <script type="text/javascript">
             const element = $("#infoText")
-            const words = [ "motivated and driven", "inquisitive", "a numbers guy", "creative", "a mathematician", "a code junkie", "a black belt", "hungry for more", "an engineer", "a cyclist" ];
+            const words = [ "motivated and driven", "inquisitive", "a numbers guy", "creative", "a mathematician", "a code junkie", "a black belt", "an opportunist", "hungry for more", "an outdoors person", "an engineer", "a cyclist", "an environmental advocate", "a foodie" ];
+
+            //Randomize array
+            words.sort(function(a, b){
+                return 0.5 - Math.random();
+            });
+
             const fadeTime = 750;
             var index = Math.floor(Math.random() * words.length);
 
