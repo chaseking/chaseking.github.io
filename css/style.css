@@ -299,3 +299,7 @@ p > a > i.fa {
     border-radius: 4px;
     border-style: solid;
 }
+
+#photogallery {
+    border: 3px black solid;
+}

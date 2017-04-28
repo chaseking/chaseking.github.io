@@ -4,9 +4,10 @@
 	<head>
 		<title>Chase King</title>
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/twemoji.css">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/twemoji.css">
         <!-- <link rel="stylesheet" href="https://afeld.github.io/emoji-css/emoji.css"> -->
 
         <script type="text/javascript" src="js/jquery-2.1.3.js"></script>
@@ -125,7 +126,7 @@
 			    <h1>Cycling <i class="twa twa-mountain-bicyclist"></i><i class="twa twa-trophy"></i></h1>
 			    <p>I have ridden a bike for as long as I can remember. Coming from a family of enthusiastic cyclists, I learned to stretch my athletic goals at an early age. I began riding century rides on my heavy steel mountain bike by the second grade, but it wasn't until high school that I experienced the liberating feeling of a road bike. My first competitive racing began with my mountain biking team in ninth grade. Super fun to do, but the lure of speed and mileage that road racing offers is where my passion lies.</p>
 
-                <p>In 2015, I joined <a href="http://teamswift.org" target="blank">Team Swift</a>, a junior racing development team, and have enjoyed the benefits of professional training and expert fitness coaching, not to mention the camaraderie of a team sport.</p>
+                <p>In 2015, I joined <a href="http://teamswift.org" target="blank">Team Swift</a>, a junior racing development team, and have enjoyed the benefits of professional training and expert fitness coaching, not to mention the camaraderie that a team sport has to offer.</p>
 				<p>You can <a href="https://www.strava.com/athletes/chaseking" target="blank">follow me on Strava</a> if you want to keep up-to-date on my riding.</p>
             </div>
 
@@ -137,7 +138,7 @@
         <div id="karate" class="section green">
 			<h1>Karate <i class="twa twa-punch"></i><i class="twa twa-korea-south-south-korea-flag"></i><i class="twa twa-japan-flag"></i></h1>
 			<!--<p><a href="http://karate.chaseking.me" target="blank">Taylor's House of Karate</a></p>-->
-            <p>Like most kids, exploring a variety of sports was part of my childhood. I began karate when I was in the first grade, and it was the sport that stuck with me. I train at <a href="https://taylorshouseofkarate.com" target="blank">Taylor's House of Karate</a> in San Rafael, California, with an amazing and diverse group of dedicated professionals. They have been the ultimate role models for me, exuding dedication and perseverance (and bad-ass). I obtained my skunk belt (the belt before a black belt) the summer before I started high school. The following year required a lot of dedication with both personal training and teaching the lower belt students 12-16 hours per week for a year.</p>
+            <p>Like most kids, exploring a variety of sports was part of my childhood. I began karate when I was in the first grade, and it was the sport that stuck with me. I train at <a href="https://taylorshouseofkarate.com" target="blank">Taylor's House of Karate</a> in San Rafael, California, with an amazing and diverse group of dedicated professionals. They have been the ultimate role models for me, exuding both dedication and perseverance. I obtained my skunk belt (the belt before a black belt) the summer before I started high school. The following year required a lot of dedication with both personal training and teaching the lower belt students 12-16 hours per week for a full year.</p>
 
             <p>The day after completing my freshman year in high school, I earned a first degree black belt after a memorably grueling 4 hour test. This was a physical and mental milestone for me, and opened the doors to expanding my teaching role at the school and giving back to the family and community who supported me in reaching this level. The cardio conditioning that cycling added was instrumental in my success.</p>
 		</div>
@@ -156,9 +157,42 @@
                 </div>
             </div>
             -->
+
+            <div id="photogallery"></div>
 		</div>
 
         <script type="text/javascript">
+            var photoGallery = $('#photogallery');
+
+            var photos = [
+                "img/photos/1.jpg",
+                "img/photos/2.jpg",
+                "img/photos/3.jpg",
+                "img/photos/4.jpg",
+                "img/photos/5.jpg",
+                "img/photos/6.jpg",
+                "img/photos/7.jpg",
+                "img/photos/8.jpg",
+                "img/photos/9.jpg",
+                "img/photos/10.jpg",
+            ];
+
+            var photoIndex = 0;
+
+            function update(){
+                console.log(photoIndex);
+                photoGallery.html('<div><img src="' + photos[photoIndex] + '" width="100%"></img></div>');
+                console.log('<div><img src="' + photos[photoIndex] + '" width="100%"></img></div>');
+            }
+
+            setInterval(function(){
+                photoIndex = (photoIndex + 1) % photos.length;
+                console.log(photoIndex + 1);
+                update();
+            }, 5000);
+
+            update();
+
             //Close window if clicked outside
             //TODO
             /*
