@@ -4,7 +4,7 @@
 	<head>
 		<title>Chase King</title>
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/twemoji.css">
         <!-- <link rel="stylesheet" href="https://afeld.github.io/emoji-css/emoji.css"> -->
@@ -54,6 +54,11 @@
                 <div class="tooltip">Photos</div>
             </a>
 
+            <a class="navigation-option" href="resume.pdf" target="blank">
+                <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                <div class="tooltip">Resum&eacute;</div>
+            </a>
+
             <!-- TODO - Race reports, photos? -->
         </div>
 
@@ -70,8 +75,16 @@
             </div>
 
 			<h1 style="margin-top: 20px;">I am <span id="infoText"></span>.</h1> <!-- <i class="twa twa-person-with-blond-hair-type-3"></i><i class="twa twa-sunrise-over-mountains"></i> -->
-			<p>Hi, I'm Chase. I'm passionate about all things computers and am always looking to expand my programming repertoire. I also enjoy spending time outdoors on my road bike, both training and racing competitively.</p>
-			<p>I'm currently a high school junior at <a href="http://ma.org" target="_blank">Marin Academy</a> in San Rafael, California.</p>
+
+            <p>Hi, I'm Chase.</p>
+            <p>
+                I am passionate about all things techie, scientific and mathematical.
+                Numbers and logic speak to me. I am an avid programmer, always seeking ways to expand my repertoire.
+                I balance my brain work by spending time outdoors on my road bike, enjoying scenic exploration,
+                fitness training, and competitive racing. I also continue to hone my skills as a black belt in karate
+                and volunteer-teach at <a href="https://taylorshouseofkarate.com" target="blank">our studio</a> in San Rafael.
+            </p>
+			<p>I'm currently a high school junior at <a href="http://ma.org" target="blank">Marin Academy</a> in San Rafael, California.</p>
 		</div>
 
         <script type="text/javascript">
@@ -83,10 +96,10 @@
                 return 0.5 - Math.random();
             });
 
-            const fadeTime = 750;
+            const fadeTime = 500;
             var index = Math.floor(Math.random() * words.length);
 
-            setInterval(updateText, 5000);
+            setInterval(updateText, 3500);
             changeText();
 
             function updateText(){
@@ -100,14 +113,17 @@
 
 		<div id="programming" class="section red">
 			<h1>Programming <i class="twa twa-computer"></i><i class="twa twa-bar-chart"></i></h1>
-			<p>I was introduced to computers at a young age, and was rather generously gifted my first laptop when I was in the second grade. I have always been fascinated with computers and technology ever since. Several years later, an older student at my middle school published an iPhone app to the Apple App Store, and after meeting with him one weekend, he introduced me to web design and helped me set up my first website.</p>
-			<p>Since then, I have taken several programming camps learning C++, Java, and Objective-C, along with a few <a href="https://www.coursera.org" target="_blank">Coursera</a> courses on Swift. In my late middle school years, I used the popular computer game <a href="https://www.minecraft.net" target="_blank">Minecraft</a> to expand my Java programming experience, and became a well-recognized developer in the server community and even got my first paid job developing for a large server network hosting thousands of players.</p>
+			<p>I was introduced to computers at a young age after being rather generously gifted my first laptop when I was in the second grade. I have been fascinated with computers and technology ever since; the keyboard has become an extension of my mind.</p>
+
+            <p>In middle school I began delving into web design and it became clear that learning computing languages was the next step. I attended several programming camps learning C++, Java and Objective-C, expanding to some Coursera (link) courses on Swift. Before high school, I used the popular computer game Minecraft (link) to utilize and expand my Java programming skills. I became a well-recognized developer in the server community and acted as moderator for Bukkit, the largest Minecraft programming community. Under the internet handle “chasechocolate”, I helped newcomers get started programming (reference chasechocolate?) and answered thousands of questions on the forums. By the eighth grade, I had my first paid job developing for a large server network hosting nearly a hundred thousand players every week. Having written over 150,000 lines of code, I look forward to applying my skills, learning new ones, and exploring opportunities in different areas of computer science.</p>
 		</div>
 
 		<div id="cycling" class="section purple" style="min-height: 330px"> <!-- So the strava feed could fit... Couldn"t figure out why it wasn"t working -->
             <div style="display: inline-block; max-width: 65%;">
 			    <h1>Cycling <i class="twa twa-mountain-bicyclist"></i><i class="twa twa-trophy"></i></h1>
-			    <p>Coming soon.</p>
+			    <p>I have ridden a bike for as long as I can remember. Coming from a family of enthusiastic cyclists, I learned to stretch my athletic goals at an early age. I began riding century rides on my heavy steel mountain bike by the second grade, but it wasn't until high school that I experienced the liberating feeling of a road bike. My first competitive racing began with my mountain biking team in ninth grade. Super fun to do, but the lure of speed and mileage that road racing offers is where my passion lies.</p>
+
+                <p>In 2015, I joined <a href="http://teamswift.org" target="blank">Team Swift</a>, a junior racing development team, and have enjoyed the benefits of professional training and expert fitness coaching, not to mention the camaraderie of a team sport.</p>
 				<p>You can <a href="https://www.strava.com/athletes/chaseking" target="_blank">follow me on Strava</a> if you want to keep up-to-date on my riding.</p>
             </div>
 
@@ -118,7 +134,10 @@
 
         <div id="karate" class="section green">
 			<h1>Karate <i class="twa twa-punch"></i><i class="twa twa-korea-south-south-korea-flag"></i><i class="twa twa-japan-flag"></i></h1>
-			<p>Coming soon.</p>
+			<!--<p><a href="http://karate.chaseking.me" target="blank">Taylor's House of Karate</a></p>-->
+            <p>Like most kids, exploring a variety of sports was part of my childhood. I began karate when I was in the first grade, and it was the sport that stuck with me. I train at Taylor's House of Karate (link) in San Rafael, California, with an amazing and diverse group of dedicated professionals. They have been the ultimate role models for me, exuding dedication and perseverance (and bad-ass). I obtained my skunk belt (the belt before a black belt) the summer before I started high school. The following year required a lot of dedication with both personal training and teaching the lower belt students 12-16 hours per week for a year.</p>
+
+            <p>The day after completing my freshman year in high school, I earned a first degree black belt after a memorably grueling 4 hour test. This was a physical and mental milestone for me, and opened the doors to expanding my teaching role at the school and giving back to the family and community who supported me in reaching this level. The cardio conditioning that cycling added was instrumental in my success.</p>
 		</div>
 
 		<div id="photos" class="section yellow">
@@ -209,22 +228,23 @@
 		</div>
         -->
 
-		<div id="footer">
+		<footer>
 			<h2>Contact</h2>
 			<p style="font-size: 18px;">Reach out to me!</p>
 
 			<p>
 				<!--href="mailto:me@chaseking.com"--><a class="contact-icon" ><i class="fa fa-envelope-o" contact-icons-text="Email unavailable!"></i></a>
-				<a class="contact-icon" href="https://twitter.com/chaseking22" target="_blank"><i class="fa fa-twitter" contact-icons-text="@chaseking22"></i></a>
-				<a class="contact-icon" href="https://github.com/chaseking" target="_blank"><i class="fa fa-github" contact-icons-text="github.com/chaseking"></i></a>
-				<a class="contact-icon" href="https://instagram.com/chase.king" target="_blank"><i class="fa fa-instagram" contact-icons-text="@chase.king"></i></a>
-				<a class="contact-icon" href="https://www.strava.com/athletes/chaseking" target="_blank"><i class="fa fa-bicycle" contact-icons-text="Strava Feed"></i></a>
+				<a class="contact-icon" href="https://twitter.com/chaseking22" target="blank"><i class="fa fa-twitter" contact-icons-text="@chaseking22"></i></a>
+				<a class="contact-icon" href="https://github.com/chaseking" target="blank"><i class="fa fa-github" contact-icons-text="github.com/chaseking"></i></a>
+				<a class="contact-icon" href="https://instagram.com/chase.king" target="blank"><i class="fa fa-instagram" contact-icons-text="@chase.king"></i></a>
+				<a class="contact-icon" href="https://www.strava.com/athletes/chaseking" target="blank"><i class="fa fa-bicycle" contact-icons-text="Strava Feed"></i></a>
+                <a class="contact-icon" href="img/resume.pdf" target="blank"><i class="fa fa-file-o" contact-icons-text="Resum&eacute;"></i></a>
 			</p>
 
 			<div id="contact-icons-target"></div>
 			<br>
 			<p style="font-size: 16px;">Made by Chase King. Last updated April 2017.</p>
-		</div>
+		</footer>
 
 		<script type="text/javascript">
 			var elements = document.getElementsByTagName("*");
@@ -248,5 +268,4 @@
 			}
 		</script>
 	</body>
-
 </html>
