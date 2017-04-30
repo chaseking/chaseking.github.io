@@ -179,13 +179,12 @@
         }
 
         function openImageModal(i){
+            imageModal.find(".modalContent").html("<img src='" + photos[i] + "'></img>");
             imageModal.addClass("visible");
 
             imageModal.find(".close").click(function(){
                 imageModal.removeClass("visible");
             });
-
-            imageModal.find(".modalContent").html("<img src='" + photos[i] + "'></img>");
         }
         </script>
 
