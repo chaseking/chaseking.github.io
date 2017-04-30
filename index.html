@@ -117,12 +117,12 @@
 			<p>I was introduced to computers at a young age after being generously gifted my first laptop when I was in the second grade. I have been fascinated with computers and technology ever since; the keyboard has become an extension of my mind.</p>
 
             <p>
-                In middle school I began delving into web design and it became clear that learning computing languages was the next step. I attended several programming camps learning C++, Java and Objective-C, expanding to some <a href="https://www.coursera.org" target="blank">Coursera</a> courses on Swift. Before high school, I used the popular computer game <a href="https://minecraft.net/" target="blank">Minecraft</a> to utilize and expand my Java programming skills. I became a    well-recognized developer in the server community and acted as moderator for Bukkit, the largest Minecraft programming online forum, with over 450,000 users. Under the internet handle “chasechocolate”, I helped newcomers get started programming and answered thousands of questions on the <a href="https://bukkit.org" target="blank">Bukkit forums</a>. By the eighth grade, I had my first paid job developing for a large server network hosting nearly a 100,000 players every week.
+                In middle school, I began delving into web design and it became clear that learning computing languages was the next step. I attended several programming camps learning C++, Java and Objective-C, expanding to some <a href="https://www.coursera.org" target="blank">Coursera</a> courses on Swift. Before high school, I used the popular computer game <a href="https://minecraft.net/" target="blank">Minecraft</a> to utilize and expand my Java programming skills. I became a    well-recognized developer in the server community and acted as moderator for Bukkit, the largest Minecraft programming online forum, with over 450,000 users. Under the internet handle "chasechocolate", I helped newcomers get started programming and answered thousands of questions on the <a href="https://bukkit.org" target="blank">Bukkit forums</a>. By the eighth grade, I had my first paid job developing for a large server network hosting nearly a 100,000 players every week.
                 With experience writing over 150,000 lines of code, I look forward to applying my skills, learning new ones, and exploring opportunities in different areas of computer science.</p>
 		</div>
 
-		<div id="cycling" class="section purple" style="min-height: 330px; display: flex; justify-content: space-between; flex-wrap: wrap; padding-right: 10px"> <!-- Less right padding so the Strava feed sticks there -->
-            <div style="flex: 1 60%;">
+		<div id="cycling" class="section purple" style="min-height: 330px; display: flex; justify-content: space-between; flex-wrap: wrap;"> <!-- Less right padding so the Strava feed sticks there -->
+            <div style="flex: 1 60%; margin-right: 15px;">
 			    <h1>Cycling <i class="twa twa-mountain-bicyclist"></i><i class="twa twa-trophy"></i></h1>
 			    <p>I have ridden a bike for as long as I can remember. Coming from a family of enthusiastic cyclists, I learned to stretch my athletic goals at an early age. I began riding century rides on my heavy steel mountain bike by the second grade, but it wasn't until high school that I experienced the liberating feeling of a road bike. My first competitive racing began with my mountain biking team in ninth grade. Super fun to do, but the lure of speed and mileage that road racing offers is where my passion lies.</p>
 
@@ -138,122 +138,55 @@
         <div id="karate" class="section green">
 			<h1>Karate <i class="twa twa-punch"></i><i class="twa twa-korea-south-south-korea-flag"></i><i class="twa twa-japan-flag"></i></h1>
 			<!--<p><a href="http://karate.chaseking.me" target="blank">Taylor's House of Karate</a></p>-->
-            <p>Like most kids, exploring a variety of sports was part of my childhood. I began karate when I was in the first grade, and it was the sport that stuck with me. I train at <a href="https://taylorshouseofkarate.com" target="blank">Taylor's House of Karate</a> in San Rafael, California, with an amazing and diverse group of dedicated professionals. They have been the ultimate role models for me, exuding both dedication and perseverance. I obtained my skunk belt (the belt before a black belt) the summer before I started high school. The following year required a lot of dedication with both personal training and teaching the lower belt students 12-16 hours per week for a full year.</p>
+            <p>Like most kids, exploring a variety of sports was part of my childhood. I began karate when I was in the first grade, and it was the sport that stuck with me. I train at <a href="https://taylorshouseofkarate.com" target="blank">Taylor's House of Karate</a> in San Rafael, California, with an amazing and diverse group of dedicated professionals. They have been the ultimate role models for me, exuding both dedication and perseverance. I obtained my skunk belt (the belt before a black belt) the summer before I started high school. The following year required a lot of dedication with both personal training and teaching the lower belt students 14-18 hours per week for a full year.</p>
 
-            <p>The day after completing my freshman year in high school, I earned a first degree black belt after a memorably grueling 4 hour test. This was a physical and mental milestone for me, and opened the doors to expanding my teaching role at the school and giving back to the family and community who supported me in reaching this level. The cardio conditioning that cycling added was instrumental in my success.</p>
+            <p>The day after completing my freshman year in high school, I earned a first degree black belt after a memorably grueling 4-hour test. This was a physical and mental milestone for me, and opened the doors to expanding my teaching role at the school and giving back to the family and community who supported me in reaching this level. The cardio conditioning that cycling added was instrumental in my success.</p>
 		</div>
 
 		<div id="photos" class="section yellow">
 			<h1>Photos <i class="twa twa-camera"></i><i class="twa twa-rainbow"></i></h1>
 
-            <!--
-            <button class="modalButton" id="photos" onclick="onModalButtonClick(this)">Open Modal</button>
-
-            <div class="modal" id="photos">
+            <!--<button class="modalButton" id="photos" onclick="onModalButtonClick(this)">Open Modal</button>-->
+            <div class="modal" id="imageModal">
                 <div>
                     <a class="close">&times;</a>
-                    <h2>Modal Box</h2>
+                    <div class="modalContent"></div>
                 </div>
             </div>
-            -->
 
             <div id="photogallery"></div>
 		</div>
 
         <script type="text/javascript">
-            var photoGallery = $('#photogallery');
+        var photoGallery = $('#photogallery');
+        var imageModal = $('#imageModal')
 
-            var photos = [
-                "img/photos/1.jpg",
-                "img/photos/2.jpg",
-                "img/photos/3.jpg",
-                "img/photos/4.jpg",
-                "img/photos/5.jpg",
-                "img/photos/6.jpg",
-                "img/photos/7.jpg",
-                "img/photos/8.jpg",
-                "img/photos/9.jpg",
-                "img/photos/10.jpg",
-            ];
+        var photos = [
+            "img/photos/1.jpg",
+            "img/photos/2.jpg",
+            "img/photos/3.jpg",
+            "img/photos/4.jpg",
+            "img/photos/5.jpg",
+            "img/photos/6.jpg",
+            "img/photos/7.jpg",
+            "img/photos/8.jpg",
+            "img/photos/9.jpg",
+            "img/photos/10.jpg",
+        ];
 
-            var photoIndex = 0;
+        for(var i in photos){
+            photoGallery.append('<img onclick=openImageModal(' + i + ') src="' + photos[i] + '"></img>');
+        }
 
-            function update(){
-                console.log(photoIndex);
-                photoGallery.html('<div><img src="' + photos[photoIndex] + '" width="100%"></img></div>');
-                console.log('<div><img src="' + photos[photoIndex] + '" width="100%"></img></div>');
-            }
+        function openImageModal(i){
+            imageModal.addClass("visible");
 
-            setInterval(function(){
-                photoIndex = (photoIndex + 1) % photos.length;
-                console.log(photoIndex + 1);
-                update();
-            }, 5000);
-
-            update();
-
-            //Close window if clicked outside
-            //TODO
-            /*
-            $(document).click(function(event){
-                if(!$(event.target).is(".modal")){
-                    $(".modal#photos").removeClass("visible");
-                }
-            });
-            */
-
-            //TODO - Close if they hit escape
-
-            //TODO - Prevent scrolling
-
-            function onModalButtonClick(button){
-                console.log(button.id);
-                var modal = $(".modal#" + button.id);
-
-                modal.addClass("visible");
-
-                modal.find(".close").click(function(){
-                    modal.removeClass("visible");
-                });
-            }
-
-            $("button.modalButton").each(function(){
-                var button = $(this);
-                console.log(button.selector);
-                var modal = $(".modal#photos"); //TODO - GOOGLE: jQuery get element id
-
-                if(modal){
-                    console.log(modal);
-                }
+            imageModal.find(".close").click(function(){
+                imageModal.removeClass("visible");
             });
 
-/*
-            // Get the modal
-            var modal = document.getElementById('myModal');
-
-            // Get the button that opens the modal
-            var btn = document.getElementById("myBtn");
-
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
-
-            // When the user clicks on the button, open the modal
-            btn.onclick = function() {
-            modal.style.display = "block";
-            };
-
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function(){
-            modal.style.display = "none";
-            }
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event){
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-            */
+            imageModal.find(".modalContent").html("<img src='" + photos[i] + "'></img>");
+        }
         </script>
 
         <!--
