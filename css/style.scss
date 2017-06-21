@@ -51,10 +51,12 @@ main {
 .section {
     margin: 10px 0 25px 0;
     font-size: 16px;
+    border-top: 4px solid black;
 
     @media (min-width: $mobileWidth){
         padding-left: 20px;
         border-left: 4px solid black;
+        border-top: none;
         font-size: 14px;
     }
 
