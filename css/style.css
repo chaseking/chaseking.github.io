@@ -18,12 +18,12 @@ main {
     font-weight: bold;
     border-radius: 5px;
     color: black;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 @media (min-width: 550px) {
     .i-am {
-        font-size: 20px;
+        font-size: 24px;
     }
 }
 
