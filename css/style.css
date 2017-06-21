@@ -17,12 +17,14 @@ main {
     font-family: Menlo, Roboto Mono, Courier New, monospace;
     font-weight: bold;
     border-radius: 5px;
-    font-size: 24px;
-    /*padding: 5px 8px;*/
-    /*color: #fff;*/
     color: black;
-    /*background-color: #01579b;*/
-    width: auto;
+    font-size: 24px;
+}
+
+@media (min-width: 550px) {
+    .i-am {
+        font-size: 20px;
+    }
 }
 
 .collapsible-header {
