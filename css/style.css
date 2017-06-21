@@ -7,7 +7,6 @@ body {
     flex-direction: column;
     background: #ecf0f1;
     /* White background */
-    font-size: 16px;
 }
 
 main {
@@ -49,12 +48,14 @@ main {
 
 .section {
     margin: 10px 0 25px 0;
+    font-size: 16px;
 }
 
 @media (min-width: 550px) {
     .section {
         padding-left: 20px;
         border-left: 4px solid black;
+        font-size: 14px;
     }
 }
 
@@ -71,7 +72,7 @@ main {
 }
 
 footer {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 @media (min-width: 550px) {
