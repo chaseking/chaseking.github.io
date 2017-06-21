@@ -36,7 +36,7 @@
 
     <main>
         <div class="container">
-            <div id="about" class="section section-border border-blue">
+            <div id="about" class="section border-blue">
                 <div class="row">
                     <div class="col s4">
                         <img class="avatar" src="img/prof1.jpg">
@@ -58,6 +58,13 @@
                 </div>
 
                 <script type="text/javascript">
+                    //https://stackoverflow.com/questions/5766263/run-settimeout-only-when-tab-is-active
+                    $(window).blur(function(){
+                        window.blurred = true;
+                    }).focus(function(){
+                        window.blurred = false;
+                    });
+
                     const words = [ "motivated and driven", "inquisitive", "a numbers guy", "creative", "a mathematician", "a code junkie", "a black belt", "an opportunist", "hungry for more", "an outdoors person", "an engineer", "a cyclist", "an environmental advocate", "a foodie" ];
                     var infoText = $("#infoText");
 
@@ -69,6 +76,7 @@
                     //Blinking cursor
                     var blink = false;
                     setInterval(function(){
+                        if(window.blurred) return;
                         $(".blink").css("opacity", (blink ? 1 : 0));
                         blink = !blink;
                     }, 500);
@@ -224,7 +232,7 @@
         <div class="footer-copyright indigo darken-3">
             <div class="container">
                 &copy; 2017 Chase King
-                <a class="grey-text text-lighten-4 right" href="#!">Last Updated: June 2017</a>
+                <a class="grey-text text-lighten-4 right" href="#!">Last Updated: June 19, 2017</a>
             </div>
         </div>
     </footer>

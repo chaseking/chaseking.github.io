@@ -1,12 +1,14 @@
 @import url(https://fonts.googleapis.com/css?family=Noto+Serif);
+
+$mobileWidth: 550px;
+
 /* Sticky footer */
 body {
     font-family: "Noto Serif", "Palatino", sans-serif;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background: #ecf0f1;
-    /* White background */
+    background: #ecf0f1; /* White background */
     font-size: 16px;
 }
 
@@ -43,61 +45,57 @@ main {
     width: 100%;
     height: 100%;
     border-radius: 5px;
-    border: 2px solid black;
+	border: 2px solid black;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
 }
 
 .section {
     margin: 10px 0 25px 0;
-}
 
-@media (min-width: 550px) {
-    .section {
+    @media (min-width: $mobileWidth){
         padding-left: 20px;
         border-left: 4px solid black;
     }
-}
 
-.section h2 {
-    font-size: 22px;
-    font-weight: bold;
-    margin: 0;
-    margin-bottom: 5px;
-}
+    h2 {
+        font-size: 22px;
+        font-weight: bold;
+        margin: 0;
+        margin-bottom: 5px;
+    }
 
-.section h3 {
-    font-size: 18px;
-    font-weight: bold;
+    h3 {
+        font-size: 18px;
+        font-weight: bold;
+    }
 }
 
 footer {
     font-size: 14px;
-}
 
-@media (min-width: 550px) {
-    footer {
+    @media (min-width: $mobileWidth){
         font-size: 18px;
     }
 }
 
 .border-red {
-    border-color: #c0392b;
+	border-color: #c0392b;
 }
 
 .border-yellow {
-    border-color: #f39c12;
+	border-color: #f39c12;
 }
 
 .border-green {
-    border-color: #1e8c4d;
+	border-color: #1e8c4d;
 }
 
 .border-blue {
-    border-color: #2980b9;
+	border-color: #2980b9;
 }
 
 .border-purple {
-    border-color: #8e44ad;
+	border-color: #8e44ad;
 }
 
 p {
