@@ -9,6 +9,11 @@ body {
     min-height: 100vh;
     flex-direction: column;
     background: #ecf0f1; /* White background */
+    font-size: 13px;
+
+    @media (min-width: $mobileWidth){
+        font-size: 16px;
+    }
 }
 
 main {
@@ -50,21 +55,22 @@ main {
 
 .section {
     margin: 10px 0 25px 0;
-    font-size: 16px;
     border-top: 4px solid black;
 
     @media (min-width: $mobileWidth){
         padding-left: 20px;
-        border-left: 4px solid black;
+        border-left: 4px solid black; //Left border for mobile users
         border-top: none;
-        font-size: 14px;
     }
 
     h2 {
         font-size: 22px;
         font-weight: bold;
         margin: 0;
-        margin-bottom: 5px;
+
+        @media (min-width: $mobileWidth){
+            margin-bottom: 5px;
+        }
     }
 
     h3 {
@@ -73,11 +79,37 @@ main {
     }
 }
 
+#cycling {
+    #racereports {
+        .collapsible-body {
+            @media (max-width: $mobileWidth){
+                padding: 8px;
+            }
+        }
+    }
+}
+
 footer {
     font-size: 12px;
 
     @media (min-width: $mobileWidth){
         font-size: 18px;
+    }
+
+    .container {
+        @media (max-width: $mobileWidth){
+            padding: 0 auto;
+        }
+    }
+
+    #links {
+        h5 {
+            font-size: 18px;
+
+            @media (min-width: $mobileWidth){
+                font-size: 22px;
+            }
+        }
     }
 }
 
