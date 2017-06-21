@@ -86,6 +86,13 @@ main {
 }
 
 @media (max-width: 550px) {
+    #cycling #racereports .collapsible-header {
+        padding: 5px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 550px) {
     #cycling #racereports .collapsible-body {
         padding: 8px;
     }
