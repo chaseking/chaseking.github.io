@@ -53,6 +53,13 @@ main {
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
 }
 
+.container-mobile-fix {
+    @media (max-width: $mobileWidth){
+        padding: 0;
+        width: 100%;
+    }
+}
+
 .section {
     margin: 10px 0 25px 0;
     border-top: 4px solid black;
@@ -64,8 +71,8 @@ main {
     }
 
     h2 {
-        font-size: 22px;
         font-weight: bold;
+        font-size: 22px;
         margin: 0;
 
         @media (min-width: $mobileWidth){
@@ -74,8 +81,12 @@ main {
     }
 
     h3 {
-        font-size: 18px;
         font-weight: bold;
+        font-size: 16px;
+
+        @media (min-width: $mobileWidth){
+            font-size: 17px;
+        }
     }
 }
 
@@ -83,8 +94,9 @@ main {
     #racereports {
         .collapsible-header {
             @media (max-width: $mobileWidth){
-                padding: 5px;
+                padding: 0 8px;
                 font-size: 12px;
+                font-weight: normal;
             }
         }
 
