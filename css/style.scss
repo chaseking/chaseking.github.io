@@ -63,6 +63,7 @@ main {
 .section {
     margin: 10px 0 25px 0;
     border-top: 4px solid black;
+    text-align: justify;
 
     @media (min-width: $mobileWidth){
         padding-left: 20px;
