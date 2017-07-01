@@ -26,6 +26,7 @@ main {
     border-radius: 5px;
     color: black;
     font-size: 20px;
+    text-align: left;
 
     @media (min-width: $mobileWidth){
         font-size: 24px;
@@ -61,12 +62,13 @@ main {
 }
 
 .section {
-    margin: 10px 0 25px 0;
+    margin: 10px 0;
     border-top: 4px solid black;
     text-align: justify;
 
     @media (min-width: $mobileWidth){
         padding-left: 20px;
+        margin-bottom: 25px;
         border-left: 4px solid black; //Left border for mobile users
         border-top: none;
     }
