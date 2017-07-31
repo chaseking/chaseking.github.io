@@ -56,6 +56,10 @@ main {
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
 }
 
+.container {
+    max-width: 1000px;
+}
+
 @media (max-width: 550px) {
     .container-mobile-fix {
         padding: 0;
@@ -71,10 +75,10 @@ main {
 
 @media (min-width: 550px) {
     .section {
-        padding-left: 20px;
-        margin-bottom: 25px;
         border-left: 4px solid black;
         border-top: none;
+        padding-left: 20px;
+        margin-bottom: 25px;
     }
 }
 

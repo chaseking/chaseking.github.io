@@ -54,6 +54,10 @@ main {
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
 }
 
+.container {
+    max-width: 1000px;
+}
+
 .container-mobile-fix {
     @media (max-width: $mobileWidth){
         padding: 0;
@@ -67,10 +71,10 @@ main {
     text-align: justify;
 
     @media (min-width: $mobileWidth){
+        border-left: 4px solid black; //Left border for non-mobile users
+        border-top: none;
         padding-left: 20px;
         margin-bottom: 25px;
-        border-left: 4px solid black; //Left border for mobile users
-        border-top: none;
     }
 
     h2 {
