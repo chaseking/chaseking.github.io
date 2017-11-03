@@ -1,26 +1,31 @@
+$bgDark: #196177;
+$bgLight: #2ea3b7;
+$progressDark: #d35400;
+$progressLight: #f1c40f;
+
 body {
 	margin: 0;
 	font-family: Avenir, sans-serif;
 }
 
 header {
-	background: #207893;
-	background: -moz-linear-gradient(45deg, #207893 25%, #2ea3b7 100%);
-	background: -webkit-linear-gradient(45deg, #207893 25%,#2ea3b7 100%);
-	background: linear-gradient(45deg, #207893 25%,#2ea3b7 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#207893', endColorstr='#2ea3b7',GradientType=1 );
+	background: $bgDark;
+	background: -moz-linear-gradient(45deg, $bgDark 25%, $bgLight 100%);
+	background: -webkit-linear-gradient(45deg, $bgDark 25%, $bgLight 100%);
+	background: linear-gradient(45deg, $bgDark 25%, $bgLight 100%);
 	color: rgba(255,255,255,1);
 	margin: 0;
-	padding: 60px 30px;
-	text-align: center;
+	padding: 60px;
+    // height: 50vh;
 
     .animate {
+        text-align: center;
+
         span {
             font-family: monospace;
             font-size: 48px;
             font-weight: bold;
             letter-spacing: 1.5px;
-        	// line-height: 23px;
         }
 
         .cursor {
@@ -30,85 +35,102 @@ header {
     }
 }
 
+main {
+    min-height: 130vh;
+}
+
+.timeline-container {
+	height: 100px;
+    width: 100%;
+	margin-top: 50px;
+
+    &.fixed {
+        position: fixed;
+        top: -65px;
+        background: white;
+        z-index: 1;
+        height: 85px;
+        box-shadow: 5px 5px 5px rgba(black, 0.2);
+    }
+}
+
 .timeline {
-	position:relative;
-	width:90%;
-	margin:auto;
-	height:100px;
-	margin-top:65px;
+    width: 90%;
+    margin: auto;
+    position: relative;
 
-    ul {
-    	padding:0;
-    	margin:0;
-    	padding-top:15px;
-    	z-index:9999;
-    	position:absolute;
-    	width:100%;
-    	margin-top:-40px
-    }
+    ul.timeline-points {
+    	padding: 0;
+    	margin: 0;
+    	padding-top: 18px;
+    	z-index: 9999;
+    	position: absolute;
+    	width: 100%;
+    	margin-top: -40px;
 
-    //The circles above the headings
-    li:before {
-    	content: " ";
-    	display: block;
-    	margin: auto;
-    	width: 30px;
-    	height: 30px;
-    	border-radius: 50%;
-    	border: solid 2px #aaa;
-    	transition: all ease 0.3s;
-    }
-
-    li.active:before, li:hover:before {
-    	border: solid 2px #444;
-    }
-
-    li {
-    	list-style: none;
-    	float: left;
-    	width: 20%;
-    	text-align: center;
-    	color: #aaa;
-    	text-transform: uppercase;
-    	font-size: 14px;
-    	cursor: pointer;
-    	font-weight: 700;
-    	transition: all ease 0.2s;
-    	vertical-align: bottom;
-    	height: 60px;
-    	position: relative;
-
-        .step-inner {
-        	position: absolute;
-        	width: 100%;
-        	bottom: 0;
+        //The circles above the headings
+        li:before {
+        	content: " ";
+        	display: block;
+        	margin: auto;
+        	width: 30px;
+        	height: 30px;
+        	border-radius: 50%;
+        	border: 2px solid #aaa;
+        	transition: all ease 0.3s;
         }
-    }
 
-    li.active, li:hover {
-    	color:#444;
-    }
+        li.active:before, li:hover:before {
+        	border: 2px solid #444;
+        }
 
-    li:after {
-    	content: " ";
-    	display:block;
-    	width:6px;
-    	height:6px;
-    	background:#777;
-    	margin:auto;
-    	border:solid 7px #fff;
-    	border-radius:50%;
-    	margin-top:40px;
-    	box-shadow:0 2px 13px -1px rgba(0,0,0,0.3);
-    	transition:all ease 0.2s;
-    }
+        li {
+        	list-style: none;
+        	float: left;
+        	width: 20%;
+        	text-align: center;
+        	color: #aaa;
+        	text-transform: uppercase;
+        	font-size: 14px;
+        	cursor: pointer;
+        	font-weight: 700;
+        	transition: all ease 0.2s;
+        	vertical-align: bottom;
+        	height: 60px;
+        	position: relative;
 
-    li:hover:after {
-    	background:#555;
-    }
+            .step-inner {
+            	position: absolute;
+            	width: 100%;
+            	bottom: 0;
+            }
+        }
 
-    li.active:after {
-    	background: #207893;
+        li.active, li:hover {
+        	color:#444;
+        }
+
+        li:after {
+        	content: " ";
+        	display:block;
+        	width:6px;
+        	height:6px;
+        	background:#777;
+        	margin:auto;
+        	border:solid 7px #fff;
+        	border-radius:50%;
+        	margin-top:40px;
+        	box-shadow:0 2px 13px -1px rgba(0,0,0,0.3);
+        	transition:all ease 0.2s;
+        }
+
+        li:hover:after {
+        	background:#555;
+        }
+
+        li.active:after {
+        	background: #207893;
+        }
     }
 
     .line {
@@ -125,14 +147,13 @@ header {
     }
 
     .line-progress {
-    	content:" ";
+    	content: " ";
     	width: 0%;
     	height: 100%;
-    	background: #207893;
-    	background: -moz-linear-gradient(left, #207893 0%, #2ea3b7 100%);
-    	background: -webkit-linear-gradient(left, #207893 0%,#2ea3b7 100%);
-    	background: linear-gradient(to right, #207893 0%,#2ea3b7 100%);
-    	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#207893', endColorstr='#2ea3b7',GradientType=1 );
+    	background: $bgDark;
+    	background: -moz-linear-gradient(left, $progressDark 0%, $progressLight 100%);
+    	background: -webkit-linear-gradient(left, $progressDark 0%, $progressLight 100%);
+    	background: linear-gradient(to right, $progressDark 0%, $progressLight 100%);
     	position:absolute;
     	z-index:2;
     	border-radius:50px;
@@ -141,15 +162,16 @@ header {
 }
 
 #progress-content-section {
-	width: 90%;
+	width: 80%;
 	margin: auto;
 	background: #f3f3f3;
 	border-radius: 4px;
+    position: relative;
 
     .section-content {
         display: none;
     	transform: translateY(15px);
-        padding: 30px 40px;
+        padding: 10px 40px;
     	opacity: 0;
         animation: FadeInUp 700ms ease 1;
     	animation-fill-mode: forwards;
@@ -159,7 +181,7 @@ header {
         }
 
         h2 {
-        	font-size: 22px;
+        	font-size: 23px;
         	text-transform: uppercase;
         	color: #333;
             text-align: center;
@@ -167,9 +189,43 @@ header {
         }
 
         p {
-        	font-size: 15px;
+        	font-size: 16px;
         	line-height:1.7em;
         	color: #777;
+        }
+
+        .quote-box {
+            padding: 25px 20px;
+            background: rgba(black, 0.5);
+            margin: 10px 0;
+            color: white;
+            font-size: 18px;
+            border-radius: 10px;
+
+            ol {
+                li {
+                    // list-style-type: circle;
+                }
+
+                margin-bottom: 0;
+            }
+        }
+
+        .button-next {
+            padding: 10px 20px;
+            background: #39C2C9;
+            border: none;
+            font-size: 16px;
+            text-transform: uppercase;
+            border-radius: 2em;
+            color: white;
+            transition: all 500ms;
+
+            &:hover {
+                cursor: pointer;
+                background: darken(#39C2C9, 6%);
+                transform: scale(1.1);
+            }
         }
     }
 
@@ -186,32 +242,10 @@ header {
     }
 }
 
-/* --- ORANGE --- */
-
-// body.blue #color .drop {
-// 	background: #207893;
-// 	background: -moz-linear-gradient(45deg, #207893 25%, #2ea3b7 100%);
-// 	background: -webkit-linear-gradient(45deg, #207893 25%,#2ea3b7 100%);
-// 	background: linear-gradient(45deg, #207893 25%,#2ea3b7 100%);
-// 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#207893', endColorstr='#2ea3b7',GradientType=1 );
-// }
-//
-// body.blue li.active:after {
-// 	background:#e67d24;
-// }
-//
-// body.blue .line-progress {
-// 	background: rgb(206,119,68);
-// 	background: -moz-linear-gradient(left, rgba(206,119,68,1) 0%, rgba(230,125,36,1) 100%);
-// 	background: -webkit-linear-gradient(left, rgba(206,119,68,1) 0%,rgba(230,125,36,1) 100%);
-// 	background: linear-gradient(to right, rgba(206,119,68,1) 0%,rgba(230,125,36,1) 100%);
-// 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ce7744', endColorstr='#e67d24',GradientType=1 );
-// }
-
 footer {
-	position: fixed;
-	bottom: 0;
-	width: 100%;
+	// position: fixed;
+	// bottom: 0;
+	// width: 100%;
 	text-align: center;
 	padding: 15px;
 	font-size: 13px;
@@ -219,6 +253,6 @@ footer {
 	background: #333;
 
     a {
-    	color:#777;
+    	color: #777;
     }
 }

@@ -6,6 +6,8 @@
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
@@ -16,50 +18,71 @@
         </div>
     </header>
 
-    <div class="timeline">
-        <ul>
-            <li class="step step01 active"><div class="step-inner">What is AI?</div></li>
-            <li class="step step02"><div class="step-inner">A Brief History of AI</div></li>
-            <li class="step step03"><div class="step-inner">AI as Depicted in Film</div></li>
-            <li class="step step04"><div class="step-inner">AI Today</div></li>
-            <li class="step step05"><div class="step-inner">Bibliography</div></li>
-        </ul>
+    <main>
+        <div id="timeline-container-placeholder"></div>
+        <div class="timeline-container">
+            <div class="timeline">
+                <ul class="timeline-points">
+                    <li class="step step01 active" data-page-index="1"><div class="step-inner">What is AI?</div></li>
+                    <li class="step step02" data-page-index="2"><div class="step-inner">A Brief History of AI</div></li>
+                    <li class="step step03" data-page-index="3"><div class="step-inner">AI as Depicted in Film</div></li>
+                    <li class="step step04" data-page-index="4"><div class="step-inner">AI Today</div></li>
+                    <li class="step step05" data-page-index="5"><div class="step-inner">Bibliography</div></li>
+                </ul>
 
-        <div class="line">
-            <div class="line-progress"></div>
-        </div>
-    </div>
-
-    <div id="progress-content-section">
-        <div class="section-content discovery active">
-            <h2>What is Artificial Intelligence?</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec neque justo, consequat non fermentum ac, tempor eu turpis. Proin nulla eros, placerat non ipsum ut, dapibus ullamcorper ex. Nulla in dapibus lorem. Suspendisse vitae velit ac ante consequat placerat ut sed eros. Nullam porttitor mattis mi, id fringilla ex consequat eu. Praesent pulvinar tincidunt leo et condimentum. Maecenas volutpat turpis at felis egestas malesuada. Phasellus sem odio, venenatis at ex a, lacinia suscipit orci.</p>
+                <div class="line">
+                    <div class="line-progress"></div>
+                </div>
+            </div>
         </div>
 
-        <div class="section-content strategy">
-            <h2>A Brief History of Artificial Intelligence</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec neque justo, consequat non fermentum ac, tempor eu turpis. Proin nulla eros, placerat non ipsum ut, dapibus ullamcorper ex. Nulla in dapibus lorem. Suspendisse vitae velit ac ante consequat placerat ut sed eros. Nullam porttitor mattis mi, id fringilla ex consequat eu. Praesent pulvinar tincidunt leo et condimentum. Maecenas volutpat turpis at felis egestas malesuada. Phasellus sem odio, venenatis at ex a, lacinia suscipit orci.</p>
-        </div>
+        <div id="progress-content-section">
+            <div class="section-content discovery active" data-page-index="1">
+                <h2>What is Artificial Intelligence?</h2>
+                <p>In today's world, terms including <strong>artificial intelligence</strong> and <strong>machine learning</strong> get thrown around a lot. But what do they actually mean?</p>
 
-        <div class="section-content creative">
-            <h2>AI as Depicted in Film</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec neque justo, consequat non fermentum ac, tempor eu turpis. Proin nulla eros, placerat non ipsum ut, dapibus ullamcorper ex. Nulla in dapibus lorem. Suspendisse vitae velit ac ante consequat placerat ut sed eros. Nullam porttitor mattis mi, id fringilla ex consequat eu. Praesent pulvinar tincidunt leo et condimentum. Maecenas volutpat turpis at felis egestas malesuada. Phasellus sem odio, venenatis at ex a, lacinia suscipit orci.</p>
-        </div>
+                <div class="quote-box">
+                    <strong>Artificial intelligence</strong> (AI) refers to the ability for machine to accomplish complex goals. This is divided into two subdefinitions:
+                    <ol>
+                        <li><strong>Weak AI</strong> &ndash; An AI system designed to accomplish a specific task. Examples include voice recognition (Siri) and AlphaGo (designed to play only Go).</li>
+                        <li><strong>Strong AI</strong> &ndash; An AI system capable to learn. When presented with a new problem, it can use prior intelligence to design a solution. Examples include human-level intelligence.</li>
+                    </ol>
+                </div>
 
-        <div class="section-content production">
-            <h2>Artificial Intelligence Today</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec neque justo, consequat non fermentum ac, tempor eu turpis. Proin nulla eros, placerat non ipsum ut, dapibus ullamcorper ex. Nulla in dapibus lorem. Suspendisse vitae velit ac ante consequat placerat ut sed eros. Nullam porttitor mattis mi, id fringilla ex consequat eu. Praesent pulvinar tincidunt leo et condimentum. Maecenas volutpat turpis at felis egestas malesuada. Phasellus sem odio, venenatis at ex a, lacinia suscipit orci.</p>
-        </div>
+                <div class="quote-box">
+                    <strong>Machine learning</strong> is an application of AI, where computers are given large amounts of data and draw their own connections.
+                </div>
 
-        <div class="section-content analysis">
-            <h2>Bibliography</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec neque justo, consequat non fermentum ac, tempor eu turpis. Proin nulla eros, placerat non ipsum ut, dapibus ullamcorper ex. Nulla in dapibus lorem. Suspendisse vitae velit ac ante consequat placerat ut sed eros. Nullam porttitor mattis mi, id fringilla ex consequat eu. Praesent pulvinar tincidunt leo et condimentum. Maecenas volutpat turpis at felis egestas malesuada. Phasellus sem odio, venenatis at ex a, lacinia suscipit orci.</p>
+                <p>Many of our current definitions for AI are based on what humans can do.</p>
+
+                <button class="button-next">History <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+            </div>
+
+            <div class="section-content strategy" data-page-index="2">
+                <h2>A Brief History of Artificial Intelligence</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec neque justo, consequat non fermentum ac, tempor eu turpis. Proin nulla eros, placerat non ipsum ut, dapibus ullamcorper ex. Nulla in dapibus lorem. Suspendisse vitae velit ac ante consequat placerat ut sed eros. Nullam porttitor mattis mi, id fringilla ex consequat eu. Praesent pulvinar tincidunt leo et condimentum. Maecenas volutpat turpis at felis egestas malesuada. Phasellus sem odio, venenatis at ex a, lacinia suscipit orci.</p>
+            </div>
+
+            <div class="section-content creative" data-page-index="3">
+                <h2>AI as Depicted in Film</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec neque justo, consequat non fermentum ac, tempor eu turpis. Proin nulla eros, placerat non ipsum ut, dapibus ullamcorper ex. Nulla in dapibus lorem. Suspendisse vitae velit ac ante consequat placerat ut sed eros. Nullam porttitor mattis mi, id fringilla ex consequat eu. Praesent pulvinar tincidunt leo et condimentum. Maecenas volutpat turpis at felis egestas malesuada. Phasellus sem odio, venenatis at ex a, lacinia suscipit orci.</p>
+            </div>
+
+            <div class="section-content production" data-page-index="4">
+                <h2>Artificial Intelligence Today</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec neque justo, consequat non fermentum ac, tempor eu turpis. Proin nulla eros, placerat non ipsum ut, dapibus ullamcorper ex. Nulla in dapibus lorem. Suspendisse vitae velit ac ante consequat placerat ut sed eros. Nullam porttitor mattis mi, id fringilla ex consequat eu. Praesent pulvinar tincidunt leo et condimentum. Maecenas volutpat turpis at felis egestas malesuada. Phasellus sem odio, venenatis at ex a, lacinia suscipit orci.</p>
+            </div>
+
+            <div class="section-content analysis" data-page-index="5">
+                <h2>Bibliography</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec neque justo, consequat non fermentum ac, tempor eu turpis. Proin nulla eros, placerat non ipsum ut, dapibus ullamcorper ex. Nulla in dapibus lorem. Suspendisse vitae velit ac ante consequat placerat ut sed eros. Nullam porttitor mattis mi, id fringilla ex consequat eu. Praesent pulvinar tincidunt leo et condimentum. Maecenas volutpat turpis at felis egestas malesuada. Phasellus sem odio, venenatis at ex a, lacinia suscipit orci.</p>
+            </div>
         </div>
-    </div>
+    </main>
 
     <footer>
         Made for HCI in Fall 2017 by <a href="http://chaseking.me" target="_blank">Chase King</a>.
-    </div>
+    </footer>
 
     <script type="text/javascript" src="index.js"></script>
 </body>
