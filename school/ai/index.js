@@ -37,7 +37,7 @@ function addText(){
     updateCursor();
 
     if(header.text().length < text.length){
-        setTimeout(addText, 80 + Math.random() * 100);
+        setTimeout(addText, 85 + Math.random() * 100);
     }
 }
 
