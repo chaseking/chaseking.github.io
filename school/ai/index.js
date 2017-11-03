@@ -50,17 +50,17 @@ $(".step").click(function(){
 
 //TODO - Convert to data-step = num
 
-$(".step01").click( function() {
+$(".step01").click(function(){
     $(".line-progress").css("width", "0%");
     $(".discovery").addClass("active").siblings().removeClass("active");
 });
 
-$(".step02").click( function() {
+$(".step02").click(function(){
     $(".line-progress").css("width", "25%");
     $(".strategy").addClass("active").siblings().removeClass("active");
 });
 
-$(".step03").click( function() {
+$(".step03").click(function(){
     $(".line-progress").css("width", "50%");
     $(".creative").addClass("active").siblings().removeClass("active");
 });
