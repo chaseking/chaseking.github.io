@@ -39,16 +39,19 @@ function addText(){
     }
 }
 
-
-$(".step").click(function(){
-    setCurrentPage($(this).data("page-index"));
-});
-
 function setCurrentPage(index){
     $(".step[data-page-index=" + index + "]").addClass("active").siblings().removeClass("active");
-    $(".section-content[data-page-index=" + index + "]").addClass("active").siblings().removeClass("active");
+    $(".section-content[data-page=" + index + "]").addClass("active").siblings().removeClass("active");
     $(".line-progress").css("width", ((100 / ($(".section-content").length - 1)) * (index - 1)) + "%");
 }
+
+$(".step").click(function(){
+    setCurrentPage($(this).data("page"));
+});
+
+$("button[data-page]").click(function(){
+    setCurrentPage($(this).data("page"));
+});
 
 //TODO - Convert to data-step = num
 
