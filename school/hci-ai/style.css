@@ -11,22 +11,32 @@ header {
     color: white;
     margin: 0;
     padding: 60px;
-}
-
-header .animate {
     text-align: center;
 }
 
-header .animate span {
+header .cursor {
+    padding-left: 2px;
+    border-right: 0.1em solid;
+}
+
+header .animate-typing h1 {
     font-family: monospace;
     font-size: 48px;
     font-weight: bold;
     letter-spacing: 1.5px;
 }
 
-header .animate .cursor {
-    padding-left: 2px;
-    border-right: 0.1em solid;
+header .animate-typing h2 {
+    font-size: 28px;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+}
+
+header .animate-typing h3 {
+    margin-top: 30px;
+    font-size: 15px;
+    font-weight: normal;
+    font-style: italic;
 }
 
 main {
@@ -165,7 +175,7 @@ main {
 #progress-content-section .section-content {
     display: none;
     transform: translateY(15px);
-    padding: 10px 40px;
+    padding: 10px 40px 20px;
     opacity: 0;
     animation: FadeInUp 700ms ease 1;
     animation-fill-mode: forwards;
