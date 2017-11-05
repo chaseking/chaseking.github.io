@@ -15,8 +15,8 @@
     <header>
         <div class="animate-typing">
             <h1 class="animate-typing-text"><span>The Age of Artificial Intelligence</span></h1>
-            <h2 class="animate-typing-text"><span>&mdash; A brief look into AI and its implications on culture. &mdash;</span></h2>
-            <h3 class="animate-typing-text"><span>Made by <a href="chaseking.me">Chase King</a> &mdash; November 2017</span></h3>
+            <h2 class="animate-typing-text" style="font-style: italic;"><span>&mdash; A brief look into AI and its implications on culture. &mdash;</span></h2>
+            <h3 class="animate-typing-text"><span>Made by <a href="chaseking.me">Chase King</a> &ndash; November 2017</span></h3>
         </div>
     </header>
 
@@ -26,8 +26,8 @@
             <div class="timeline">
                 <ul class="timeline-points">
                     <li class="step active" data-page="1"><div class="step-inner">What is AI?</div></li>
-                    <li class="step" data-page="2"><div class="step-inner">A Brief History of AI</div></li>
-                    <li class="step" data-page="3"><div class="step-inner">AI as Depicted in Film</div></li>
+                    <li class="step" data-page="2"><div class="step-inner">A Brief History</div></li>
+                    <li class="step" data-page="3"><div class="step-inner">Film Depictions</div></li>
                     <li class="step" data-page="4"><div class="step-inner">AI Today</div></li>
                     <li class="step" data-page="5"><div class="step-inner">Bibliography</div></li>
                 </ul>
@@ -44,7 +44,7 @@
                 <p>In today's world, terms including <strong>artificial intelligence</strong> and <strong>machine learning</strong> get thrown around a lot. But what do they actually mean?</p>
 
                 <div class="quote-box">
-                    <strong>Artificial intelligence</strong> (AI) refers to the ability for machine to accomplish complex goals. This is divided into two subdefinitions:
+                    <strong>Artificial intelligence</strong> (AI) refers to the ability for machine to accomplish complex goals. The main premise here is that the computer is able to continually learn from data it collects. This is divided into two subdefinitions:
                     <ol>
                         <li><strong>Weak AI</strong> &ndash; An AI system designed to accomplish a specific task. Examples include voice recognition (Siri) and AlphaGo (designed to play only Go).</li>
                         <li><strong>Strong AI</strong> &ndash; An AI system capable to learn. When presented with a new problem, it can use prior intelligence to design a solution. Examples include human-level intelligence.</li>
@@ -52,40 +52,149 @@
                 </div>
 
                 <div class="quote-box">
-                    <strong>Machine learning</strong> is an application of AI, where computers are given large amounts of data and draw their own connections.
-                    Examples include email spam filters, self-driving cars, and face-recognition software.
+                    <strong>Machine Learning</strong> is an application of AI, where computers are given large amounts of data and draw their own connections. For example, if computers are given your entire shopping or browsing history, they can learn to make pretty reliable guesses as to what you may want to purchase or view next. (Other examples include email spam filters, self-driving cars, and face-recognition software.)
+                    <br><br>
+                    Machine learning is very popular today; companies are collecting massive amounts of data which can be used to "train" these AIs, developing reliable machine learning algorithms.
                 </div>
 
                 <p>Many of our current definitions for AI are based on what humans can do. This alone poses some fairly philosophical and existential questions, including what makes us human, but before we dive into those, let's first take a look at the history of AI.</p>
 
-                <button class="button-next" data-page="2">History <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                <div class="buttons">
+                    <button class="button" data-page="2">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                </div>
             </div>
 
-            <div class="section-content" data-page="2">
+            <div class="section-content" id="history" data-page="2">
                 <h2>A Brief History of Artificial Intelligence</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec neque justo, consequat non fermentum ac, tempor eu turpis. Proin nulla eros, placerat non ipsum ut, dapibus ullamcorper ex. Nulla in dapibus lorem. Suspendisse vitae velit ac ante consequat placerat ut sed eros. Nullam porttitor mattis mi, id fringilla ex consequat eu. Praesent pulvinar tincidunt leo et condimentum. Maecenas volutpat turpis at felis egestas malesuada. Phasellus sem odio, venenatis at ex a, lacinia suscipit orci.</p>
+                <p></p>
 
-                <button class="button-next" data-page="3">Next Page <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                <ol>
+                    <li><strong>~10,000 <small>BCE</small></strong> &mdash; <span class="li-title">Agricultural Revolution</span>
+                        <p>Human society undergoes a shift from hunting and gathering to settled farming and agriculture.</p>
+                    </li>
+
+                    <img class="image image-right" src="img/plough.png">
+
+                    <li><strong>~2,800 <small>BCE</small></strong> &mdash; <span class="li-title">Plough First Used</span>
+                        <p>First evidence of a ploughed field in Northern India. It wasn't until several thousand years later until the plough was more common.</p>
+                    </li>
+
+                    <li><strong>~1780 &ndash; ~1840</strong> &mdash; <span class="li-title">U.S. Industrial Revolution</span>
+                        <p>At this point, you might be thinking: how does this relate to AI? For much of our history, nearly all manufacturing was done in private residences without machinery. However, with the Industrial Revolution, all that changed. Large factories were built, with machines being used for much of the mass-production process. Our society quickly became dependent on these machines, in terms of economy, employment, and production.</p>
+                    </li>
+
+                    <li><strong>~1950 &ndash; <small>current</small></strong> &mdash; <span class="li-title">Information Age</span>
+                        <p>The Information Age refers to the digitization of information and the widespread use of the world-wide web. Similar to the Industrial Revolution, this brought myriads of new jobs, forms of entertainment, and opportunities for commerce.</p>
+                    </li>
+
+                    <li><strong>1956</strong> &mdash; <span class="li-title">"AI" Term Coined</span>
+                        <p>The concept of sentient machines has been around for thousands of years, appearing in ancient Greek, Egyptian, and Chinese culture, art, and folklore. However, research in this field wasn't officially started until 1956, when the term was coined.</p>
+                        <p>There were several subsequent decades of research stagnation, and it wasn't until the 1990's with the rise of personal computers when people were able to realize the true potential of AI and research started again.</p>
+                    </li>
+
+                    <li><strong>May 1997</strong> &mdash; <span class="li-title">IBM Deep Blue</span>
+                        <p>IBM's Deep Blue computer became the first AI to beat a chess champion.</p>
+                    </li>
+
+                    <li><strong>February 2011</strong> &mdash; <span class="li-title">IBM Watson</span>
+                        <p>IBM's Watson beat two <em>Jeopardy!</em> champions. Watson has subsequently been used for healthcare, financial services, and commercial applications.</p>
+                    </li>
+
+                    <li><strong><small>Sometime in the Near Future...</small></strong> &mdash; <span class="li-title">Age of Artificial Intelligence?</span>
+                        <p>AI is already all around us. From toasters to voice recognition, airplane autopilots to online advertisements, it already plays an important role in our society. With the rate at which our society has recently progressed, it is almost certain that AI will soon come to play an even larger role in our lives.</p>
+                        <p>Before that happens, let's take a look at how this technology has been portrayed in films over the past few decades.</p>
+                    </li>
+
+                    <!-- http://www.ushistory.org/us/60d.asp -->
+                </ol>
+
+                <div class="buttons">
+                    <button class="button" data-page="1"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous</button>
+                    <button class="button" data-page="3">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                </div>
             </div>
 
             <div class="section-content" data-page="3">
                 <h2>AI as Depicted in Film</h2>
-                <p>Explore various films: Blade Runner, Interstellar, 2001, Ex Machina, Her?</p>
+                <p>Artificial intelligence is frequently depicted in numerous forms in various science-fiction films. What are those forms, and what does that say about our cultural understanding and depiction of AI?</p>
+                <!-- Explore various films: Blade Runner, Interstellar, 2001, Ex Machina, Her? -->
 
-                <button class="button-next" data-page="4">Next Page <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                <img class="image image-right" src="img/bladerunner-title.jpg">
+                <h3>Blade Runner</h3>
+                <p>AI trying to take over the world</p>
+                <p>The implication here is that humans purposefully give their AI creations, called "replicants", a four-year lifespan in order to prevent machine takeover. Unfortunately, the replicants figure out that their four-year death is inevitable:</p>
+
+                <span class="quote-box-small">"I want life, fucker."</span>
+
+                <p>The portrayal of the replicants in the movie is quite interesting. The duty of blade runners, the profession of Deckard (played by Harrison Ford), is to find and eradicate the humanlike robots, who are generally shown as violent and destructive. However, Deckard falls in love with Rachael, a replicant, and as the film progresses, the audience is left hoping that she will be safe.</p>
+
+                <p>By the end of the film, the audience is left sympathetic for the</p>
+
+                <div class="separator"></div>
+
+                <h3>Ex Machina</h3>
+                <img class="image image-left" src="img/exmachina-title.jpg">
+                <p>???</p>
+
+                <div class="separator"></div>
+
+                <img class="image image-right" src="img/interstellar-title.jpg">
+                <h3>Interstellar</h3>
+                <p>Helps man</p>
+
+                <div class="separator"></div>
+
+                <div class="buttons">
+                    <button class="button" data-page="2"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous</button>
+                    <button class="button" data-page="4">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                </div>
             </div>
 
             <div class="section-content" data-page="4">
                 <h2>Artificial Intelligence Today</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec neque justo, consequat non fermentum ac, tempor eu turpis. Proin nulla eros, placerat non ipsum ut, dapibus ullamcorper ex. Nulla in dapibus lorem. Suspendisse vitae velit ac ante consequat placerat ut sed eros. Nullam porttitor mattis mi, id fringilla ex consequat eu. Praesent pulvinar tincidunt leo et condimentum. Maecenas volutpat turpis at felis egestas malesuada. Phasellus sem odio, venenatis at ex a, lacinia suscipit orci.</p>
 
-                <button class="button-next" data-page="5">Next Page <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                <div class="buttons">
+                    <button class="button" data-page="3"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous</button>
+                    <button class="button" data-page="5">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                </div>
             </div>
 
-            <div class="section-content" data-page="5">
+            <div class="section-content" id="bibliography" data-page="5">
                 <h2>Bibliography</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec neque justo, consequat non fermentum ac, tempor eu turpis. Proin nulla eros, placerat non ipsum ut, dapibus ullamcorper ex. Nulla in dapibus lorem. Suspendisse vitae velit ac ante consequat placerat ut sed eros. Nullam porttitor mattis mi, id fringilla ex consequat eu. Praesent pulvinar tincidunt leo et condimentum. Maecenas volutpat turpis at felis egestas malesuada. Phasellus sem odio, venenatis at ex a, lacinia suscipit orci.</p>
-                <button class="button-next" data-page="2">Next Page</button>
+
+                <h3>Introduction</h3>
+                <ol>
+                    <li>Tegmark, Max. <em>Life 3.0: Being Human in the Age of Artificial Intelligence.</em> New York: Alfred A. Knopf, 2017.</li>
+                    <li>https://www.wired.com/insights/2015/01/the-evolution-of-artificial-intelligence/</li>
+                    <li>https://www.forbes.com/sites/bernardmarr/2016/12/06/what-is-the-difference-between-artificial-intelligence-and-machine-learning/</li>
+                </ol>
+
+                <h3>History</h3>
+                <ol>
+                    <li>https://en.wikipedia.org/wiki/Plough</li>
+                    <li>http://www.history.com/topics/industrial-revolution</li>
+                    <li></li>
+                </ol>
+
+                <h3>Film Depictions</h3>
+                <ol>
+                    <li><em>Blade Runner.</em> Directed by Ridley Scott. Performed by Harrison Ford and Sean Young. United States: Warner Bros., 1982. DVD.</li>
+                    <li><em>Ex Machina.</em> Directed by Alex Garland. Performed by Domhnall Gleeson, Alicia Vikander, and Oscar Isaac. United States: Universal Pictures, 2015. DVD.</li>
+                    <li><em>Interstellar.</em> Interstellar. Directed by Christopher Nolan. Performed by Matthew McConaughey and Anne Hathaway. Paramount Pictures, 2014.</li>
+                </ol>
+
+                <h3>AI Today</h3>
+                <ol>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ol>
+
+                <div class="buttons">
+                    <button class="button" data-page="4"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous</button>
+                    <button class="button" data-page="1"><i class="fa fa-home" aria-hidden="true"> Back to Start</i></button>
+                </div>
             </div>
         </div>
     </main>

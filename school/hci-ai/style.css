@@ -1,6 +1,7 @@
 body {
     margin: 0;
     font-family: Avenir, sans-serif;
+    min-width: 1000px;
 }
 
 header {
@@ -32,7 +33,7 @@ header .animate-typing h2 {
     letter-spacing: 0.5px;
 }
 
-header .animate-typing h3 {
+header .animate-typing h3, header .animate-typing #progress-content-section .section-content#history ol li strong, #progress-content-section .section-content#history ol li header .animate-typing strong {
     margin-top: 30px;
     font-size: 15px;
     font-weight: normal;
@@ -170,15 +171,23 @@ main {
     background: #f3f3f3;
     border-radius: 4px;
     position: relative;
+    margin-bottom: 30px;
 }
 
 #progress-content-section .section-content {
-    display: none;
     transform: translateY(15px);
     padding: 10px 40px 20px;
-    opacity: 0;
     animation: FadeInUp 700ms ease 1;
     animation-fill-mode: forwards;
+    position: relative;
+    display: none;
+    opacity: 0;
+}
+
+#progress-content-section .section-content::after {
+    content: "";
+    display: block;
+    clear: both;
 }
 
 #progress-content-section .section-content.active {
@@ -186,24 +195,62 @@ main {
 }
 
 #progress-content-section .section-content h2 {
-    font-size: 23px;
+    font-size: 24px;
     text-transform: uppercase;
     color: #333;
     text-align: center;
 }
 
+#progress-content-section .section-content h3, #progress-content-section .section-content#history ol li strong {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #333;
+    margin-bottom: 0;
+}
+
+#progress-content-section .section-content h3 + p, #progress-content-section .section-content#history ol li strong + p {
+    margin-top: 0;
+}
+
 #progress-content-section .section-content p {
     font-size: 16px;
     line-height: 1.7em;
-    color: #777;
+    color: #555;
+    text-align: justify;
+    margin: 16px 0;
+}
+
+#progress-content-section .section-content .image {
+    max-width: 200px;
+    max-height: 300px;
+    border: 3px solid #444;
+    margin: 20px;
+    margin-top: 5px;
+}
+
+#progress-content-section .section-content .image.image-right {
+    float: right;
+    margin-right: 0;
+}
+
+#progress-content-section .section-content .image.image-left {
+    float: left;
+    margin-left: 0;
+}
+
+#progress-content-section .section-content .separator {
+    clear: both;
+    margin: 20px auto;
+    width: 50%;
+    border-bottom: 1px dashed #222;
 }
 
 #progress-content-section .section-content .quote-box {
-    padding: 25px 20px;
-    background: rgba(0, 0, 0, 0.5);
+    padding: 15px 20px;
+    background: rgba(0, 0, 0, 0.45);
     margin: 10px 0;
     color: white;
-    font-size: 18px;
+    font-size: 16px;
     border-radius: 10px;
 }
 
@@ -211,7 +258,21 @@ main {
     margin-bottom: 0;
 }
 
-#progress-content-section .section-content .button-next {
+#progress-content-section .section-content .quote-box-small {
+    padding: 6px 10px;
+    background: rgba(0, 0, 0, 0.4);
+    margin: 5px 0;
+    color: white;
+    border-radius: 10px;
+    font-style: italic;
+}
+
+#progress-content-section .section-content .buttons {
+    text-align: center;
+    clear: both;
+}
+
+#progress-content-section .section-content .button {
     padding: 10px 20px;
     background: #39C2C9;
     border: none;
@@ -220,12 +281,42 @@ main {
     border-radius: 2em;
     color: white;
     transition: all 500ms;
+    margin: 10px 40px;
 }
 
-#progress-content-section .section-content .button-next:hover {
+#progress-content-section .section-content .button:hover {
     cursor: pointer;
     background: #31acb3;
     transform: scale(1.1);
+}
+
+#progress-content-section .section-content#history ol {
+    padding-left: 0;
+}
+
+#progress-content-section .section-content#history ol li {
+    list-style-type: none;
+}
+
+#progress-content-section .section-content#history ol li .li-title {
+    text-decoration: underline;
+}
+
+#progress-content-section .section-content#history ol li p {
+    margin-left: 40px;
+}
+
+#progress-content-section .section-content#bibliography ol {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+
+#progress-content-section .section-content#bibliography ol li {
+    list-style-type: none;
+    margin-left: 5px;
+    text-indent: -5px;
+    line-height: 2em;
 }
 
 @keyframes FadeInUp {

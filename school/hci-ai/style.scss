@@ -6,6 +6,7 @@ $progressLight: #f1c40f;
 body {
 	margin: 0;
 	font-family: Avenir, sans-serif;
+    min-width: 1000px;
 }
 
 header {
@@ -179,39 +180,86 @@ main {
 	background: #f3f3f3;
 	border-radius: 4px;
     position: relative;
+    margin-bottom: 30px;
 
     .section-content {
-        display: none;
     	transform: translateY(15px);
         padding: 10px 40px 20px;
-    	opacity: 0;
         animation: FadeInUp 700ms ease 1;
     	animation-fill-mode: forwards;
+        position: relative;
+        display: none;
+        opacity: 0;
+
+        //Make sure to expand and fit floating images
+        &::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
 
         &.active {
-        	display:block;
+        	display: block;
         }
 
         h2 {
-        	font-size: 23px;
+        	font-size: 24px;
         	text-transform: uppercase;
         	color: #333;
             text-align: center;
         	// letter-spacing: 1px;
         }
 
+        h3 {
+            font-size: 20px;
+            text-transform: uppercase;
+            color: #333;
+            margin-bottom: 0;
+
+            + p {
+                margin-top: 0;
+            }
+        }
+
         p {
         	font-size: 16px;
-        	line-height:1.7em;
-        	color: #777;
+        	line-height: 1.7em;
+        	color: #555;
+            text-align: justify;
+            margin: 16px 0;
+        }
+
+        .image {
+            max-width: 200px;
+            max-height: 300px;
+            border: 3px solid #444;
+            margin: 20px;
+            margin-top: 5px;
+
+            &.image-right {
+                float: right;
+                margin-right: 0;
+            }
+
+            &.image-left {
+                float: left;
+                margin-left: 0;
+            }
+        }
+
+        .separator {
+            clear: both;
+            margin: 20px auto;
+            width: 50%;
+            border-bottom: 1px dashed #222;
         }
 
         .quote-box {
-            padding: 25px 20px;
-            background: rgba(black, 0.5);
+            padding: 15px 20px;
+            background: rgba(black, 0.45);
             margin: 10px 0;
             color: white;
-            font-size: 18px;
+            font-size: 16px;
             border-radius: 10px;
 
             ol {
@@ -223,7 +271,21 @@ main {
             }
         }
 
-        .button-next {
+        .quote-box-small {
+            padding: 6px 10px;
+            background: rgba(black, 0.4);
+            margin: 5px 0;
+            color: white;
+            border-radius: 10px;
+            font-style: italic;
+        }
+
+        .buttons {
+            text-align: center;
+            clear: both;
+        }
+
+        .button {
             padding: 10px 20px;
             background: #39C2C9;
             border: none;
@@ -232,11 +294,59 @@ main {
             border-radius: 2em;
             color: white;
             transition: all 500ms;
+            margin: 10px 40px;
 
             &:hover {
                 cursor: pointer;
                 background: darken(#39C2C9, 6%);
                 transform: scale(1.1);
+            }
+
+            &:nth-of-type(1) {
+                // float: left;
+                // margin-left: 50px;
+            }
+
+            &:nth-of-type(2) {
+                // float: right;
+                // margin-right: 50px;
+            }
+        }
+
+        &#history {
+            ol {
+                padding-left: 0;
+
+                li {
+                    list-style-type: none;
+
+                    strong {
+                        @extend h3;
+                    }
+
+                    .li-title {
+                        text-decoration: underline;
+                    }
+
+                    p {
+                        margin-left: 40px;
+                    }
+                }
+            }
+        }
+
+        &#bibliography {
+            ol {
+                margin: 0;
+                padding: 0;
+                font-size: 14px;
+
+                li {
+                    list-style-type: none;
+                    margin-left: 5px;
+                    text-indent: -5px;
+                    line-height: 2em;
+                }
             }
         }
     }
