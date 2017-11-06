@@ -119,6 +119,11 @@ main {
     }
 }
 
+.slider .slides li img {
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+}
+
 footer {
     font-size: 12px;
 }

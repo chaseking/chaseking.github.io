@@ -9,12 +9,14 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/twemoji.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 
     <!-- Google Analytics TODO -->
     <script async>
@@ -163,7 +165,7 @@
                     </div>
                 </div>
 
-                <div id="racereports">
+                <div id="racereports" style="display: none;"> <!-- TODO - Finish these -->
                     <h3>2017 Race Reports:</h3>
                     <ul class="collapsible" data-collapsible="accordion">
                         <li>
@@ -204,7 +206,37 @@
 
             <div id="photos" class="section section-border border-yellow">
                 <h2>Photos</h2>
-                <p>Coming soon.</p>
+
+                <!-- http://materializecss.com/media.html -->
+                <div class="slider">
+                    <ul class="slides">
+                        <li><img src="img/photos/teamswift.jpg"></li>
+                        <li><img src="img/photos/lkhc-mines.jpg"></li>
+                        <li><img src="img/photos/lkhc-tunitas.jpg"></li>
+                        <li><img src="img/photos/karate-board.jpg"></li>
+                        <li><img src="img/photos/karate-fighting.jpg"></li>
+                        <li><img src="img/photos/tamhc2015.jpg"></li>
+                        <li><img src="img/photos/karate-kyle.jpg"></li>
+                        <li><img src="img/photos/karate-youngandold.jpg"></li>
+                        <li><img src="img/photos/downieville.jpg"></li>
+                        <li><img src="img/photos/lkhc-tunitas-2.jpg"></li>
+                    </ul>
+                </div>
+
+                <script>
+                $(document).ready(function () {
+                   $('.slider').slider({
+                       full_width: true,
+                       height: 550
+                   });
+                });
+                </script>
+
+                <!-- <div class="grid" data-masonry='{ "columnWidth": 400, "itemSelector": ".grid-item" }'>
+                    <div class="grid-item"><img src="img/photos/teamswift.jpg"></div>
+                    <div class="grid-item"><img src="img/photos/lkhc-mines.jpg"></div>
+                    <div class="grid-item"><img src="img/photos/lkhc-tunitas.jpg"></div>
+                </div> -->
             </div>
         </div>
     </main>
@@ -234,12 +266,11 @@
         <div class="footer-copyright indigo darken-3">
             <div class="container">
                 &copy; 2017 Chase King
-                <a class="grey-text text-lighten-4 right" href="#!">Last Updated: June 19, 2017</a>
+                <a class="grey-text text-lighten-4 right" href="#!">Last Updated: November 2017</a>
             </div>
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
     <script type="text/javascript" src="js/smoothscrolling.js"></script>
 </body>
 </html>
