@@ -38,8 +38,15 @@ $(".animate-typing").each(function(){
     function typeHeading(headingIndex){
         if(headingIndex >= contents.length){
             //Add the cursor after the first heading
-            cursor.remove();
-            contents.eq(0).append(cursor);
+            if(contents.length > 1){
+                cursor.remove();
+                contents.eq(0).append(cursor);
+            }
+
+            var index = 0;
+            var fades = div.find(".fade").each(function(){
+                $(this).delay(500 + (1000 * index++)).animate({ opacity: 1 }, 500);
+            })
 
             return;
         }
@@ -74,7 +81,7 @@ $(".animate-typing").each(function(){
 function setCurrentPage(index){
     var section = $(".section-content[data-page=" + index + "]");
 
-    $(".step[data-page-index=" + index + "]").addClass("active").siblings().removeClass("active");
+    $(".step[data-page=" + index + "]").addClass("active").siblings().removeClass("active");
     section.addClass("active").siblings().removeClass("active");
     $(".line-progress").css("width", ((100 / ($(".section-content").length - 1)) * (index - 1)) + "%");
 
