@@ -247,6 +247,11 @@ main {
     margin-left: 0;
 }
 
+#progress-content-section .section-content .image.image-large {
+    max-width: 320px;
+    max-height: 440px;
+}
+
 #progress-content-section .section-content .separator {
     clear: both;
     margin: 20px auto;
@@ -261,6 +266,7 @@ main {
     color: white;
     font-size: 16px;
     border-radius: 10px;
+    overflow: hidden;
 }
 
 #progress-content-section .section-content .quote-box ol {
@@ -274,6 +280,7 @@ main {
     color: white;
     border-radius: 10px;
     font-style: italic;
+    overflow: hidden;
 }
 
 #progress-content-section .section-content .buttons {
@@ -315,19 +322,6 @@ main {
     margin-left: 40px;
 }
 
-#progress-content-section .section-content#bibliography ol {
-    margin: 0;
-    padding: 0;
-    font-size: 14px;
-}
-
-#progress-content-section .section-content#bibliography ol li {
-    list-style-type: none;
-    margin-left: 5px;
-    text-indent: -5px;
-    line-height: 2em;
-}
-
 @keyframes FadeInUp {
     0% {
         transform: translateY(15px);
@@ -337,6 +331,19 @@ main {
         transform: translateY(0px);
         opacity: 1;
     }
+}
+
+ol.hanging-indent {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+
+ol.hanging-indent li {
+    list-style-type: none;
+    margin-left: 5px;
+    text-indent: -5px;
+    line-height: 2em;
 }
 
 footer {

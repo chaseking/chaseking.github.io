@@ -256,6 +256,11 @@ main {
                 float: left;
                 margin-left: 0;
             }
+
+            &.image-large {
+                max-width: 320px;
+                max-height: 440px;
+            }
         }
 
         .separator {
@@ -272,6 +277,7 @@ main {
             color: white;
             font-size: 16px;
             border-radius: 10px;
+            overflow: hidden;
 
             ol {
                 li {
@@ -289,6 +295,8 @@ main {
             color: white;
             border-radius: 10px;
             font-style: italic;
+            // line-height: auto;
+            overflow: hidden;
         }
 
         .buttons {
@@ -345,21 +353,6 @@ main {
                 }
             }
         }
-
-        &#bibliography {
-            ol {
-                margin: 0;
-                padding: 0;
-                font-size: 14px;
-
-                li {
-                    list-style-type: none;
-                    margin-left: 5px;
-                    text-indent: -5px;
-                    line-height: 2em;
-                }
-            }
-        }
     }
 
     @keyframes FadeInUp {
@@ -372,6 +365,19 @@ main {
     		transform: translateY(0px);
     		opacity: 1;
     	}
+    }
+}
+
+ol.hanging-indent {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+
+    li {
+        list-style-type: none;
+        margin-left: 5px;
+        text-indent: -5px;
+        line-height: 2em;
     }
 }
 

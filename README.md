@@ -1,2 +1,2 @@
 # chaseking.github.io
-Public website. Personal portfolio and other stuff.
+Public website. Personal portfolio, school projects, and other stuff.

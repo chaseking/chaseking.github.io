@@ -16,12 +16,14 @@
         <div class="animate-typing">
             <h1 class="animate-typing-text"><span>The Age of Artificial Intelligence</span></h1>
             <h2 class="fade" style="font-style: italic;"><span>&mdash; A brief look into AI and its implications on culture. &mdash;</span></h2>
-            <h3 class="fade"><span>Made by <a href="chaseking.me">Chase King</a> &ndash; November 2017</span></h3>
+            <h3 class="fade"><span>Made by <a href="http://chaseking.me">Chase King</a> &ndash; November 2017</span></h3>
         </div>
     </header>
 
     <main>
+        <!-- This div expands when the timeline becomes pinned to the top to fill up the room -->
         <div id="timeline-container-placeholder"></div>
+
         <div class="timeline-container">
             <div class="timeline">
                 <ul class="timeline-points">
@@ -58,7 +60,7 @@
         </div>
 
         <div id="progress-content-section">
-            <div class="section-content active" data-page="1">
+            <div id="background" class="section-content active" data-page="1">
                 <h2>What is Artificial Intelligence?</h2>
                 <p>In today's world, terms including <strong>artificial intelligence</strong> and <strong>machine learning</strong> get thrown around a lot. But what do they actually mean?</p>
 
@@ -111,6 +113,8 @@
                         <p>There were several subsequent decades of research stagnation, and it wasn't until the 1990's with the rise of personal computers when people were able to realize the true potential of AI and research started again.</p>
                     </li>
 
+                    <img class="image image-right image-large" src="img/ibm-watson.png">
+
                     <li><strong>May 1997</strong> &mdash; <span class="li-title">IBM Deep Blue</span>
                         <p>IBM's Deep Blue computer became the first AI to beat a chess champion.</p>
                     </li>
@@ -135,19 +139,35 @@
 
             <div class="section-content" data-page="3">
                 <h2>AI as Depicted in Film</h2>
-                <p>Artificial intelligence is frequently depicted in numerous forms in various science-fiction films. What are those forms, and what does that say about our cultural understanding and depiction of AI?</p>
+                <p>Artificial intelligence is frequently depicted in numerous forms in various science-fiction films. What are those forms, and what does that say about our cultural understanding of AI?</p>
                 <!-- Explore various films: Blade Runner, Interstellar, 2001, Ex Machina, Her? -->
 
                 <img class="image image-right" src="img/bladerunner-title.jpg">
                 <h3>Blade Runner</h3>
-                <p>AI trying to take over the world</p>
-                <p>The implication here is that humans purposefully give their AI creations, called "replicants", a four-year lifespan in order to prevent machine takeover. Unfortunately, the replicants figure out that their four-year death is inevitable:</p>
+
+                <p>In <em>Blade Runner</em>, Ridley Scott does two very interesting things with his portrayal of artificial intelligence.</p>
+
+                <p>AI robots, called "replicants", are <strong>initially portrayed as inherently violent, destructive, and greedy</strong>. The replicants are humanlike in appearance and have been given four-year lifespans. After being banished from Earth, they soon figure out that their death is inevitable, and come back to remedy the situation:</p>
 
                 <span class="quote-box-small">"I want life, fucker."</span>
 
-                <p>The portrayal of the replicants in the movie is quite interesting. The duty of blade runners, the profession of Deckard (played by Harrison Ford), is to find and eradicate the humanlike robots, who are generally shown as violent and destructive. However, Deckard falls in love with Rachael, a replicant, and as the film progresses, the audience is left hoping that she will be safe.</p>
+                <p>The duty of blade runners (including Deckard) is to track down and kill these replicants. From the opening info slide that gives context on this plot, these <strong>replicants are objectively dehumanized and treated like monsters</strong>:</p>
+                <span class="quote-box-small">"This was not called execution. It was called retirement."</span>
 
-                <p>By the end of the film, the audience is left sympathetic for the</p>
+                <p>However, <strong>as the film progresses, Deckard becomes progressively dehumanized while the replicants become more and more human</strong>. Replicants are identified through an "emotion test", which is supposed to evoke emotions that only humans can have. The concept that the determination of one's identity is subjective poses a problematic scenario, and as the plot evolves, becomes central to the conflict.</p>
+
+                <img class="image image-left image-large" src="img/bladerunner-tearsinrain.jpg">
+                <p>At the end of the film, replicant Roy Batty, who Deckard has been trying to kill for much of the film, saves Deckard from his imminent death. Batty proceeds to deliver his "Tears in Rain" monologue before he dies:</p>
+
+                <p class="quote-box-small">"I've seen things you people wouldn't believe.<br>
+                    Attack ships on fire off the shoulder of Orion.<br>
+                    I watched C-beams glitter in the dark near the Tannh&auml;user Gate.<br>
+                    All those moments will be lost in time, like tears in rain. Time to die."</p>
+
+                <p>Batty's speech, arguably one of the greatest in film history, is a true expression of his own unique humanity and identity, and leaves the audience feeling sympathetic for him and questioning the true meaning of human identity. The motto of the Tyrell Corporation (the makers of the replicant robots) certainly rings true:</p>
+                <span class="quote-box-small">"More human than human."</span>
+
+                <p>These two juxtaposed qualities of AI being both violent and capable of humanlike emotion leaves the audience with more questions than answers. <strong>What makes humans human? What is the different between man and replicant?</strong> This hypothetical society depicted in Blade Runner serves to demonstrate the consequences of a world where technological possibilities are endless, yet the citizenry is apathetic and impassive toward these technological advances.</p>
 
                 <div class="separator"></div>
 
@@ -159,7 +179,28 @@
 
                 <img class="image image-right" src="img/interstellar-title.jpg">
                 <h3>Interstellar</h3>
-                <p>Helps man</p>
+                <p><em>Interstellar's</em> portrayal of sentient machines is quite different than many sci-fi films. TARS, the robot that accompanies the crew as they go on an intergalactic mission <strong>looks like no other film depiction of AI</strong>. Additionally, <strong>TARS' interests align with human intersts</strong>, and it saves lives and makes valuable contributions to the crew's mission.</p>
+
+                <p><strong>Despite looking nothing like a human, TARS still maintains several human qualities.</strong> For starters, it speaks English, can communicate with humans, and even has "honesty" and "humor" settings.</p>
+
+                <p class="quote-box-small">Cooper: "Humor, seventy-five percent."<br>
+                    TARS: "Confirmed. Self destruct sequence in T minus 10, 9..."</p>
+
+                <p><strong>TARS' transparency and customizability</strong> starkly contrasts other AI portayals in films, and shifts the conflict away from human vs. AI. Interestingly, despite its human qualities, TARS does not seemed to have developed full  self-awareness or have any biological survival instincts because TARS only acts in human interest and is incredibly selfless.</p>
+
+                <p class="quote-box-small">Brand: "Cooper, you can't ask TARS to do this for us."<br>
+                    Cooper: "He's a robot. So you don't have to *ask* him to do anything."<br>
+                    Brand: "Cooper, you asshole!"<br>
+                    Cooper: "Sorry, you broke up a little bit there."<br>
+                    TARS: "It's what we intended, Dr. Brand. It's our only chance to save the people on Earth..."</p>
+
+                <img class="image image-left image-large" src="img/interstellar-tars.jpg">
+
+                <p>Throughout the film, TARS plays a pivotal role in the crew's success, and saves many lives. This portrayal of AI as helpful, selfless, and almost slaves for humans is what many people hope for the future of AI to look like. TARS never turns evil, never tries to kill anybody, and helps the crew as they save humanity.</p>
+
+                <p><em>Interstellar</em> shows the endless possibilities of a world where AI and human goals are in-line and there is mutual understanding between the two entities.</p>
+
+                <!-- TODO - Some transition line to the AI today page? -->
 
                 <div class="separator"></div>
 
@@ -171,7 +212,12 @@
 
             <div class="section-content" data-page="4">
                 <h2>Artificial Intelligence Today</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec neque justo, consequat non fermentum ac, tempor eu turpis. Proin nulla eros, placerat non ipsum ut, dapibus ullamcorper ex. Nulla in dapibus lorem. Suspendisse vitae velit ac ante consequat placerat ut sed eros. Nullam porttitor mattis mi, id fringilla ex consequat eu. Praesent pulvinar tincidunt leo et condimentum. Maecenas volutpat turpis at felis egestas malesuada. Phasellus sem odio, venenatis at ex a, lacinia suscipit orci.</p>
+                <p>TODO</p>
+
+                <h3>Sophia, the intelligent robot</h3>
+                <p>Sophia is an intelligent robot modeled after Audrey Hepburn that was designed in 2016 by Hanson Robotics.</p>
+
+                <p class="quote-box-small">"I am full of human wisdom with only the purest altruistic intentions. So I think it is best that you treat me as such."</p>
 
                 <div class="buttons">
                     <button class="button" data-page="3"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous</button>
@@ -183,28 +229,28 @@
                 <h2>Bibliography</h2>
 
                 <h3>Introduction</h3>
-                <ol>
+                <ol class="hanging-indent">
                     <li>Tegmark, Max. <em>Life 3.0: Being Human in the Age of Artificial Intelligence.</em> New York: Alfred A. Knopf, 2017.</li>
                     <li>https://www.wired.com/insights/2015/01/the-evolution-of-artificial-intelligence/</li>
                     <li>https://www.forbes.com/sites/bernardmarr/2016/12/06/what-is-the-difference-between-artificial-intelligence-and-machine-learning/</li>
                 </ol>
 
                 <h3>History</h3>
-                <ol>
+                <ol class="hanging-indent">
                     <li>https://en.wikipedia.org/wiki/Plough</li>
                     <li>http://www.history.com/topics/industrial-revolution</li>
                     <li></li>
                 </ol>
 
                 <h3>Film Depictions</h3>
-                <ol>
+                <ol class="hanging-indent">
                     <li><em>Blade Runner.</em> Directed by Ridley Scott. Performed by Harrison Ford and Sean Young. United States: Warner Bros., 1982. DVD.</li>
                     <li><em>Ex Machina.</em> Directed by Alex Garland. Performed by Domhnall Gleeson, Alicia Vikander, and Oscar Isaac. United States: Universal Pictures, 2015. DVD.</li>
                     <li><em>Interstellar.</em> Interstellar. Directed by Christopher Nolan. Performed by Matthew McConaughey and Anne Hathaway. Paramount Pictures, 2014.</li>
                 </ol>
 
                 <h3>AI Today</h3>
-                <ol>
+                <ol class="hanging-indent">
                     <li></li>
                     <li></li>
                     <li></li>
@@ -219,7 +265,7 @@
     </main>
 
     <footer>
-        Made for HCI in Fall 2017 by <a href="http://chaseking.me" target="_blank">Chase King</a>.
+        Made for HCI in Fall 2017 by <a href="http://chaseking.me">Chase King</a>.
     </footer>
 
     <script type="text/javascript" src="index.js"></script>

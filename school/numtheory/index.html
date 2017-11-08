@@ -18,73 +18,58 @@
         <h2>By <a href="http://chaseking.me">Chase King</a></h2>
     </header>
 
-    <!-- <div style="padding: 30px 50px;"> -->
-    <div class="container">
-        <div id="about" class="section">
-            <h5>About This Page</h5>
-            <p>I designed this page for an elementary number theory course I'm taking this year.</p>
-            <p><a href="http://chaseking.me">Click here to return to my home page.</a></p>
-        </div>
-
-        <div class="divider"></div>
-
-        <div id="gcd" class="section">
-            <h5>Euclid GCD Algorithm</h5>
-            <p>This calculates the GCD of two numbers using the Euclidean algorithm. You can read more about it <a href="https://en.wikipedia.org/wiki/Euclidean_algorithm" target="blank">here</a>.</p>
-
-            <div class="row">
-                <form class="col s12">
-                    <div class="row">
-                        <div class="input-field col s3">
-                            <input type="number" id="gcd_a" class="validate"></input>
-                            <label for="gcd_a">Number 1</label>
-                        </div>
-
-                        <div class="input-field col s3">
-                            <input type="number" id="gcd_b" class="validate"></input>
-                            <label for="gcd_b">Number 2</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <button class="btn waves-effect waves-light" type="submit" name="action" id="gcd_calculate">
-                            Calculate GCD
-                        </button>
-                    </div>
-                </form>
+    <main>
+        <!-- <div style="padding: 30px 50px;"> -->
+        <div class="container">
+            <div id="about" class="section">
+                <h5>About This Page</h5>
+                <p>I designed this page for an elementary number theory course I'm taking this year.</p>
+                <p><a href="http://chaseking.me">Click here to return to my home page.</a></p>
             </div>
 
-            <h4 id="gcd_value"></h4>
+            <div class="divider"></div>
+
+            <div id="gcd" class="section">
+                <h5>Euclid GCD Algorithm</h5>
+                <p>This calculates the GCD of two numbers using the Euclidean algorithm. You can read more about it <a href="https://en.wikipedia.org/wiki/Euclidean_algorithm" target="blank">here</a>.</p>
+
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s3">
+                                <input type="number" id="gcd_a" class="validate"></input>
+                                <label for="gcd_a">Number 1</label>
+                            </div>
+
+                            <div class="input-field col s3">
+                                <input type="number" id="gcd_b" class="validate"></input>
+                                <label for="gcd_b">Number 2</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <button class="btn waves-effect waves-light" type="submit" name="action" id="gcd_calculate">
+                                Calculate GCD
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <h4 id="gcd_value"></h4>
+
+                <table id="gcd_table" class="bordered striped">
+                    <thead>
+                        <tr>
+                            <th>Forwards</th>
+                            <!-- <th>XXX</th> -->
+                        </tr>
+                    </thead>
+
+                    <tbody></tbody>
+                </table>
+            </div>
         </div>
-    </div>
-
-    <table class="bordered striped" style="display: none">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Item Name</th>
-                <th>Item Price</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <tr>
-                <td>Alvin</td>
-                <td>Eclair</td>
-                <td>$0.87</td>
-            </tr>
-            <tr>
-                <td>Alan</td>
-                <td>Jellybean</td>
-                <td>$3.76</td>
-            </tr>
-            <tr>
-                <td>Jonathan</td>
-                <td>Lollipop</td>
-                <td>$7.00</td>
-            </tr>
-        </tbody>
-    </table>
+    </main>
 
     <footer>
         Made for Number Theory 2017-2018 by <a href="http://chaseking.me" target="blank">Chase King</a>.

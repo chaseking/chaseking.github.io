@@ -87,7 +87,7 @@ function setCurrentPage(index){
 
     $("html, body").animate({
         scrollTop: section.offset().top - 100
-    }, 500);
+    }, 800);
 }
 
 $(".step").click(function(){
