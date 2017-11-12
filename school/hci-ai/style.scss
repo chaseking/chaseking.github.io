@@ -9,6 +9,11 @@ body {
     min-width: 1000px;
 }
 
+.cursor {
+    padding-left: 2px;
+    border-right: 0.1em solid;
+}
+
 header {
 	background: $bgDark;
 	background: -moz-linear-gradient(45deg, $bgDark 25%, $bgLight 100%);
@@ -19,11 +24,6 @@ header {
 	padding: 60px;
     // height: 50vh;
     text-align: center;
-
-    .cursor {
-        padding-left: 2px;
-        border-right: 0.1em solid;
-    }
 
     h1 {
         font-family: monospace;
@@ -351,8 +351,7 @@ main {
 
         .image-cite {
             font-size: 70%;
-            margin-top: 10px;
-            margin-bottom: 0px;
+            margin: 5px 0;
             color: inherit;
 
             //Camera icon before
