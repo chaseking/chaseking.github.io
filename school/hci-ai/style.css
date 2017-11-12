@@ -229,12 +229,25 @@ main {
     margin: 16px 0;
 }
 
+#progress-content-section .section-content h3 + img.image-left + p, #progress-content-section .section-content#history ol li strong + img.image-left + p {
+    margin-top: 0;
+}
+
+#progress-content-section .section-content a {
+    color: inherit;
+    transition: all 250ms;
+}
+
+#progress-content-section .section-content a:hover {
+    text-decoration: none;
+    text-decoration-color: black;
+}
+
 #progress-content-section .section-content .image {
     max-width: 200px;
     max-height: 300px;
     border: 3px solid #444;
-    margin: 20px;
-    margin-top: 5px;
+    margin: 5px 20px;
 }
 
 #progress-content-section .section-content .image.image-right {
@@ -255,6 +268,7 @@ main {
 #progress-content-section .section-content .separator {
     clear: both;
     margin: 20px auto;
+    padding: 10px;
     width: 50%;
     border-bottom: 1px dashed #222;
 }
@@ -273,6 +287,11 @@ main {
     margin-bottom: 0;
 }
 
+#progress-content-section .section-content .quote-box ol li {
+    list-style-type: none;
+    padding-left: 0px;
+}
+
 #progress-content-section .section-content .quote-box-small {
     padding: 6px 10px;
     background: rgba(0, 0, 0, 0.4);
@@ -286,6 +305,7 @@ main {
 #progress-content-section .section-content .buttons {
     text-align: center;
     clear: both;
+    margin-top: 20px;
 }
 
 #progress-content-section .section-content .button {
@@ -304,6 +324,21 @@ main {
     cursor: pointer;
     background: #31acb3;
     transform: scale(1.1);
+}
+
+#progress-content-section .section-content .image-cite {
+    font-size: 70%;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    color: inherit;
+}
+
+#progress-content-section .section-content .image-cite:before {
+    display: inline-block;
+    font-family: FontAwesome;
+    content: "\f030";
+    color: black;
+    margin-right: 3px;
 }
 
 #progress-content-section .section-content#history ol {

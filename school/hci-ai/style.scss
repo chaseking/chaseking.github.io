@@ -240,12 +240,26 @@ main {
             margin: 16px 0;
         }
 
+        h3 + img.image-left + p {
+            margin-top: 0;
+        }
+
+        a {
+            color: inherit;
+            transition: all 250ms;
+
+            &:hover {
+                text-decoration: none;
+                // border-bottom: 1px dashed black;
+                text-decoration-color: black;
+            }
+        }
+
         .image {
             max-width: 200px;
             max-height: 300px;
             border: 3px solid #444;
-            margin: 20px;
-            margin-top: 5px;
+            margin: 5px 20px;
 
             &.image-right {
                 float: right;
@@ -266,6 +280,7 @@ main {
         .separator {
             clear: both;
             margin: 20px auto;
+            padding: 10px;
             width: 50%;
             border-bottom: 1px dashed #222;
         }
@@ -281,7 +296,8 @@ main {
 
             ol {
                 li {
-                    // list-style-type: circle;
+                    list-style-type: none;
+                    padding-left: 0px;
                 }
 
                 margin-bottom: 0;
@@ -302,6 +318,7 @@ main {
         .buttons {
             text-align: center;
             clear: both;
+            margin-top: 20px;
         }
 
         .button {
@@ -329,6 +346,22 @@ main {
             &:nth-of-type(2) {
                 // float: right;
                 // margin-right: 50px;
+            }
+        }
+
+        .image-cite {
+            font-size: 70%;
+            margin-top: 10px;
+            margin-bottom: 0px;
+            color: inherit;
+
+            //Camera icon before
+            &:before {
+                display: inline-block;
+                font-family: FontAwesome;
+                content: "\f030";
+                color: black;
+                margin-right: 3px;
             }
         }
 
