@@ -9,6 +9,40 @@ body {
     border-right: 0.1em solid;
 }
 
+a {
+    color: inherit;
+    transition: all 250ms;
+    position: relative;
+    text-decoration: none;
+}
+
+@keyframes linkanimate {
+    50% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+a:after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 2px;
+    margin: 0 auto;
+    background-color: #8e44ad;
+    transition: all 250ms ease-in-out;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+a:hover:after {
+    background-color: #3498db;
+    animation: linkanimate 500ms;
+}
+
 header {
     background: #196177;
     background: -moz-linear-gradient(45deg, #196177 25%, #2ea3b7 100%);
@@ -40,18 +74,16 @@ header h3, header #progress-content-section .section-content#history ol li stron
     font-style: italic;
 }
 
+header a:after {
+    background-color: white;
+}
+
+header a:hover:after {
+    background-color: #f1c40f;
+}
+
 header .fade {
     opacity: 0;
-}
-
-header a {
-    color: inherit;
-    text-decoration: none;
-    border-bottom: 1px dashed white;
-}
-
-header a:hover {
-    border-bottom: none;
 }
 
 main {
@@ -213,12 +245,26 @@ main {
 #progress-content-section .section-content h3, #progress-content-section .section-content#history ol li strong {
     font-size: 20px;
     text-transform: uppercase;
-    color: #333;
-    margin-bottom: 0;
+    margin-bottom: 5px;
+    padding: 3px 8px;
+    color: white;
+    background: #3498db;
+    border-radius: 5px;
+    display: table;
 }
 
 #progress-content-section .section-content h3 + p, #progress-content-section .section-content#history ol li strong + p {
     margin-top: 0;
+}
+
+#progress-content-section .section-content h4 {
+    font-weight: normal;
+    font-style: italic;
+    margin: 5px 0;
+    font-size: 17px;
+    line-height: 1.5em;
+    border-bottom: 3px solid #3498db;
+    display: table;
 }
 
 #progress-content-section .section-content p {
@@ -229,18 +275,9 @@ main {
     margin: 16px 0;
 }
 
-#progress-content-section .section-content h3 + img.image-left + p, #progress-content-section .section-content#history ol li strong + img.image-left + p {
-    margin-top: 0;
-}
-
-#progress-content-section .section-content a {
-    color: inherit;
-    transition: all 250ms;
-}
-
-#progress-content-section .section-content a:hover {
-    text-decoration: none;
-    text-decoration-color: black;
+#progress-content-section .section-content h3 + img.image-left + p, #progress-content-section .section-content#history ol li strong + img.image-left + p,
+#progress-content-section .section-content h3 + h4 + p, #progress-content-section .section-content#history ol li strong + h4 + p {
+    margin-top: 5px;
 }
 
 #progress-content-section .section-content .image {
@@ -283,11 +320,11 @@ main {
     overflow: hidden;
 }
 
-#progress-content-section .section-content .quote-box ol {
+#progress-content-section .section-content ol {
     margin-bottom: 0;
 }
 
-#progress-content-section .section-content .quote-box ol li {
+#progress-content-section .section-content ol li {
     list-style-type: none;
     padding-left: 0px;
 }
@@ -348,6 +385,11 @@ main {
     list-style-type: none;
 }
 
+#progress-content-section .section-content#history ol li strong {
+    display: inline;
+    background-color: #27ae60;
+}
+
 #progress-content-section .section-content#history ol li .li-title {
     text-decoration: underline;
 }
@@ -375,9 +417,10 @@ ol.hanging-indent {
 
 ol.hanging-indent li {
     list-style-type: none;
-    margin-left: 5px;
-    text-indent: -5px;
+    margin-left: 30px;
+    text-indent: -30px;
     line-height: 2em;
+    margin-bottom: 5px;
 }
 
 footer {
@@ -386,8 +429,4 @@ footer {
     font-size: 13px;
     color: #bbb;
     background: #333;
-}
-
-footer a {
-    color: #777;
 }

@@ -137,7 +137,7 @@ function setCurrentPage(index, scroll){
         if(textSpan.text().length < fullText.length){
             if(pageHeadingAnimateIndex == index){
                 //Only keep typing letters if we're on the same page
-                setTimeout(addText, 65 + Math.random() * 80);
+                setTimeout(addText, 80 + Math.random() * 80);
             }
         } else {
             //All done!
