@@ -37,12 +37,12 @@
                     <form class="col s12">
                         <div class="row">
                             <div class="input-field col s3">
-                                <input type="number" id="gcd_a" class="validate"></input>
+                                <input type="number" id="gcd_a" class="validate" value="2145"></input>
                                 <label for="gcd_a">Number 1</label>
                             </div>
 
                             <div class="input-field col s3">
-                                <input type="number" id="gcd_b" class="validate"></input>
+                                <input type="number" id="gcd_b" class="validate" value="462"></input>
                                 <label for="gcd_b">Number 2</label>
                             </div>
                         </div>
@@ -57,11 +57,25 @@
 
                 <h4 id="gcd_value"></h4>
 
-                <table id="gcd_table" class="bordered striped">
+                <table id="gcd_table_euclid" class="bordered striped">
                     <thead>
                         <tr>
                             <th>Forwards</th>
-                            <!-- <th>XXX</th> -->
+                            <th>Backwards</th>
+                        </tr>
+                    </thead>
+
+                    <tbody></tbody>
+                </table>
+
+                <table id="gcd_table_data" class="bordered striped">
+                    <thead>
+                        <tr>
+                            <th>Step</th>
+                            <th>Quotient</th>
+                            <th>Remainder</th>
+                            <th>X</th>
+                            <th>Y</th>
                         </tr>
                     </thead>
 
