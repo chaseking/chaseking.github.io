@@ -52,10 +52,19 @@ $("#gcd_calculate").click(function(event){
 
         step++;
 
-        mainTable.append("<tr>"
-            + "<td>" + a + " = " + b + "*" + quotient + " + " + (b % remainder == 0 ? "<strong>" + remainder + "</strong> <em>(GCD)</em>" : remainder) + "</td>"
-            + "<td></td>"
-        + "</tr>");
+        var html = "<tr>";
+        html += "<td>" + a + " = " + b + "*" + quotient + " + ";
+
+        if(b % remainder == 0){
+            html += "<span class='highlight'>" + remainder + "</span>";
+        } else {
+            html += remainder;
+        }
+
+        html += "<td></td>";
+        html += "</tr>";
+
+        mainTable.append(html);
 
         if(remainder == 0){
             $("#gcd_value").text("The GCD of " + initialA + " and " + initialB + " is: " + b);
@@ -67,23 +76,21 @@ $("#gcd_calculate").click(function(event){
         b = remainder;
     }
 
-    //Backwards
-    // for(var i = 1; i < step - 3; i++){
-    //
-    // }
     var tdIndex = 0;
     var currX = 1;
     var currY = 0;
     for(var n = x.length - 2; n > 1; n--){
         var td = mainTable.find("tr").eq(tdIndex++).find("td").eq(1);
+        var html = "";
+        var isLastStep = n == 2;
 
         if(n == x.length - 2){
             //First step (include GCD)
             currY = quotients[n];
-            td.html("<strong>" + remainders[n] + " = " + remainders[n - 2] + "*" + currX + " - " + remainders[n - 1] + "*" + currY + "</strong>");
+            html += "<strong>" + remainders[n] + " = " + remainders[n - 2] + "*" + currX + " - " + remainders[n - 1] + "*" + currY + "</strong>";
         } else {
             var modifyLeft = n % 2 == 1;
-            var html = "= ";
+            html += "= ";
 
             if(modifyLeft){
                 html += "(" + remainders[n - 2] + " - " + remainders[n - 1] + "*" + quotients[n] + ")*" + currX + " - " + remainders[n - 1] + "*" + currY;
@@ -91,18 +98,32 @@ $("#gcd_calculate").click(function(event){
                 currY += quotients[n] * currX;
 
                 html += "<br>";
+                html += "= ";
+
+                if(isLastStep) html += "<span class='highlight'>";
                 html += "= <strong>" + remainders[n - 2] + "*" + currX + " - " + remainders[n - 1] + "*" + currY + "</strong>";
+                if(isLastStep) html += "</span>";
             } else {
                 html += remainders[n - 1] + "*" + currX + " - (" + remainders[n - 2] + " - " + remainders[n - 1] + "*" + quotients[n] + ")" + "*" + quotients[n + 1];
 
                 currX += quotients[n] * currY;
 
                 html += "<br>";
-                html += "= <strong>" + remainders[n - 1] + "*" + currX + " - " + remainders[n - 2] + "*" + currY + "</strong>";
-            }
+                html += "= ";
 
-            td.html(html);
+                if(isLastStep) html += "<span class='highlight'>";
+                html += "<strong>" + remainders[n - 1] + "*" + currX + " - " + remainders[n - 2] + "*" + currY + "</strong>";
+                if(isLastStep) html += "</span>";
+            }
         }
+
+        if(n == 2){
+            //Last step (linear combination variables)
+            html += "<br>";
+            html += "<strong><em>(Linear combination)</strong></em>";
+        }
+
+        td.html(html);
     }
 
     //Data table

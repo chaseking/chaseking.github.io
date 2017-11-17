@@ -38,6 +38,10 @@ header h2 a:hover {
     border-bottom-color: black;
 }
 
+.highlight {
+    background-color: rgba(241, 196, 15, 0.5);
+}
+
 #about {
     background: rgba(0, 0, 0, 0.1);
     border-radius: 10px;
