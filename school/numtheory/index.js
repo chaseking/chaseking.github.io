@@ -83,17 +83,19 @@ $("#gcd_calculate").click(function(event){
     var tdIndex = 0;
     var currX = 1;
     var currY = 0;
-    for(var n = x.length - 2; n > 1; n--){
+    // for(var n = x.length - 2; n > 1; n--){
+    for(var i = 0; i < x.length - 3; i++){
         var td = mainTable.find("tr").eq(tdIndex++).find("td").eq(1);
         var html = "";
-        var isLastStep = n == 2;
+        var n = x.length - 2 - i; //The current index
+        var isLastStep = i == x.length - 4;
 
-        if(n == x.length - 2){
+        if(i == 0){
             //First step (include GCD)
             currY = quotients[n];
             html += remainders[n] + " = " + remainders[n - 2] + "*" + currX + " - " + remainders[n - 1] + "*" + currY;
         } else {
-            var modifyLeft = n % 2 == 1;
+            var modifyLeft = i % 2 == 0;
             html += "= ";
 
             if(modifyLeft){
