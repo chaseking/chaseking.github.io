@@ -67,10 +67,10 @@ $("#gcd_calculate").click(function(event){
         mainTable.append(html);
 
         if(remainder == 0){
-            $("#gcd_value").html("The GCD of " + originalA + " and " + originalB + " is: " + b + "<br>"
-                + originalA + "*" + x[x.length - 2] + " + " + originalB + "*" + x[x.length - 1] + " = " + b
-                //TODO - Why isn't this working??
+            $("#gcd_value").html("The GCD of " + originalA + " and " + originalB + " is " + b + ".<br>"
+                + originalA + "*" + x[x.length - 2] + " + " + originalB + "*" + y[y.length - 2] + " = " + b
             );
+            console.log(x[x.length - 1]);
             break;
         }
 
