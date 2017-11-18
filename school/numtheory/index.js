@@ -57,6 +57,7 @@ $("#gcd_calculate").click(function(event){
 
         if(b % remainder == 0){
             html += "<span class='highlight'>" + remainder + "</span>";
+            html += "<br><strong><em>(GCD)</em></strong>";
         } else {
             html += remainder;
         }
@@ -67,8 +68,8 @@ $("#gcd_calculate").click(function(event){
         mainTable.append(html);
 
         if(remainder == 0){
-            $("#gcd_value").html("The GCD of " + originalA + " and " + originalB + " is " + b + ".<br>"
-                + originalA + "*" + x[x.length - 2] + " + " + originalB + "*" + y[y.length - 2] + " = " + b
+            $("#gcd_value").html("The GCD of " + originalA + " and " + originalB + " is <span class='highlight'>" + b + "</span>."
+                + "<br>" + originalA + "*<span class='highlight'>" + x[x.length - 2] + "</span> + " + originalB + "*<span class='highlight'>" + y[y.length - 2] + "</span> = " + b
             );
             console.log(x[x.length - 1]);
             break;
@@ -90,7 +91,7 @@ $("#gcd_calculate").click(function(event){
         if(n == x.length - 2){
             //First step (include GCD)
             currY = quotients[n];
-            html += "<strong>" + remainders[n] + " = " + remainders[n - 2] + "*" + currX + " - " + remainders[n - 1] + "*" + currY + "</strong>";
+            html += remainders[n] + " = " + remainders[n - 2] + "*" + currX + " - " + remainders[n - 1] + "*" + currY;
         } else {
             var modifyLeft = n % 2 == 1;
             html += "= ";
@@ -103,13 +104,8 @@ $("#gcd_calculate").click(function(event){
                 html += "<br>";
                 html += "= ";
 
-                var equation = remainders[n - 2] + "*" + currX + " - " + remainders[n - 1] + "*" + currY;
-
-                if(isLastStep){
-                    html += "<span class='highlight'>";
-                }
-
-                html += "<strong>" + equation + "</strong>";
+                if(isLastStep) html += "<span class='highlight'>";
+                html += remainders[n - 2] + "*" + currX + " - " + remainders[n - 1] + "*" + currY;
                 if(isLastStep) html += "</span>";
             } else {
                 html += remainders[n - 1] + "*" + currX + " - (" + remainders[n - 2] + " - " + remainders[n - 1] + "*" + quotients[n] + ")" + "*" + quotients[n + 1];
@@ -119,14 +115,8 @@ $("#gcd_calculate").click(function(event){
                 html += "<br>";
                 html += "= ";
 
-                var equation = remainders[n - 1] + "*" + currX + " - " + remainders[n - 2] + "*" + currY;
-
-                if(isLastStep){
-                    html += "<span class='highlight'>";
-
-                }
-
-                html += "<strong>" + equation + "</strong>";
+                if(isLastStep) html += "<span class='highlight'>";
+                html += remainders[n - 1] + "*" + currX + " - " + remainders[n - 2] + "*" + currY;
                 if(isLastStep) html += "</span>";
             }
         }
@@ -134,7 +124,7 @@ $("#gcd_calculate").click(function(event){
         if(n == 2){
             //Last step (linear combination variables)
             html += "<br>";
-            html += "<strong><em>(Linear combination)</strong></em>";
+            html += "<strong><em>(Linear Combination)</strong></em>";
         }
 
         td.html(html);
