@@ -23,13 +23,13 @@ $("#gcd_calculate").click(function(event){
         console.log(b);
     }
 
-    var initialA = a;
-    var initialB = b;
+    var originalA = a;
+    var originalB = b;
 
     var quotients = [0, 0];
     var remainders = [a, b];
-    var x = [0, 0];
-    var y = [0, 0];
+    var x = [0, 0]; //X[0] = 0
+    var y = [0, 1]; //Y[0] = 1
     var step = 1;
 
     var mainTable = $("#gcd_table_euclid tbody");
@@ -43,8 +43,8 @@ $("#gcd_calculate").click(function(event){
         remainders.push(remainder);
 
         if(step == 1){
-            x.push(1);
-            y.push(-quotient);
+            x.push(1); //X[1] = 0
+            y.push(-quotient); //Y[1] = -Q[1]
         } else {
             x.push(x[x.length - 2] - (quotient * x[x.length - 1]));
             y.push(y[y.length - 2] - (quotient * y[y.length - 1]));
@@ -67,7 +67,10 @@ $("#gcd_calculate").click(function(event){
         mainTable.append(html);
 
         if(remainder == 0){
-            $("#gcd_value").text("The GCD of " + initialA + " and " + initialB + " is: " + b);
+            $("#gcd_value").html("The GCD of " + originalA + " and " + originalB + " is: " + b + "<br>"
+                + originalA + "*" + x[x.length - 2] + " + " + originalB + "*" + x[x.length - 1] + " = " + b
+                //TODO - Why isn't this working??
+            );
             break;
         }
 
@@ -100,8 +103,13 @@ $("#gcd_calculate").click(function(event){
                 html += "<br>";
                 html += "= ";
 
-                if(isLastStep) html += "<span class='highlight'>";
-                html += "= <strong>" + remainders[n - 2] + "*" + currX + " - " + remainders[n - 1] + "*" + currY + "</strong>";
+                var equation = remainders[n - 2] + "*" + currX + " - " + remainders[n - 1] + "*" + currY;
+
+                if(isLastStep){
+                    html += "<span class='highlight'>";
+                }
+
+                html += "<strong>" + equation + "</strong>";
                 if(isLastStep) html += "</span>";
             } else {
                 html += remainders[n - 1] + "*" + currX + " - (" + remainders[n - 2] + " - " + remainders[n - 1] + "*" + quotients[n] + ")" + "*" + quotients[n + 1];
@@ -111,8 +119,14 @@ $("#gcd_calculate").click(function(event){
                 html += "<br>";
                 html += "= ";
 
-                if(isLastStep) html += "<span class='highlight'>";
-                html += "<strong>" + remainders[n - 1] + "*" + currX + " - " + remainders[n - 2] + "*" + currY + "</strong>";
+                var equation = remainders[n - 1] + "*" + currX + " - " + remainders[n - 2] + "*" + currY;
+
+                if(isLastStep){
+                    html += "<span class='highlight'>";
+
+                }
+
+                html += "<strong>" + equation + "</strong>";
                 if(isLastStep) html += "</span>";
             }
         }
