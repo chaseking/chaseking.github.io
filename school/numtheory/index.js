@@ -110,7 +110,7 @@ $("#gcd_calculate").click(function(event){
                 html += remainders[n - 2] + "*" + currX + " - " + remainders[n - 1] + "*" + currY;
                 if(isLastStep) html += "</span>";
             } else {
-                html += remainders[n - 1] + "*" + currX + " - (" + remainders[n - 2] + " - " + remainders[n - 1] + "*" + quotients[n] + ")" + "*" + quotients[n + 1];
+                html += remainders[n - 1] + "*" + currX + " - (" + remainders[n - 2] + " - " + remainders[n - 1] + "*" + quotients[n] + ")" + "*" + currY;
 
                 currX += quotients[n] * currY;
 
