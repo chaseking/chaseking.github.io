@@ -1,18 +1,19 @@
+function getIntegerInput(input){
+    try {
+        return parseInt(input.val());
+    } catch(e){
+        alert("Please enter a valid number.");
+        input.val("");
+        return false;
+    }
+}
+
 $("#gcd_calculate").click(function(event){
     event.preventDefault();
+    $("#gcd table").show();
     $("#gcd_table tbody").empty();
-    var a = $("#gcd_a").val();
-    var b = $("#gcd_b").val();
-
-    try {
-        a = parseInt(a);
-        b = parseInt(b);
-    } catch(e){
-        alert("Please enter valid numbers.");
-        $("#gcd_a").val("");
-        $("#gcd_b").val("");
-        return;
-    }
+    var a = getIntegerInput($("#gcd_a"));
+    var b = getIntegerInput($("#gcd_b"));
 
     //Ensure that a ≥ b
     if(a < b){
@@ -165,4 +166,114 @@ $("#gcd_calculate").click(function(event){
 
         dataTable.append(tr + "</tr>");
     }
+});
+
+$("#triangle_area_graphupdate").click(function(e){
+    e.preventDefault();
+
+    var x1 = getIntegerInput($("#triangle_area_x1")), y1 = getIntegerInput($("#triangle_area_y1")),
+        x2 = getIntegerInput($("#triangle_area_x2")), y2 = getIntegerInput($("#triangle_area_y2")),
+        x3 = getIntegerInput($("#triangle_area_x3")), y3 = getIntegerInput($("#triangle_area_y3"));
+
+    var minX = Math.min(x1, Math.min(x2, x3));
+    var maxX = Math.max(x1, Math.max(x2, x3));
+    var minY = Math.min(y1, Math.min(y2, y3));
+    var maxY = Math.max(y1, Math.max(y2, y3));
+
+    var plotData = [
+        //The original triangle
+        {
+            fnType: "points",
+            graphType: "polyline",
+            // closed: true,
+            color: "blue",
+            points: [
+                [x1, y1],
+                [x2, y2],
+                [x3, y3],
+                [x1, y1] //Reconnect it to the beginning
+            ]
+        },
+
+        //The square surrounding the triangle
+        {
+            fnType: "points",
+            graphType: "polyline",
+            color: "black",
+            points: [
+                [minX, minY],
+                [minX, maxY],
+                [maxX, maxY],
+                [maxX, minY],
+                [minX, minY],
+            ]
+        }
+    ];
+
+    var points = [ [x1, y1], [x2, y2], [x3, y3] ];
+
+    for(let i = 0; i < points.length; i++){
+        let x = points[i][0];
+        let y = points[i][1];
+
+        if((x == minX && y == minY) //Lower left corner
+            || (x == minX && y == maxY) //Upper left corner
+            || (x == maxX && y == minY) //Upper right corner
+            || (x == maxX && y == minY)){ //Lower right corner
+            //If the point is on a corner of the cube, then it can be translated to the origin
+            console.log("Point " + (i + 1) + " (" + x + ", " + y + ") can be translated to the origin."); //Could get the midpoint of the two other points to determine which quadrant the triangle would be in
+
+            //Translate all points
+            for(let j in points){
+                points[j][0] -= x;
+                points[j][1] -= y;
+            }
+
+            //Add the translated triangle to the graph
+            plotData.push({
+                fnType: "points",
+                graphType: "polyline",
+                // closed: true,
+                color: "red",
+                points: [
+                    [points[0][0], points[0][1]],
+                    [points[1][0], points[1][1]],
+                    [points[2][0], points[2][1]],
+                    [points[0][0], points[0][1]],
+                ]
+            });
+
+            //Calculate area
+            let a = 0, b = 0, c = 0, d = 0;
+
+            for(let j = 0; j < points.length; j++){
+                if(j != i){
+                    if(a == 0 && b == 0){
+                        a = points[j][0];
+                        b = points[j][1];
+                    } else {
+                        c = points[j][0];
+                        d = points[j][1];
+                    }
+                }
+            }
+
+            //Result text
+            $("#triangle_area_value").text("The area of the triangle is " + (Math.abs((a * d) - (b * c)) / 2) + ".");
+
+            //Translate back
+            for(let j in points){
+                points[j][0] += x;
+                points[j][1] += y;
+            }
+        }
+    }
+
+    //Update the graph
+    functionPlot({
+        target: "#triangle_area_graph",
+        data: plotData,
+        width: 800,
+        height: 500
+    });
 });
