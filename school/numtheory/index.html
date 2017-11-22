@@ -23,6 +23,7 @@
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
     <script src="https://wzrd.in/standalone/function-plot@1.18.1"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 </head>
 
 <body>
@@ -43,7 +44,7 @@
             <div class="divider"></div>
 
             <div id="gcd" class="section">
-                <h5>Euclid GCD Algorithm</h5>
+                <h4>Euclid GCD Algorithm</h4>
                 <p>This calculates the GCD of two numbers using the Euclidean algorithm. You can read more about it <a href="https://en.wikipedia.org/wiki/Euclidean_algorithm" target="blank">here</a>.</p>
 
                 <div class="row">
@@ -66,34 +67,36 @@
                     </form>
                 </div>
 
-                <h4 id="gcd_value" style="line-height: 1.5em;"></h4>
+                <div id="gcd_data" style="display: none;">
+                    <h5 id="gcd_value" style="line-height: 1.5em;"></h5>
 
-                <table id="gcd_table_euclid" class="bordered striped" style="display: none;">
-                    <thead>
-                        <tr>
-                            <th>Forwards</th>
-                            <th>Backwards</th>
-                        </tr>
-                    </thead>
+                    <table id="gcd_table_euclid" class="bordered striped highlight">
+                        <thead>
+                            <tr>
+                                <th>Forwards</th>
+                                <th>Backwards</th>
+                            </tr>
+                        </thead>
 
-                    <tbody></tbody>
-                </table>
+                        <tbody></tbody>
+                    </table>
 
-                <br>
+                    <br>
 
-                <table id="gcd_table_data" class="bordered striped" style="display: none;">
-                    <thead>
-                        <tr>
-                            <th>Step</th>
-                            <th>Quotient</th>
-                            <th>Remainder</th>
-                            <th>X</th>
-                            <th>Y</th>
-                        </tr>
-                    </thead>
+                    <table id="gcd_table_data" class="bordered striped highlight">
+                        <thead>
+                            <tr>
+                                <th>Step</th>
+                                <th>Quotient</th>
+                                <th>Remainder</th>
+                                <th>X</th>
+                                <th>Y</th>
+                            </tr>
+                        </thead>
 
-                    <tbody></tbody>
-                </table>
+                        <tbody></tbody>
+                    </table>
+                </div>
             </div>
 
             <div class="divider"></div>
@@ -101,7 +104,7 @@
             <div id="triangle_area" class="section">
                 <!-- http://www.chartjs.org/docs/latest/charts/scatter.html -->
                 <!-- http://www.chartjs.org/samples/latest/charts/scatter/basic.html -->
-                <h5>Triangle Area</h5>
+                <h4>Triangle Area</h4>
                 <!-- <p></p> -->
                 <p>The graphing library used is <a href="https://github.com/mauriciopoppe/function-plot">mauriciopoppe/function-plot</a>.</p>
 
@@ -149,9 +152,91 @@
                     </form>
                 </div>
 
-                <h4 id="triangle_area_value" style="line-height: 1.5em;"></h4>
+                <h5 id="triangle_area_value" style="line-height: 1.5em;"></h5>
 
                 <div id="triangle_area_graph"></div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div id="vigenere" class="section">
+                <h4>Vigen&egrave;re Solver</h4>
+                <p>Thanks to <a href="https://en.wikipedia.org/wiki/Letter_frequency#Relative_frequencies_of_letters_in_the_English_language">Wikipedia for the frequncies of letters</a> and Simon Singh <em>(The Code Book)</em> for the detailed description on the cracking algorithm.</p>
+
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <!-- DAZFI SFSPA VQLSN PXYSZ WXALC DAFGQ UISMT PHZGA MKTTF TCCFX KFCRG GLPFE TZMMM ZOZDE ADWVZ WMWKV GQSOH QSVHP WFKLS LEASE PWHMJ EGKPU RVSXJ XVBWV POSDE TEQTX OBZIK WCXLW NUOVJ MJCLL OEOFA ZENVM JILOW ZEKAZ EJAQD ILSWW ESGUG KTZGQ ZVRMN WTQSE OTKTK PBSTA MQVER MJEGL JQRTL GFJYG SPTZP GTACM OECBX SESCI YGUFP KVILL TWDKS ZODFW FWEAA PQTFS TQIRG MPMEL RYELH QSVWB AWMOS DELHM UZGPG YEKZU KWTAM ZJMLS EVJQT GLAWV OVVXH KWQIL IEUYS ZWXAH HUSZO GMUZQ CIMVZ UVWIF JJHPW VXFSE TZEDF -->
+                                <textarea id="vigenere_ciphertext" class="materialize-textarea">WUBEFIQLZURMVOFEHMYMWTIXCGTMPIFKRZUPMVOIRQMMWOZMPULMBNYVQQQMVMVJLEYMHFEFNZPSDLPPSDLPEVQMWCXYMDAVQEEFIQCAYTQOWCXYMWMSEMEFCFWYEYQETRLIQYCGMTWCWFBSMYFPLRXTQYEEXMRULUKSGWFPTLRQAERLUVPMVYQYCXTWFQLMTELSFJPQEHMOZCIWCIWFPZSLMAEZIQVLQMZVPPXAWCSMZMORVGVVQSZETRLQZPBJAZVQIYXEWWOICCGDWHQMMVOWSGNTJPFPPAYBIYBJUTWRLQKLLLMDPYVACDCFQNZPIFPPKSDVPTIDGXMQQVEBMQALKEZMGCVKUZKIZBZLIUAMMVZ</textarea>
+                                <label for="vigenere_ciphertext">Ciphertext</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <a class="btn waves-effect waves-light" id="vigenere_update">Solve</a>
+
+                <div id="vigenere_data" style="display: none;">
+                    <div class="row">
+                        <div class="row">
+                            <div class="col s12 ">
+                                <h5>Step 1: Look for Duplicates</h5>
+                                <p>The first step is to look for duplicate phrases in the ciphertext.</p>
+
+                                <table id="vigenere_repetitions" class="bordered striped highlight">
+                                    <thead>
+                                        <tr>
+                                            <th>Phrase</th>
+                                            <th>Occurrences</th>
+                                            <th>Positions</th>
+                                            <th>Distance</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+
+                            <div class="col s12 ">
+                                <h5>Step 2: Find Factors of Distances</h5>
+                                <p>The second step is to create a table of all factors of all distances between duplicate phrases in the ciphertext.</p>
+
+                                <table id="vigenere_factors" class="bordered striped highlight centered">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th colspan="19">Possible length of key (or factors)</th>
+                                        </tr>
+
+                                        <tr>
+                                            <th>Distance</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody></tbody>
+                                </table>
+
+                                <p id="vigenere_factors_conclusion">The more repetitions a factor has (see highlighted numbers above), the more likely the key length is that factor.</p>
+                            </div>
+
+                            <div class="col s12">
+                                <h5>Step 3: Use Frequency Analysis</h5>
+                                <p>The third step is to use frequency analysis on each monoalphabetic cipher within the vigenere algorithm. If the key length is, for example, 5, then the 1st, 6th, 11th, etc. letter of the ciphertext is encrypted using the same monoalphabetic substitution cipher.</p>
+                                <p>Click on the labels below to toggle visibility and use the sliders to match up peaks and valleys with standard English letter frequency.</p>
+
+                                <canvas id="vigenere_alphabetfrequency" width="400" height="150"></canvas>
+
+                                <div id="vigenere_sliders"></div>
+                            </div>
+
+                            <div class="col s12">
+                                <h5>Step 4: Crack the Key!</h5>
+                                <p>The letters of the key correspond to the shifts for each monoalphabetic cipher. Based on the shifts you made above, the resulting key is...<br><br><span id="vigenere_key">???</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>

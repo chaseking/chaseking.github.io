@@ -9,9 +9,8 @@ function getIntegerInput(input){
 }
 
 $("#gcd_calculate").click(function(event){
-    event.preventDefault();
-    $("#gcd table").show();
     $("#gcd_table tbody").empty();
+    $("#gcd_data").show();
     var a = getIntegerInput($("#gcd_a"));
     var b = getIntegerInput($("#gcd_b"));
 
@@ -169,16 +168,16 @@ $("#gcd_calculate").click(function(event){
 });
 
 $("#triangle_area_graphupdate").click(function(e){
-    e.preventDefault();
+    var points = [
+        [ getIntegerInput($("#triangle_area_x1")), getIntegerInput($("#triangle_area_y1")) ],
+        [ getIntegerInput($("#triangle_area_x2")), getIntegerInput($("#triangle_area_y2")) ],
+        [  getIntegerInput($("#triangle_area_x3")), getIntegerInput($("#triangle_area_y3"))]
+    ];
 
-    var x1 = getIntegerInput($("#triangle_area_x1")), y1 = getIntegerInput($("#triangle_area_y1")),
-        x2 = getIntegerInput($("#triangle_area_x2")), y2 = getIntegerInput($("#triangle_area_y2")),
-        x3 = getIntegerInput($("#triangle_area_x3")), y3 = getIntegerInput($("#triangle_area_y3"));
-
-    var minX = Math.min(x1, Math.min(x2, x3));
-    var maxX = Math.max(x1, Math.max(x2, x3));
-    var minY = Math.min(y1, Math.min(y2, y3));
-    var maxY = Math.max(y1, Math.max(y2, y3));
+    var minX = Math.min(points[0][0], Math.min(points[1][0], points[2][0]));
+    var maxX = Math.max(points[0][0], Math.max(points[1][0], points[2][0]));
+    var minY = Math.min(points[0][1], Math.min(points[1][1], points[2][1]));
+    var maxY = Math.max(points[0][1], Math.max(points[1][1], points[2][1]));
 
     var plotData = [
         //The original triangle
@@ -188,10 +187,10 @@ $("#triangle_area_graphupdate").click(function(e){
             // closed: true,
             color: "blue",
             points: [
-                [x1, y1],
-                [x2, y2],
-                [x3, y3],
-                [x1, y1] //Reconnect it to the beginning
+                [points[0][0], points[0][1]],
+                [points[1][0], points[1][1]],
+                [points[2][0], points[2][1]],
+                [points[0][0], points[0][1]] //Reconnect it to the beginning
             ]
         },
 
@@ -209,8 +208,6 @@ $("#triangle_area_graphupdate").click(function(e){
             ]
         }
     ];
-
-    var points = [ [x1, y1], [x2, y2], [x3, y3] ];
 
     for(let i = 0; i < points.length; i++){
         let x = points[i][0];
@@ -277,3 +274,329 @@ $("#triangle_area_graphupdate").click(function(e){
         height: 500
     });
 });
+
+//=============================
+//      Vigenere Cipher
+//=============================
+const ALPHABET = "abcdefghijklmnopqrstuvwxyz";
+
+const LETTER_FREQUENCY = {
+    a: 8.167,
+    b: 1.492,
+    c: 2.782,
+    d: 4.253,
+    e: 12.702,
+    f: 2.228,
+    g: 2.015,
+    h: 6.094,
+    i: 6.966,
+    j: 0.153,
+    k: 0.772,
+    l: 4.025,
+    m: 2.406,
+    n: 6.749,
+    o: 7.507,
+    p: 1.929,
+    q: 0.095,
+    r: 5.987,
+    s: 6.327,
+    t: 9.056,
+    u: 2.758,
+    v: 0.978,
+    w: 2.360,
+    x: 0.150,
+    y: 1.974,
+    z: 0.074
+};
+
+// noUiSlider.create(document.getElementById("vigenere_slider"), {
+// 	start: [ 1 ],
+// 	step: 1,
+// 	range: {
+// 		min: [ 1 ],
+// 		max: [ 26 ]
+// 	},
+// 	format: {
+// 	  to: function(value){
+// 		return ALPHABET[value - 1].toUpperCase();
+// 	  },
+// 	  from: function(value){
+// 		return ALPHABET.indexOf(value.toLowerCase()) + 1;
+// 	  }
+// 	}
+// });
+
+function getIndices(child, parent){
+    var regex = new RegExp(child, "g");
+    var result;
+    var indices = [];
+
+    while((result = regex.exec(parent)) != null){
+        indices.push(regex.lastIndex - child.length);
+    }
+
+    return indices;
+}
+
+const RAINBOW_BORDERS = [
+    "255, 99, 132",
+    "255, 140, 0",
+    "255, 206, 86",
+    "75, 192, 192",
+    "54, 162, 235",
+    "153, 102, 255",
+    "255, 159, 64",
+];
+
+var vigenereFrequencyChart = new Chart($("#vigenere_alphabetfrequency"), {
+    type: "bar",
+    data: {
+        labels: ALPHABET.toUpperCase().split(""),
+        datasets: []
+    },
+    // options: {
+    //     scales: {
+    //         yAxes: [{
+    //             ticks: {
+    //                 beginAtZero:true
+    //             }
+    //         }]
+    //     }
+    // }
+});
+
+$("#vigenere_update").click(function(){
+    var cipherText = $("#vigenere_ciphertext").val();
+
+    if(!cipherText){
+        alert("Please enter ciphertext!");
+        return;
+    }
+
+    $("#vigenere_data").show();
+
+    cipherText = cipherText.replace(/\s+/g, ""); //https://stackoverflow.com/questions/5964373/is-there-a-difference-between-s-g-and-s-g
+    var repetitions = cipherText.match(/(.{3,})(?=.*?\1)/g); //https://regexr.com <3
+
+    repetitions.sort(function(a, b){
+        if(a.length == b.length){
+            return a < b ? -1 : 1;
+        } else {
+            return b.length - a.length;
+        }
+    });
+
+    repetitions = repetitions.map(function(phrase){
+        let data = {
+            phrase: phrase,
+            indices: getIndices(phrase, cipherText),
+            distances: []
+        };
+
+        //Distances
+        for(let i = 1; i < data.indices.length; i++){
+            data.distances.push(data.indices[i] - data.indices[i - 1]);
+        }
+
+        return data;
+    });
+
+    console.log("Repetitions in ciphertext:");
+    console.log(repetitions);
+
+    //Update repetitions table
+    var repetitionsTable = $("#vigenere_repetitions tbody");
+
+    for(let i in repetitions){
+        let repetition = repetitions[i];
+        let tr = "<tr>";
+
+        tr += "<td>" + repetition.phrase + "</td>";
+        tr += "<td>" + repetition.indices.length + "</td>";
+        tr += "<td>" + repetition.indices.join(", ") + "</td>";
+        tr += "<td>" + repetition.distances.join(", ") + "</td>";
+
+        tr += "</tr>";
+        repetitionsTable.append(tr);
+    }
+
+    //Factors table
+    var factorsTable = $("#vigenere_factors");
+    var factorsTableTheadTr = factorsTable.find("thead tr");
+    var factorsTableTbody = factorsTable.find("tbody");
+
+    //Factors: Put in numbers 2-20
+    for(let factor = 2; factor <= 20; factor++){
+        factorsTableTheadTr.eq(1).append("<th>" + factor + "</th>");
+    }
+
+    //Factors: Organize distances
+    var distances = [];
+
+    for(let i in repetitions){
+        for(let d in repetitions[i].distances){
+            let distance = repetitions[i].distances[d];
+
+            if(!distances.includes(distance)){
+                distances.push(distance);
+            }
+        }
+    }
+
+    distances.sort(function(a, b){
+        return b - a;
+    });
+
+    for(let i in distances){
+        let distance = distances[i];
+        let tr = "<tr>";
+
+        tr += "<td>" + distance + "</td>";
+
+        //Check factors
+        for(let factor = 2; factor <= 20; factor++){
+            tr += "<td>";
+            if(distance % factor == 0){
+                tr += "X";
+            } else {
+                // tr += " ";
+            }
+            tr += "</td>";
+        }
+
+        tr += "</tr>";
+        factorsTableTbody.append(tr);
+    }
+
+    //Factors: total row
+    var trTotal = "<tr><th>Total</th>";
+    var totalFactors = [];
+
+    for(let factor = 2; factor <= 20; factor++){
+        let total = 0;
+
+        for(let i in distances){
+            if(distances[i] % factor == 0){
+                total++;
+            }
+        }
+
+        totalFactors.push(total);
+    }
+
+    totalFactors.sort(function(a, b){
+        return b - a;
+    });
+
+    console.log(totalFactors);
+
+    var totalFactorThreshold = totalFactors[Math.min(totalFactors.length, 2)]; //The top three get highlighted
+
+    for(let factor = 2; factor <= 20; factor++){
+        let total = 0;
+
+        for(let i in distances){
+            if(distances[i] % factor == 0){
+                total++;
+            }
+        }
+
+        trTotal += "<td>";
+
+        if(total >= totalFactorThreshold){
+            trTotal += "<span class='highlight'>" + total + "</span>";
+        } else {
+            trTotal += total;
+        }
+
+        trTotal += "</td>";
+    }
+
+    trTotal += "</tr>";
+    factorsTableTbody.append(trTotal);
+
+    //Display bar chart
+    //TODO
+    var datasets = [
+        {
+            label: "English Letter Frequency",
+            backgroundColor: "rgba(0, 0, 0, 0.2)",
+            borderColor: "rgba(0, 0, 0, 1)",
+            borderWidth: 1,
+            data: ALPHABET.toLowerCase().split("").map(function(letter){
+                return LETTER_FREQUENCY[letter];
+            })
+        }
+    ];
+
+    //TODO - Let the user input the length of the factor and this should be in another method
+    var keyLength = 5;
+    for(let keyIndex = 0; keyIndex < keyLength; keyIndex++){
+        let data = {
+            label: "L" + (keyIndex + 1) + " Frequency",
+            backgroundColor: "rgba(" + RAINBOW_BORDERS[keyIndex % RAINBOW_BORDERS.length] + ", 0.2)",
+            borderColor: "rgba(" + RAINBOW_BORDERS[keyIndex % RAINBOW_BORDERS.length] + ", 1)",
+            borderWidth: 1,
+            hidden: keyIndex != 0 //Only show the first letter for clarity
+        };
+
+        let slider = buildVigenereSlider(keyIndex);
+        let shift = 0;
+        updateLetterData();
+
+        slider.on("change", function(){
+            shift = slider.val();
+            updateLetterData();
+            vigenereFrequencyChart.update(0);
+        });
+
+        function updateLetterData(){
+            //Calculate frequencies of each letter
+            let frequencies = ALPHABET.split("").map(function(letter){
+                return 0;
+            }); //Array of length 26
+
+            let total = 0;
+
+            for(let i = keyIndex; i < cipherText.length; i += keyLength){
+                let alphabetIndex = (ALPHABET.indexOf(cipherText[i].toLowerCase()) - shift + ALPHABET.length) % ALPHABET.length;
+                frequencies[alphabetIndex]++;
+                total++;
+            }
+
+            //Get percent frequency as opposed to number of occurrences
+            frequencies = frequencies.map(function(frequency){
+                return frequency / total * 100;
+            });
+
+            data.data = frequencies;
+        }
+
+        datasets.push(data);
+    }
+
+    vigenereFrequencyChart.data.datasets = datasets;
+    vigenereFrequencyChart.update();
+});
+
+//Update the key depending on the sliders
+$("#vigenere_sliders").on("change", "input", function(){
+    let key = "";
+
+    $("#vigenere_sliders input").each(function(){
+        key += ALPHABET[$(this).val()].toUpperCase();
+    });
+
+    $("#vigenere_key").text(key);
+});
+
+function buildVigenereSlider(letterIndex){
+    let elem = $('<p class="range-field">\
+        <label for="vigenere_shift' + letterIndex + '">L' + (letterIndex + 1) + ' Shift</label>\
+        <input type="range" min="0" max="25" value="0" id="vigenere_shift' + letterIndex + '">\
+    </p>');
+
+    $("#vigenere_sliders").append(elem);
+
+    return elem.find("input");
+}
