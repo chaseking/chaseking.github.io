@@ -37,7 +37,7 @@
         <div class="container">
             <div id="about" class="section">
                 <h5>About This Page</h5>
-                <p>I designed this page for an elementary number theory course I'm taking this year.</p>
+                <p>I designed this page for an elementary number theory course I'm taking this year. You can take a look at the source code <a href="https://github.com/chaseking/chaseking.github.io/tree/master/school/numtheory">here</a>.</p>
                 <p><a href="http://chaseking.me">Click here to return to my home page.</a></p>
             </div>
 
@@ -163,11 +163,13 @@
                 <h4>Vigen&egrave;re Solver</h4>
                 <p>Thanks to <a href="https://en.wikipedia.org/wiki/Letter_frequency#Relative_frequencies_of_letters_in_the_English_language">Wikipedia for the frequncies of letters</a>, Simon Singh <em>(The Code Book)</em> for the detailed description on the cracking algorithm, and <a href="http://www.chartjs.org">ChartJS</a> for the beautiful JS chart library.</p>
 
+                <p>Here's another code if you need one more to crack:<br>
+                <code>DAZFI SFSPA VQLSN PXYSZ WXALC DAFGQ UISMT PHZGA MKTTF TCCFX KFCRG GLPFE TZMMM ZOZDE ADWVZ WMWKV GQSOH QSVHP WFKLS LEASE PWHMJ EGKPU RVSXJ XVBWV POSDE TEQTX OBZIK WCXLW NUOVJ MJCLL OEOFA ZENVM JILOW ZEKAZ EJAQD ILSWW ESGUG KTZGQ ZVRMN WTQSE OTKTK PBSTA MQVER MJEGL JQRTL GFJYG SPTZP GTACM OECBX SESCI YGUFP KVILL TWDKS ZODFW FWEAA PQTFS TQIRG MPMEL RYELH QSVWB AWMOS DELHM UZGPG YEKZU KWTAM ZJMLS EVJQT GLAWV OVVXH KWQIL IEUYS ZWXAH HUSZO GMUZQ CIMVZ UVWIF JJHPW VXFSE TZEDF</code></p>
+
                 <div class="row">
                     <form class="col s12">
                         <div class="row">
                             <div class="input-field col s12">
-                                <!-- DAZFI SFSPA VQLSN PXYSZ WXALC DAFGQ UISMT PHZGA MKTTF TCCFX KFCRG GLPFE TZMMM ZOZDE ADWVZ WMWKV GQSOH QSVHP WFKLS LEASE PWHMJ EGKPU RVSXJ XVBWV POSDE TEQTX OBZIK WCXLW NUOVJ MJCLL OEOFA ZENVM JILOW ZEKAZ EJAQD ILSWW ESGUG KTZGQ ZVRMN WTQSE OTKTK PBSTA MQVER MJEGL JQRTL GFJYG SPTZP GTACM OECBX SESCI YGUFP KVILL TWDKS ZODFW FWEAA PQTFS TQIRG MPMEL RYELH QSVWB AWMOS DELHM UZGPG YEKZU KWTAM ZJMLS EVJQT GLAWV OVVXH KWQIL IEUYS ZWXAH HUSZO GMUZQ CIMVZ UVWIF JJHPW VXFSE TZEDF -->
                                 <textarea id="vigenere_ciphertext" class="materialize-textarea">WUBEFIQLZURMVOFEHMYMWTIXCGTMPIFKRZUPMVOIRQMMWOZMPULMBNYVQQQMVMVJLEYMHFEFNZPSDLPPSDLPEVQMWCXYMDAVQEEFIQCAYTQOWCXYMWMSEMEFCFWYEYQETRLIQYCGMTWCWFBSMYFPLRXTQYEEXMRULUKSGWFPTLRQAERLUVPMVYQYCXTWFQLMTELSFJPQEHMOZCIWCIWFPZSLMAEZIQVLQMZVPPXAWCSMZMORVGVVQSZETRLQZPBJAZVQIYXEWWOICCGDWHQMMVOWSGNTJPFPPAYBIYBJUTWRLQKLLLMDPYVACDCFQNZPIFPPKSDVPTIDGXMQQVEBMQALKEZMGCVKUZKIZBZLIUAMMVZ</textarea>
                                 <label for="vigenere_ciphertext">Ciphertext</label>
                             </div>
@@ -181,10 +183,10 @@
                     <div class="row">
                         <div class="row">
                             <div class="col s12 ">
-                                <h5>Step 1: Look for Duplicates</h5>
+                                <h5>Step 1: Look for Duplicate Phrases</h5>
                                 <p>The first step is to look for duplicate phrases in the ciphertext.</p>
 
-                                <table id="vigenere_repetitions" class="bordered striped highlight">
+                                <table id="vigenere_repetitions" class="bordered striped highlight centered">
                                     <thead>
                                         <tr>
                                             <th>Phrase</th>
