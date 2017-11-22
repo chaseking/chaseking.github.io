@@ -38,7 +38,7 @@
 
     <main>
         <div class="container container-mobile-fix">
-            <div id="about" class="section border-blue">
+            <div id="about" class="section border-aqua">
                 <div class="row">
                     <div class="col s4">
                         <img class="avatar" src="img/prof1.jpg">
@@ -53,10 +53,8 @@
                     </div>
                 </div>
 
-                <!-- TODO: Animated "I am..." with a blinking cursor "_" (possibly terminal font?) -->
-
                 <div class="i-am">
-                    I am <span id="infoText"></span><span class="blink">_</span>
+                    I am <span id="infoText"></span><span class="cursor">_</span>
                 </div>
 
                 <script type="text/javascript">
@@ -67,7 +65,25 @@
                         window.blurred = false;
                     });
 
-                    const words = [ "motivated and driven", "inquisitive", "a numbers guy", "creative", "a mathematician", "a code junkie", "a black belt", "an opportunist", "hungry for more", "an outdoors person", "an engineer", "a cyclist", "an environmental advocate", "a foodie" ];
+                    const words = [
+                        "motivated and driven",
+                        "inquisitive",
+                        "a numbers guy",
+                        "creative",
+                        "a mathematician",
+                        "a code junkie",
+                        "a black belt",
+                        "an opportunist",
+                        "hungry for more",
+                        "an outdoors person",
+                        "an engineer",
+                        "a cyclist",
+                        "an environmental advocate",
+                        "a foodie",
+                        "observant",
+                        "a critical thinker"
+                    ];
+
                     var infoText = $("#infoText");
 
                     //Randomize array
@@ -76,12 +92,12 @@
                     });
 
                     //Blinking cursor
-                    var blink = false;
-                    setInterval(function(){
-                        if(window.blurred) return;
-                        $(".blink").css("opacity", (blink ? 1 : 0));
-                        blink = !blink;
-                    }, 500);
+                    // var blink = false;
+                    // setInterval(function(){
+                    //     if(window.blurred) return;
+                    //     $(".blink").css("opacity", (blink ? 1 : 0));
+                    //     blink = !blink;
+                    // }, 500);
 
                     var index = 0;
                     var currentText;
@@ -204,6 +220,22 @@
                 <p>The day after completing my freshman year in high school, I earned a first degree black belt after a memorably grueling 4-hour test. This was a physical and mental milestone for me, and opened the doors to expanding my teaching role at the school and giving back to the family and community who supported me in reaching this level. The cardio conditioning that cycling added was instrumental in my success.</p>
             </div>
 
+            <div id="school" class="section section-border border-darkblue">
+                <h2>School</h2>
+                <h3>Number Theory</h3>
+                <p>Check out my <a href="school/numtheory">website I made for an elementary number theory</a> course I'm taking this semester.</p>
+
+                <br>
+
+                <h3>History, Culture, & Identity</h3>
+                <p>Interested in artificial intelligence, sci-fi movies, and human society/culture? <a href="school/hci-ai">Learn more about the implications of AI in society.</a></p>
+
+                <br>
+
+                <h3>Tutor</h3>
+                <p>Are you are are a high schooler looking for a math, science, or computer science tutor to help you excel in your coursework and cultivate your passion for learning? I'd love to help you out. <a href="mailto:chaseking@comcast.net?Subject=Tutor">Send me an email</a> and I will be in touch shortly.</p>
+            </div>
+
             <div id="photos" class="section section-border border-yellow">
                 <h2>Photos</h2>
 
@@ -253,11 +285,12 @@
                 <div id="links" class="col s12">
                     <h5 class="white-text">Links</h5>
                     <ul>
-                        <li><a class="grey-text text-lighten-3" href="img/resume.pdf" target="_blank"><i class="fa fa-file-text-o"></i> View R&eacute;sum&eacute;</a></li>
-                        <li><a class="grey-text text-lighten-3" href="http://instagram.com/chase.king" target="_blank"><i class="fa fa-instagram"></i> Instagram <small>@chase.king</small></a></li>
-                        <li><a class="grey-text text-lighten-3" href="https://twitter.com/chaseking22" target="_blank"><i class="fa fa-twitter"></i> Twitter <small>@chaseking22</small></a></li>
-                        <li><a class="grey-text text-lighten-3" href="https://github.com/chaseking" target="_blank"><i class="fa fa-github"></i> GitHub <small>@chaseking</small></a></li>
-                        <li><a class="grey-text text-lighten-3" href="https://www.strava.com/athletes/chaseking" target="_blank"><i class="fa fa-bicycle"></i> Strava</a></li>
+                        <li><a class="grey-text text-lighten-3" href="img/resume.pdf" target="blank"><i class="fa fa-file-text-o"></i> View R&eacute;sum&eacute;</a></li>
+                        <li><a class="grey-text text-lighten-3" href="mailto:chaseking@comcast.net"><i class="fa fa-envelope-o"></i> Contact Me</a></li>
+                        <li><a class="grey-text text-lighten-3" href="http://instagram.com/chase.king" target="blank"><i class="fa fa-instagram"></i> Instagram <small>@chase.king</small></a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://twitter.com/chaseking22" target="blank"><i class="fa fa-twitter"></i> Twitter <small>@chaseking22</small></a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://github.com/chaseking" target="blank"><i class="fa fa-github"></i> GitHub <small>@chaseking</small></a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://www.strava.com/athletes/chaseking" target="blank"><i class="fa fa-bicycle"></i> Strava</a></li>
                     </ul>
                 </div>
             </div>

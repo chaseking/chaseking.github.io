@@ -147,11 +147,21 @@ $("#gcd_calculate").click(function(event){
         } else if(i == 1){
             tr += "<td><em>b = " + remainders[i] + "</em></td>";
         } else {
-            tr += "<td>" + remainders[i] + "</td>";
+            tr += "<td>";
+            if(i == x.length - 2) tr += "<span class='highlight'>";
+            tr += remainders[i] + "</td>";
         }
 
-        tr += "<td>" + x[i] + "</td>"; //X
-        tr += "<td>" + y[i] + "</td>"; //Y
+        //X
+        tr += "<td>";
+        if(i == x.length - 2) tr += "<span class='highlight'>";
+        tr += x[i];
+        tr += "</td>";
+
+        //Y
+        tr += "<td>";
+        if(i == x.length - 2) tr += "<span class='highlight'>";
+        tr += y[i] + "</td>";
 
         dataTable.append(tr + "</tr>");
     }

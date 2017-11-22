@@ -35,6 +35,26 @@ main {
     }
 }
 
+.i-am .cursor {
+    animation-name: cursor-blink;
+    animation-duration: 1s;
+    animation-timing-function: steps(1, end);
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+}
+
+@keyframes cursor-blink {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
 .collapsible-header {
     font-weight: bold;
 }
@@ -154,6 +174,10 @@ footer #links h5 {
     border-color: #c0392b;
 }
 
+.border-orange {
+    border-color: #e67e22;
+}
+
 .border-yellow {
     border-color: #f39c12;
 }
@@ -162,8 +186,12 @@ footer #links h5 {
     border-color: #1e8c4d;
 }
 
-.border-blue {
+.border-aqua {
     border-color: #2980b9;
+}
+
+.border-darkblue {
+    border-color: #1B3F8B;
 }
 
 .border-purple {
