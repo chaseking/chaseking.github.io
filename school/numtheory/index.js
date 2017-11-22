@@ -259,7 +259,7 @@ $("#triangle_area_graphupdate").click(function(e){
             }
 
             //Result text
-            $("#triangle_area_value").text("The area of the triangle is " + (Math.abs((a * d) - (b * c)) / 2) + ".");
+            $("#triangle_area_value").text("The area of the triangle is " + (Math.abs((a * d) - (b * c)) / 2));
 
             //Translate back
             for(let j in points){
