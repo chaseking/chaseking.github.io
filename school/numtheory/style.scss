@@ -46,7 +46,7 @@ header {
 
 #vigenere {
     #vigenere_key {
-        font-family: Menlo, Roboto Mono, Courier New, monospace;
+        // font-family: Menlo, Roboto Mono, Courier New, monospace;
         color: white;
         font-size: 60px;
         text-align: center;
@@ -55,6 +55,17 @@ header {
         background: rgba(0, 0, 0, 0.6);
         padding: 0.2em 0.3em;
         border-radius: 5px;
+    }
+
+    #vigenere_plaintext {
+        // font-family: Menlo, Roboto Mono, Courier New, monospace;
+        // color: white;
+        // background: rgba(0, 0, 0, 0.6);
+        // padding: 0.2em 0.3em;
+        // border-radius: 5px;
+        font-size: 24px;
+        word-wrap: break-word;
+        // font-weight: bold;
     }
 }
 

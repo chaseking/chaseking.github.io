@@ -365,8 +365,10 @@ var vigenereFrequencyChart = new Chart($("#vigenere_alphabetfrequency"), {
     // }
 });
 
+var cipherText;
+
 $("#vigenere_update").click(function(){
-    var cipherText = $("#vigenere_ciphertext").val();
+    cipherText = $("#vigenere_ciphertext").val();
 
     if(!cipherText){
         alert("Please enter ciphertext!");
@@ -579,8 +581,9 @@ $("#vigenere_update").click(function(){
     vigenereFrequencyChart.update();
 });
 
-//Update the key depending on the sliders
+//Slider updates
 $("#vigenere_sliders").on("change", "input", function(){
+    //Update the key
     let key = "";
 
     $("#vigenere_sliders input").each(function(){
@@ -588,6 +591,25 @@ $("#vigenere_sliders").on("change", "input", function(){
     });
 
     $("#vigenere_key").text(key);
+
+    //Update the plaintext
+    let plaintext = "";
+    let keyIndex = 0;
+
+    for(let i = 0; i < cipherText.length; i++){
+        let cipherTextLetter = cipherText[i].toLowerCase();
+
+        if(cipherTextLetter == " "){ //TODO - Punctuation too? Anything not a letter?
+            plaintext += cipherTextLetter;
+        } else {
+            let keyLetter = key[keyIndex++ % key.length].toLowerCase();
+            let keyShift = ALPHABET.indexOf(keyLetter);
+
+            plaintext += ALPHABET[(ALPHABET.indexOf(cipherTextLetter) - keyShift + 26) % ALPHABET.length];
+        }
+    }
+
+    $("#vigenere_plaintext").text(plaintext);
 });
 
 function buildVigenereSlider(letterIndex){

@@ -39,7 +39,6 @@ header h2 a:hover {
 }
 
 #vigenere #vigenere_key {
-    font-family: Menlo, Roboto Mono, Courier New, monospace;
     color: white;
     font-size: 60px;
     text-align: center;
@@ -48,6 +47,11 @@ header h2 a:hover {
     background: rgba(0, 0, 0, 0.6);
     padding: 0.2em 0.3em;
     border-radius: 5px;
+}
+
+#vigenere #vigenere_plaintext {
+    font-size: 24px;
+    word-wrap: break-word;
 }
 
 span.highlight {
