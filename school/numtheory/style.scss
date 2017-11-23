@@ -45,6 +45,11 @@ header {
 }
 
 #vigenere {
+    #vigenere_sliders {
+        max-height: 300px;
+        overflow-y: scroll;
+    }
+
     #vigenere_key {
         // font-family: Menlo, Roboto Mono, Courier New, monospace;
         color: white;

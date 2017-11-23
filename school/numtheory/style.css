@@ -38,6 +38,11 @@ header h2 a:hover {
     border-bottom-color: black;
 }
 
+#vigenere #vigenere_sliders {
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
 #vigenere #vigenere_key {
     color: white;
     font-size: 60px;
