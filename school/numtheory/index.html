@@ -182,7 +182,7 @@
                 <div id="vigenere_data" style="display: none;">
                     <div class="row">
                         <div class="row">
-                            <div class="col s12 ">
+                            <div class="col s12">
                                 <h5>Step 1: Look for Duplicate Phrases</h5>
                                 <p>The first step is to look for duplicate phrases in the ciphertext.</p>
 
@@ -200,7 +200,7 @@
                                 </table>
                             </div>
 
-                            <div class="col s12 ">
+                            <div class="col s12">
                                 <h5>Step 2: Find Factors of Distances</h5>
                                 <p>The second step is to create a table of all factors of all distances between duplicate phrases in the ciphertext.</p>
 
@@ -227,7 +227,14 @@
                                 <p>The third step is to use frequency analysis on each monoalphabetic cipher within the vigenere algorithm. If the key length is, for example, 5, then the 1st, 6th, 11th, etc. letter of the ciphertext is encrypted using the same monoalphabetic substitution cipher.</p>
                                 <p>Click on the labels below to toggle visibility and use the sliders to match up peaks and valleys with standard English letter frequency.</p>
 
-                                <canvas id="vigenere_alphabetfrequency" width="400" height="150"></canvas>
+                                <div class="row">
+                                    <div class="col s12 m3">
+                                        <input type="number" id="vigenere_keylength" class="validate" value="5"></input>
+                                        <label for="vigenere_keylength">Key Length</label>
+                                    </div>
+                                </div>
+
+                                <canvas id="vigenere_alphabetfrequency" width="400" height="120"></canvas>
 
                                 <div id="vigenere_sliders"></div>
                             </div>

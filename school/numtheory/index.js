@@ -340,19 +340,26 @@ function getIndices(child, parent){
 
 const RAINBOW_BORDERS = [
     "255, 99, 132",
-    "255, 140, 0",
+    "255, 159, 64",
     "255, 206, 86",
     "75, 192, 192",
     "54, 162, 235",
-    "153, 102, 255",
-    "255, 159, 64",
+    "153, 102, 255"
 ];
 
 var vigenereFrequencyChart = new Chart($("#vigenere_alphabetfrequency"), {
     type: "bar",
     data: {
         labels: ALPHABET.toUpperCase().split(""),
-        datasets: []
+        datasets: [{
+            label: "English Letter Frequency",
+            backgroundColor: "rgba(0, 0, 0, 0.2)",
+            borderColor: "rgba(0, 0, 0, 1)",
+            borderWidth: 1,
+            data: ALPHABET.toLowerCase().split("").map(function(letter){
+                return LETTER_FREQUENCY[letter];
+            })
+        }]
     },
     // options: {
     //     scales: {
@@ -382,7 +389,6 @@ $("#vigenere_update").click(function(){
 
     //Show and clear data
     $("#vigenere_data").show();
-    $("#vigenere_sliders").empty();
     $("#vigenere table tbody").empty();
 
     cipherText = cipherText.replace(/\s+/g, ""); //Remove spaces //https://stackoverflow.com/questions/5964373/is-there-a-difference-between-s-g-and-s-g
@@ -476,6 +482,8 @@ $("#vigenere_update").click(function(){
     //Factors: total row
     var trTotal = "<tr><th>Total</th>";
     var totalFactors = [];
+    var highestFactor = 0;
+    var highestFactorTotal = 0;
 
     for(let factor = 2; factor <= 20; factor++){
         let total = 0;
@@ -484,6 +492,11 @@ $("#vigenere_update").click(function(){
             if(distances[i] % factor == 0){
                 total++;
             }
+        }
+
+        if(total > highestFactorTotal){
+            highestFactor = factor;
+            highestFactorTotal = total;
         }
 
         totalFactors.push(total);
@@ -521,21 +534,25 @@ $("#vigenere_update").click(function(){
     factorsTableTbody.append(trTotal);
 
     //Display bar chart
-    //TODO
-    var datasets = [
-        {
-            label: "English Letter Frequency",
-            backgroundColor: "rgba(0, 0, 0, 0.2)",
-            borderColor: "rgba(0, 0, 0, 1)",
-            borderWidth: 1,
-            data: ALPHABET.toLowerCase().split("").map(function(letter){
-                return LETTER_FREQUENCY[letter];
-            })
-        }
-    ];
+    $("#vigenere_keylength").val(highestFactor).trigger("change");
+});
 
-    //TODO - Let the user input the length of the factor and this should be in another method
-    var keyLength = 5;
+$("#vigenere_keylength").on("change", function(){
+    let keyLength = parseInt($("#vigenere_keylength").val());
+
+    if(!keyLength || keyLength <= 0){
+        alert("Please enter a valid length!");
+        return;
+    }
+
+    //Empty all previous values
+    while(vigenereFrequencyChart.data.datasets.length > 1){
+        vigenereFrequencyChart.data.datasets.pop(1);
+    }
+
+    //Clear sliders
+    $("#vigenere_sliders").empty();
+
     for(let keyIndex = 0; keyIndex < keyLength; keyIndex++){
         let data = {
             label: "L" + (keyIndex + 1) + " Frequency",
@@ -556,7 +573,6 @@ $("#vigenere_update").click(function(){
             for(let i in vigenereFrequencyChart.data.datasets){
                 if(i > 0){
                     vigenereFrequencyChart.data.datasets[i].hidden = (i - 1 != keyIndex);
-                    console.log(keyIndex);
                 }
             }
 
@@ -571,7 +587,7 @@ $("#vigenere_update").click(function(){
 
             let total = 0;
 
-            for(let i = keyIndex; i < cipherText.length; i += keyLength){
+            for(let i = keyIndex; i < cipherText.length; i = i + keyLength){
                 let alphabetIndex = (ALPHABET.indexOf(cipherText[i].toLowerCase()) - shift + ALPHABET.length) % ALPHABET.length;
                 frequencies[alphabetIndex]++;
                 total++;
@@ -585,10 +601,9 @@ $("#vigenere_update").click(function(){
             data.data = frequencies;
         }
 
-        datasets.push(data);
+        vigenereFrequencyChart.data.datasets.push(data);
     }
 
-    vigenereFrequencyChart.data.datasets = datasets;
     vigenereFrequencyChart.update();
 });
 
@@ -624,8 +639,8 @@ $("#vigenere_sliders").on("change", "input", function(){
 });
 
 function buildVigenereSlider(letterIndex){
-    let elem = $('<p class="range-field">\
-        <label for="vigenere_shift' + letterIndex + '">L' + (letterIndex + 1) + ' Shift</label>\
+    let elem = $('<p class="range-field" style="margin-top: 0; margin-bottom: 0;">\
+        <label for="vigenere_shift' + letterIndex + '">Letter ' + (letterIndex + 1) + ' Shift</label>\
         <input type="range" min="0" max="25" value="0" id="vigenere_shift' + letterIndex + '">\
     </p>');
 
