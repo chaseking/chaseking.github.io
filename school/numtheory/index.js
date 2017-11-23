@@ -367,6 +367,11 @@ var vigenereFrequencyChart = new Chart($("#vigenere_alphabetfrequency"), {
 
 var cipherText;
 
+//Factors: Put in numbers 2-20
+for(let factor = 2; factor <= 20; factor++){
+    $("#vigenere_factors thead tr").eq(1).append("<th>" + factor + "</th>");
+}
+
 $("#vigenere_update").click(function(){
     cipherText = $("#vigenere_ciphertext").val();
 
@@ -375,9 +380,12 @@ $("#vigenere_update").click(function(){
         return;
     }
 
+    //Show and clear data
     $("#vigenere_data").show();
+    $("#vigenere_sliders").empty();
+    $("#vigenere table tbody").empty();
 
-    cipherText = cipherText.replace(/\s+/g, ""); //https://stackoverflow.com/questions/5964373/is-there-a-difference-between-s-g-and-s-g
+    cipherText = cipherText.replace(/\s+/g, ""); //Remove spaces //https://stackoverflow.com/questions/5964373/is-there-a-difference-between-s-g-and-s-g
     var repetitions = cipherText.match(/(.{3,})(?=.*?\1)/g); //https://regexr.com <3
 
     repetitions.sort(function(a, b){
@@ -426,11 +434,6 @@ $("#vigenere_update").click(function(){
     var factorsTable = $("#vigenere_factors");
     var factorsTableTheadTr = factorsTable.find("thead tr");
     var factorsTableTbody = factorsTable.find("tbody");
-
-    //Factors: Put in numbers 2-20
-    for(let factor = 2; factor <= 20; factor++){
-        factorsTableTheadTr.eq(1).append("<th>" + factor + "</th>");
-    }
 
     //Factors: Organize distances
     var distances = [];
@@ -549,6 +552,14 @@ $("#vigenere_update").click(function(){
         slider.on("change", function(){
             shift = slider.val();
             updateLetterData();
+
+            for(let i in vigenereFrequencyChart.data.datasets){
+                if(i > 0){
+                    vigenereFrequencyChart.data.datasets[i].hidden = (i - 1 != keyIndex);
+                    console.log(keyIndex);
+                }
+            }
+
             vigenereFrequencyChart.update(0);
         });
 
