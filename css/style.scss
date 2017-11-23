@@ -112,10 +112,21 @@ main {
     h3 {
         font-weight: bold;
         font-size: 16px;
+        // margin: 0;
 
         @media (min-width: $mobileWidth){
             font-size: 17px;
         }
+
+        margin-bottom: 0;
+    }
+
+    p {
+        margin-top: 15px;
+    }
+
+    h3 ~ p {
+        margin-top: 5px;
     }
 }
 
@@ -198,10 +209,6 @@ footer {
 
 .border-purple {
 	border-color: #8e44ad;
-}
-
-p {
-    margin-top: 15px;
 }
 
 p.header {

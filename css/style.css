@@ -117,12 +117,21 @@ main {
 .section h3 {
     font-weight: bold;
     font-size: 16px;
+    margin-bottom: 0;
 }
 
 @media (min-width: 550px) {
     .section h3 {
         font-size: 17px;
     }
+}
+
+.section p {
+    margin-top: 15px;
+}
+
+.section h3 ~ p {
+    margin-top: 5px;
 }
 
 @media (max-width: 550px) {
@@ -196,10 +205,6 @@ footer #links h5 {
 
 .border-purple {
     border-color: #8e44ad;
-}
-
-p {
-    margin-top: 15px;
 }
 
 p.header {
