@@ -639,10 +639,10 @@ $("#vigenere_sliders").on("change", "input", function(){
 });
 
 function buildVigenereSlider(letterIndex){
-    let elem = $('<p class="range-field" style="margin-top: 0; margin-bottom: 0;">\
+    let elem = $('<div class="col s12 m6">' + '<p class="range-field" style="margin-top: 0; margin-bottom: 0;">\
         <label for="vigenere_shift' + letterIndex + '">Letter ' + (letterIndex + 1) + ' Shift</label>\
         <input type="range" min="0" max="25" value="0" id="vigenere_shift' + letterIndex + '">\
-    </p>');
+    </p>' + '</div>');
 
     $("#vigenere_sliders").append(elem);
 
