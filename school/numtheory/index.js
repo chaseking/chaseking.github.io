@@ -8,19 +8,13 @@ function getIntegerInput(input){
     }
 }
 
-$("#gcd_calculate").click(function(event){
-    $("#gcd_table tbody").empty();
-    $("#gcd_data").show();
-    var a = getIntegerInput($("#gcd_a"));
-    var b = getIntegerInput($("#gcd_b"));
-
+function gcd(a, b, stepCallback){
     //Ensure that a ≥ b
-    if(a < b){
+    var swapped = a < b;
+    if(swapped){
         var temp = a;
         a = b;
         b = temp;
-        console.log(a);
-        console.log(b);
     }
 
     var originalA = a;
@@ -31,9 +25,6 @@ $("#gcd_calculate").click(function(event){
     var x = [0, 0]; //X[0] = 0
     var y = [0, 1]; //Y[0] = 1
     var step = 1;
-
-    var mainTable = $("#gcd_table_euclid tbody");
-    mainTable.empty();
 
     while(true){
         var remainder = a % b;
@@ -52,26 +43,19 @@ $("#gcd_calculate").click(function(event){
 
         step++;
 
-        var html = "<tr>";
-        html += "<td>" + a + " = " + b + "*" + quotient + " + ";
-
-        if(b % remainder == 0){
-            html += "<span class='highlight'>" + remainder + "</span>";
-            html += "<br><strong><em>(GCD)</em></strong>";
-        } else {
-            html += remainder;
+        if(stepCallback){
+            stepCallback({
+                a: a,
+                b: b,
+                quotient: quotient,
+                remainder: remainder,
+                x: x,
+                y: y,
+                step: step,
+            });
         }
 
-        html += "<td></td>";
-        html += "</tr>";
-
-        mainTable.append(html);
-
         if(remainder == 0){
-            $("#gcd_value").html("The GCD of " + originalA + " and " + originalB + " is <span class='highlight'>" + b + "</span>."
-                + "<br>" + originalA + "*<span class='highlight'>" + x[x.length - 2] + "</span> + " + originalB + "*<span class='highlight'>" + y[y.length - 2] + "</span> = " + b
-            );
-            console.log(x[x.length - 1]);
             break;
         }
 
@@ -80,45 +64,88 @@ $("#gcd_calculate").click(function(event){
         b = remainder;
     }
 
+    return {
+        a: originalA,
+        b: originalB,
+        quotients: quotients,
+        remainders: remainders,
+        x: x,
+        y: y,
+        xSolution: (swapped ? y[y.length - 2] : x[x.length - 2]),
+        ySolution: (swapped ? x[x.length - 2] : y[y.length - 2]),
+        gcd: remainders[remainders.length - 2],
+        swapped: swapped,
+    };
+}
+
+$("#gcd_calculate").click(function(event){
+    $("#gcd_table tbody").empty();
+    $("#gcd_data").show();
+    var a = getIntegerInput($("#gcd_a"));
+    var b = getIntegerInput($("#gcd_b"));
+    var mainTable = $("#gcd_table_euclid tbody");
+    mainTable.empty();
+
+    var data = gcd(a, b, function(data){
+        var html = "<tr>";
+        html += "<td>" + data.a + " = " + data.b + "*" + data.quotient + " + ";
+
+        if(data.b % data.remainder == 0){
+            html += "<span class='highlight'>" + data.remainder + "</span>";
+            html += "<br><strong><em>(GCD)</em></strong>";
+        } else {
+            html += data.remainder;
+        }
+
+        html += "<td></td>";
+        html += "</tr>";
+
+        mainTable.append(html);
+    });
+
+    $("#gcd_value").html("The GCD of " + a + " and " + b + " is <span class='highlight'>" + data.gcd + "</span>."
+        + "<br>" + a + "*<span class='highlight'>" + data.xSolution + "</span> + " + b + "*<span class='highlight'>" + data.ySolution + "</span> = " + data.gcd
+    );
+
     var tdIndex = 0;
     var currX = 1;
     var currY = 0;
-    // for(var n = x.length - 2; n > 1; n--){
-    for(var i = 0; i < x.length - 3; i++){
+
+    for(var i = 0; i < data.x.length - 3; i++){
         var td = mainTable.find("tr").eq(tdIndex++).find("td").eq(1);
         var html = "";
-        var n = x.length - 2 - i; //The current index
-        var isLastStep = i == x.length - 4;
+        var n = data.x.length - 2 - i; //The current index
+        var isLastStep = i == data.x.length - 4;
 
         if(i == 0){
             //First step (include GCD)
-            currY = quotients[n];
-            html += remainders[n] + " = " + remainders[n - 2] + "*" + currX + " - " + remainders[n - 1] + "*" + currY;
+            currY = data.quotients[n];
+            html += data.remainders[n] + " = " + data.remainders[n - 2] + "*" + currX + " - " + data.remainders[n - 1] + "*" + currY;
         } else {
             var modifyLeft = i % 2 == 0;
             html += "= ";
 
             if(modifyLeft){
-                html += "(" + remainders[n - 2] + " - " + remainders[n - 1] + "*" + quotients[n] + ")*" + currX + " - " + remainders[n - 1] + "*" + currY;
+                html += "(" + data.remainders[n - 2] + " - " + data.remainders[n - 1] + "*" + data.quotients[n] + ")*" + currX + " - " + data.remainders[n - 1] + "*" + currY;
 
-                currY += quotients[n] * currX;
+                currY += data.quotients[n] * currX;
 
                 html += "<br>";
                 html += "= ";
 
                 if(isLastStep) html += "<span class='highlight'>";
-                html += remainders[n - 2] + "*" + currX + " - " + remainders[n - 1] + "*" + currY;
+                html += data.remainders[n - 2] + "*" + currX + " - " + data.remainders[n - 1] + "*" + currY;
                 if(isLastStep) html += "</span>";
             } else {
-                html += remainders[n - 1] + "*" + currX + " - (" + remainders[n - 2] + " - " + remainders[n - 1] + "*" + quotients[n] + ")" + "*" + currY;
+                html += data.remainders[n - 1] + "*" + currX + " - (" + data.remainders[n - 2] + " - " + data.remainders[n - 1] + "*" + data.quotients[n] + ")" + "*" + currY;
 
-                currX += quotients[n] * currY;
+                currX += data.quotients[n] * currY;
 
                 html += "<br>";
                 html += "= ";
 
                 if(isLastStep) html += "<span class='highlight'>";
-                html += remainders[n - 1] + "*" + currX + " - " + remainders[n - 2] + "*" + currY;
+                html += data.remainders[n - 1] + "*" + currX + " - " + data.remainders[n - 2] + "*" + currY;
                 if(isLastStep) html += "</span>";
             }
         }
@@ -135,33 +162,34 @@ $("#gcd_calculate").click(function(event){
     //Data table
     var dataTable = $("#gcd_table_data tbody");
     dataTable.empty();
-    for(var i = 0; i < x.length; i++){
+
+    for(var i = 0; i < data.x.length; i++){
         var tr = "<tr>";
 
         tr += "<td><strong>" + (i <= 0 ? "" : (i - 1)) + "</strong></td>"; //Step
-        tr += "<td>" + quotients[i] + "</td>"; //Quotient
+        tr += "<td>" + data.quotients[i] + "</td>"; //Quotient
 
         //Remainder
         if(i == 0){
-            tr += "<td><em>a = " + remainders[i] + "</em></td>";
+            tr += "<td><em>a = " + data.remainders[i] + "</em></td>";
         } else if(i == 1){
-            tr += "<td><em>b = " + remainders[i] + "</em></td>";
+            tr += "<td><em>b = " + data.remainders[i] + "</em></td>";
         } else {
             tr += "<td>";
-            if(i == x.length - 2) tr += "<span class='highlight'>";
-            tr += remainders[i] + "</td>";
+            if(i == data.x.length - 2) tr += "<span class='highlight'>";
+            tr += data.remainders[i] + "</td>";
         }
 
         //X
         tr += "<td>";
-        if(i == x.length - 2) tr += "<span class='highlight'>";
-        tr += x[i];
+        if(i == data.x.length - 2) tr += "<span class='highlight'>";
+        tr += data.x[i];
         tr += "</td>";
 
         //Y
         tr += "<td>";
-        if(i == x.length - 2) tr += "<span class='highlight'>";
-        tr += y[i] + "</td>";
+        if(i == data.x.length - 2) tr += "<span class='highlight'>";
+        tr += data.y[i] + "</td>";
 
         dataTable.append(tr + "</tr>");
     }
@@ -648,3 +676,73 @@ function buildVigenereSlider(letterIndex){
 
     return elem.find("input");
 }
+
+
+
+
+
+
+
+
+
+$("#modular_equations_update").click(function(){
+    let value = getIntegerInput($("#modular_equations_value"));
+    let modulus = getIntegerInput($("#modular_equations_modulus"));
+
+    //Calculuate the GCD
+    var data = gcd(value, modulus);
+
+    $("#modular_equations_data").show();
+    $("#modular_equations_info").empty().append("<div>"
+        + "The GCD of (" + value + ", " + modulus + ") = " + data.gcd + "<br>"
+        + value + "x = " + data.gcd + " (mod " + modulus + ")" + "<br>"
+        + value + "x - " + data.gcd + " = " + modulus + "y" + "<br>"
+        + value + "x - " + modulus + "y" + " = " + data.gcd + "<br>"
+        + "<em>(Run Euclidean algorithm)</em>" + "<br>"
+        + "</div>");
+
+    $("#modular_equations_info").append("<h5>" + value + "(<span class='highlight'>" + data.xSolution + "</span>) - " + modulus + "(" + (-data.ySolution) + ")" + " = " + data.gcd + "</h5>");
+
+    var ttable = $("#modular_equations_t_table tbody");
+    ttable.empty();
+
+    if(data.gcd == 1){
+        //Only one solution
+        $("#modular_equations_info").append("<div style='font-size: 18px;'>The modular inverse of <strong>" + value + " (mod " + modulus + ") = " + data.xSolution + "</strong></div>")
+    } else {
+        $("#modular_equations_info").append("<div style='font-size: 18px;'>\
+        x = x<sub>0</sub> + (|b| / d)t\
+         = " + data.xSolution + " + (" + Math.abs(modulus) + " / " + data.gcd + ")t\
+         = " + data.xSolution + " + " + (Math.abs(modulus) / data.gcd) + "t\
+        <br>\
+        y = y<sub>0</sub> + (|a| / d)t\
+         = " + data.ySolution + " - (" + Math.abs(value) + " / " + data.gcd + ")t\
+         = " + data.ySolution + " - " + (Math.abs(value) / data.gcd) + "t\
+         </div>");
+
+        for(let t = 0; t < data.gcd; t++){
+            let tr = "<tr>";
+            tr += "<th>" + t + "</th>";
+
+            //X
+            tr += "<td>";
+            tr += data.xSolution + " + " + (Math.abs(modulus) / data.gcd) + "(" + t + ")";
+            tr += "<br> = <span class='highlight'>" + (data.xSolution + (Math.abs(modulus) / data.gcd) * t) + "</span>";
+            tr += "</td>";
+
+            //Y
+            tr += "<td>";
+            tr += data.ySolution + " - " + (Math.abs(value) / data.gcd) + "(" + t + ")";
+            tr += "<br> = " + (data.ySolution - (Math.abs(value) / data.gcd) * t);
+            tr += "</td>";
+
+            //Solution
+            tr += "<td>";
+            tr += value + "*(" + (data.xSolution + (Math.abs(modulus) / data.gcd) * t) + ") - " + modulus + "*(" + -(data.ySolution - (Math.abs(value) / data.gcd) * t) + ") = " + data.gcd;
+            tr += "</td>";
+
+            tr += "</tr>";
+            ttable.append(tr);
+        }
+    }
+});
