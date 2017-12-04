@@ -701,14 +701,23 @@ $("#modular_equations_update").click(function(){
         + "<em>(Run Euclidean algorithm)</em>" + "<br>"
         + "</div>");
 
+    var modSolution = data.xSolution;
+
+    if(modSolution < 0) modSolution += modulus;
+    if(modSolution > modulus) modSolution -= modulus;
+
     $("#modular_equations_info").append("<h5>" + value + "(<span class='highlight'>" + data.xSolution + "</span>) - " + modulus + "(" + (-data.ySolution) + ")" + " = " + data.gcd + "</h5>");
+    $("#modular_equations_info").append("<h5>" + value + "(<span class='highlight'>" + modSolution + "</span>) = " + data.gcd + " (mod " + modulus + ")" + "</h5>");
 
     var ttable = $("#modular_equations_t_table tbody");
     ttable.empty();
 
     if(data.gcd == 1){
+        //Hide the table
+        $("#modular_equations_t_table").hide();
+
         //Only one solution
-        $("#modular_equations_info").append("<div style='font-size: 18px;'>The modular inverse of <strong>" + value + " (mod " + modulus + ") = " + data.xSolution + "</strong></div>")
+        $("#modular_equations_info").append("<div style='font-size: 18px;'>The modular inverse of <strong>" + value + " (mod " + modulus + ") = " + data.xSolution + " = " + "<span class='highlight'>" + modSolution + "</span>" + "</strong></div>")
     } else {
         $("#modular_equations_info").append("<div style='font-size: 18px;'>\
         x = x<sub>0</sub> + (|b| / d)t\
