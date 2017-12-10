@@ -243,7 +243,7 @@ $("#triangle_area_graphupdate").click(function(e){
 
         if((x == minX && y == minY) //Lower left corner
             || (x == minX && y == maxY) //Upper left corner
-            || (x == maxX && y == minY) //Upper right corner
+            || (x == maxX && y == maxY) //Upper right corner
             || (x == maxX && y == minY)){ //Lower right corner
             //If the point is on a corner of the cube, then it can be translated to the origin
             console.log("Point " + (i + 1) + " (" + x + ", " + y + ") can be translated to the origin."); //Could get the midpoint of the two other points to determine which quadrant the triangle would be in

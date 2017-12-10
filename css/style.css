@@ -91,6 +91,50 @@ main {
     margin: 10px 0;
     border-top: 4px solid black;
     text-align: justify;
+    animation-name: FadeIn;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+@keyframes FadeIn {
+    0% {
+        transform: translateX(-50%) scale(0.75);
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        margin-right: 0;
+        transform: none;
+    }
+}
+
+.section:nth-of-type(1) {
+    animation-delay: 0.5s;
+}
+
+.section:nth-of-type(2) {
+    animation-delay: 1.5s;
+}
+
+.section:nth-of-type(3) {
+    animation-delay: 2.5s;
+}
+
+.section:nth-of-type(4) {
+    animation-delay: 3.5s;
+}
+
+.section:nth-of-type(5) {
+    animation-delay: 4.5s;
+}
+
+.section:nth-of-type(6) {
+    animation-delay: 5.5s;
 }
 
 @media (min-width: 550px) {
