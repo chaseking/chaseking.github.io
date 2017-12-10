@@ -98,7 +98,7 @@ main {
     animation-fill-mode: forwards;
     opacity: 0;
 
-    @keyframes FadeIn {
+    @keyframes FadeInLeft {
         0% {
             transform: translateX(-50%) scale(0.75);
         }
@@ -114,12 +114,31 @@ main {
         }
     }
 
-    &:nth-of-type(1){ animation-delay: 0.5s; }
-    &:nth-of-type(2){ animation-delay: 1.5s; }
-    &:nth-of-type(3){ animation-delay: 2.5s; }
-    &:nth-of-type(4){ animation-delay: 3.5s; }
-    &:nth-of-type(5){ animation-delay: 4.5s; }
-    &:nth-of-type(6){ animation-delay: 5.5s; }
+    @keyframes FadeInRight {
+        0% {
+            transform: translateX(50%) scale(0.75);
+        }
+
+        50% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+            margin-right: 0;
+            transform: none;
+        }
+    }
+
+    &:nth-of-type(2n){ animation-name: FadeInRight; }
+    &:nth-of-type(2n + 1){ animation-name: FadeInLeft; }
+
+    &:nth-of-type(1){ animation-delay: 0.25s; }
+    &:nth-of-type(2){ animation-delay: 1.25s; }
+    &:nth-of-type(3){ animation-delay: 2.25s; }
+    &:nth-of-type(4){ animation-delay: 3.25s; }
+    &:nth-of-type(5){ animation-delay: 4.25s; }
+    &:nth-of-type(6){ animation-delay: 5.25s; }
 
     @media (min-width: $mobileWidth){
         border-left: 4px solid black; //Left border for non-mobile users
