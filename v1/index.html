@@ -1,0 +1,301 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+    <title>Chase King</title>
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="../twemoji.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110077560-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-110077560-1');
+    </script>
+</head>
+
+<body>
+    <main>
+        <div class="container container-mobile-fix">
+            <div id="about" class="section border-aqua">
+                <div class="row">
+                    <div class="col s4">
+                        <img class="avatar" src="../img/prof1.jpg">
+                    </div>
+
+                    <div class="col s4">
+                        <img class="avatar" src="../img/prof2.jpg">
+                    </div>
+
+                    <div class="col s4">
+                        <img class="avatar" src="../img/prof3.jpg">
+                    </div>
+                </div>
+
+                <div class="i-am">
+                    I am <span id="infoText"></span><span class="cursor">_</span>
+                </div>
+
+                <script type="text/javascript">
+                    //https://stackoverflow.com/questions/5766263/run-settimeout-only-when-tab-is-active
+                    $(window).blur(function(){
+                        window.blurred = true;
+                    }).focus(function(){
+                        window.blurred = false;
+                    });
+
+                    const words = [
+                        "motivated and driven",
+                        "inquisitive",
+                        "a numbers guy",
+                        "creative",
+                        "a mathematician",
+                        "a code junkie",
+                        "a black belt",
+                        "an opportunist",
+                        "hungry for more",
+                        "an outdoors person",
+                        "an engineer",
+                        "a cyclist",
+                        "an environmental advocate",
+                        "a foodie",
+                        "observant",
+                        "a critical thinker"
+                    ];
+
+                    var infoText = $("#infoText");
+
+                    //Randomize array
+                    words.sort(function(a, b){
+                        return 0.5 - Math.random();
+                    });
+
+                    //Blinking cursor
+                    // var blink = false;
+                    // setInterval(function(){
+                    //     if(window.blurred) return;
+                    //     $(".blink").css("opacity", (blink ? 1 : 0));
+                    //     blink = !blink;
+                    // }, 500);
+
+                    var index = 0;
+                    var currentText;
+
+                    function deleteCurrent(done){
+                        if(!currentText){
+                            done();
+                            return;
+                        }
+
+                        var id = setInterval(function(){
+                            currentText = currentText.substr(0, currentText.length - 1);
+                            infoText.text(currentText);
+
+                            if(!currentText){
+                                infoText.text("");
+                                clearInterval(id);
+                                done();
+                            }
+                        }, 40);
+                    }
+
+                    function writeNew(done){
+                        var end = 1;
+
+                        var id = setInterval(function(){
+                            var substr = currentText.substr(0, end++);
+
+                            infoText.text(substr);
+
+                            if(end > currentText.length){
+                                clearInterval(id);
+                                done();
+                            }
+                        }, 60);
+                    }
+
+                    function changeText(){
+                        deleteCurrent(function(){
+                            currentText = words[index++ % words.length];
+
+                            writeNew(function(){
+                                setTimeout(changeText, 3500); //Change text 3.5 seconds after the new text has been written
+                            });
+                        });
+                    }
+
+                    changeText();
+                </script>
+
+                <p>Hi, I'm Chase.</p>
+                <p>
+                    I am passionate about all things techie, scientific and mathematical. Numbers and logic speak to me. I am an avid programmer, and have cultivated proficiency in several languages, including Java and  HTML/CSS/JS.
+                    I balance my brain work by spending time outdoors on my road bike, enjoying scenic exploration,
+                    fitness training, local group rides, and competitive racing. I also continue to hone my skills as a black belt in karate
+                    and volunteer-teach at <a href="https://taylorshouseofkarate.com" target="blank">our studio</a> in San Rafael.
+                </p>
+    			<p>I'm currently a high school senior at <a href="http://ma.org" target="blank">Marin Academy</a> in San Rafael, California.</p>
+            </div>
+
+            <div id="programming" class="section section-border border-red">
+                <h2>Programming</h2>
+                <p>I have been fascinated with computers and technology since a wee tot; the keyboard has become an extension of my mind.</p>
+                <p>In middle school, I began delving into web design and it became clear that learning computing languages was the next step. I attended several programming camps learning C++, Java and Objective-C, expanding to some <a href="https://www.coursera.org" target="blank">Coursera</a> courses on Swift. Before high school, I used the popular computer game <a href="https://minecraft.net/" target="blank">Minecraft</a> to utilize and expand my Java programming skills. I became a    well-recognized developer in the server community and acted as moderator for the <a href="https://bukkit.org" target="blank">Bukkit forums</a>, the largest Minecraft programming online forum, with nearly half a million unique users. Under the internet handle "chasechocolate", I helped hundreds of newcomers learn programming and answered thousands of questions on the Bukkit forums</a>. By the eighth grade, I had my first paid job developing for <a href="https://www.minehq.com" target="blank">MineHQ</a>, a large server network hosting nearly a 100,000 players every week.
+                With experience writing over 150,000 lines of code, I look forward to applying my skills, learning new ones, and exploring opportunities in different areas of computer science.</p>
+            </div>
+
+            <div id="cycling" class="section section-border border-purple">
+                <h2>Cycling</h2>
+
+                <div class="row">
+                    <div class="col l8 m12">
+                        <p>I have ridden a bike for as long as I can remember. Coming from a family of enthusiastic recreational cyclists, I learned to stretch my athletic goals at an early age. I began riding century rides on my heavy steel mountain bike by the second grade, but it wasn't until high school that I experienced the liberating feeling of a road bike. My first competitive racing began with my mountain biking team in ninth grade. I still very much enjoy a good mountain bike ride, but the lure of speed and mileage that road racing offers is where my passion lies.</p>
+
+                        <p>In 2015, I joined <a href="http://teamswift.org" target="blank">Team Swift</a>, a junior racing development team, and have enjoyed the benefits of professional training and expert fitness coaching, not to mention the camaraderie that a team sport has to offer.</p>
+                    </div>
+
+                    <div class="col l4 m12">
+                        <iframe style="border-radius: 5px; border-color: black; border-width: 3px;" height="330" width="280" allowtransparency="true" scrolling="no" src="https://www.strava.com/athletes/6093294/latest-rides/c28a846dbea27ae506a462398c13857d61eefd85"></iframe>
+                    </div>
+                </div>
+
+                <div id="racereports" style="display: none;"> <!-- TODO - Finish these -->
+                    <h3>2017 Race Reports:</h3>
+                    <ul class="collapsible" data-collapsible="accordion">
+                        <li>
+                            <div class="collapsible-header">Berkeley Hills Road Race (E4) (10th)<span class="date right">June 11, 2017</span></div>
+                            <div class="collapsible-body">Coming soon.</div>
+                        </li>
+
+                        <li>
+                            <div class="collapsible-header">Pescadero Coastal Classic (E4) (5th)<span class="date right">June 3, 2017</span></div>
+                            <div class="collapsible-body">
+                                This was one of my favorite races that I did last year as a Cat. 5 (minus the part where I got dropped), with the beautiful scenery and quiet roads. This year, we had a larger-than-usual field, with 42 starting. Knowing the course, I made my way up to the front part of the bunch on the first hilly section, not wanting to get caught behind riders if the pace picked up. There weren't any attacks made until the first time up Haskins, a roughly 7-minute climb at 7% gradient. A strong climber in our group got on the front and destroyed the group; only 2 riders were on his wheel. A gap between me and them opened up when riders couldn't follow wheels, but I kept them in sight and was about 10 meters behind them at the crest of the climb. I caught them at the descent, and another 4 or 5 riders were on my wheel. We had a strong breakaway of 12 guys, and Fredy (the Cycle Sport Specialized rider who won the Mt. Hamilton RR in a 2-man break) got the group going with a hard paceline. We had a lead from the bunch, and held it till the finish. On the final Haskins, I was sitting mid-bunch. There was an acceleration on the front, and the rider in front of me overlapped wheels with the rider to his side, and he jerked in front of me, forcing me to grab my breaks. I sprinted around him as soon as I found space, but there were already 6 or 7 guys about 10 meters up the road. Using them as carrots, I rode my own tempo up the climb. While I may have gotten a better result had I been on the right wheel, I was able to confidently ride at my own pace up the final climb, managing to catch up to and pass a few guys, and get on the podium.
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="collapsible-header">Memorial Day Classic (E4)<span class="date right">May 27-29, 2017</span></div>
+                            <div class="collapsible-body">
+                                <p class="header">Prologue (5th)</p>
+                                <p>The course for this opening time trial suited me quite well, with a 7% climb before the finish. It started off on a flat road, which comprised about half of the race, which I predicted to take around 15 minutes. I knew I wouldn't be the strongest rider on the flats, so for the first half, I rode at threshold, saving the anaerobic gas for the climb ahead. The final 7-minute ascent was the perfect length allowing me to give it all I had; I wasn't focused on my numbers as much, and just road as hard as I could. At about a minute from the line, I caught my 30-second-man, giving me the extra motivation to push even harder. I crossed the line in 5th, just under two seconds behind 4th. I was very happy with my result, considering there were a lot of strong guys in the field who upgraded to Cat. 3 following the race.</p>
+
+                                <p class="header">Mt. Hamilton Road Race (9th)</p>
+                                <p>After talking to a few of my friends a few days before the race, I knew that if I could make it over the climb in the first group, then I would be in good position for the finish. A very strong climber (he won yesterday by nearly a 30s margin) set a high pace from mile 1. I made it a priority to stay focused and just hold the wheel in front of me. Cresting the first of three climbs on Mt. Hamilton, the field shredded from 25 to around 15. On the second climb, another 5 or 6 were dropped off the back. After over an hour of climbing, the observatory was finally approaching. Nobody in the group made an effort to attack for the KOM, rather it was just a group acceleration after exchanging looks, which quickly turned into riders sprinting for the line. I made it over 4th, missing the 3rd place points by about 6 inches. Our group sat up after cresting the climb, and two riders got off the front. Nobody made much of an effort to chase them down, and they managed to stay ahead of our 10-man chasing group by a minute or two at the finish. As I am not a strong sprinter, I tried to get my positioning correct coming toward the line. I was second wheel at around 500 to go, and after opening my sprint, five or six guys barreled around me. Oh well; lesson learned.</p>
+
+                                <p class="header">Time Trial (15th)</p>
+                                <p>One word: windy. The out-and-back nature of the course made for rather interesting conditions that I've never experienced in a race. The downhill sector, though only at around 3%, was paired with a strong tailwind, resulting in speeds in excess of 45 mph. At the turn around cone, I was immediately hit with the wind that propelled me downhill, and my climbing speeds ranged from between 10-15 mph (despite it being a 3% gradient). I wasn't feeling as great as I was on the prologue, but I managed 15th. I'm confident that I would have gotten a better result had I been feeling better. Jonas, one of my teammates, placed 3rd, which is an amazing result considering the savage conditions and strong competition.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="karate" class="section section-border border-green">
+                <h2>Karate</h2>
+                <p>Like most kids, exploring a variety of sports was part of my childhood. I began karate when I was in the first grade, and it was the sport that stuck with me. I train at <a href="https://taylorshouseofkarate.com" target="blank">Taylor's House of Karate</a> in San Rafael, California, with an amazing and diverse group of dedicated professionals. They have been the ultimate role models for me, exuding both dedication and perseverance. I obtained my skunk belt (the belt before a black belt) the summer before I started high school. The following year required a lot of dedication with both personal training and teaching the lower belt students 14-18 hours per week for a full year.</p>
+
+                <p>The day after completing my freshman year in high school, I earned a first degree black belt after a memorably grueling 4-hour test. This was a physical and mental milestone for me, and opened the doors to expanding my teaching role at the school and giving back to the family and community who supported me in reaching this level. The cardio conditioning that cycling added was instrumental in my success.</p>
+            </div>
+
+            <div id="school" class="section section-border border-darkblue">
+                <h2>School</h2>
+                <h3>Number Theory</h3>
+                <p>Check out my <a href="../school/numtheory">website I made for an elementary number theory</a> course I'm taking this year.</p>
+
+                <!-- <br> -->
+
+                <h3>History, Culture, & Identity</h3>
+                <p>Interested in artificial intelligence, sci-fi movies, and human society/culture? <a href="../school/hci-ai">Learn more about the implications of AI in society.</a></p>
+
+                <!-- <br> -->
+
+                <h3>Tutor</h3>
+                <p>Are you a high school student looking for a math, science, or computer science tutor to help you excel in your coursework and cultivate your passion for learning? I'd love to help you out. <a href="mailto:chase@chaseking.me?Subject=Tutor">Send me an email</a> and I will be in touch shortly.</p>
+            </div>
+
+            <div id="photos" class="section section-border border-yellow">
+                <h2>Photos</h2>
+
+                <!-- http://materializecss.com/media.html -->
+                <div class="slider">
+                    <ul class="slides">
+                        <li><img src="../img/teamswift.jpg"></li>
+                        <li><img src="../img/lkhc-mines.jpg"></li>
+                        <li><img src="../img/lkhc-tunitas.jpg"></li>
+                        <li><img src="../img/karate-board.jpg"></li>
+                        <li><img src="../img/karate-fighting.jpg"></li>
+                        <li><img src="../img/tamhc2015.jpg"></li>
+                        <li><img src="../img/karate-kyle.jpg"></li>
+                        <li><img src="../img/karate-youngandold.jpg"></li>
+                        <li><img src="../img/downieville.jpg"></li>
+                        <li><img src="../img/lkhc-tunitas-2.jpg"></li>
+                    </ul>
+                </div>
+
+                <script>
+                $(document).ready(function () {
+                   $('.slider').slider({
+                       full_width: true,
+                       height: 550
+                   });
+                });
+                </script>
+
+                <!-- <div class="grid" data-masonry='{ "columnWidth": 400, "itemSelector": ".grid-item" }'>
+                    <div class="grid-item"><img src="../img/teamswift.jpg"></div>
+                    <div class="grid-item"><img src="../img/lkhc-mines.jpg"></div>
+                    <div class="grid-item"><img src="../img/lkhc-tunitas.jpg"></div>
+                </div> -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="page-footer blue darken-2">
+        <div class="container">
+            <div class="row">
+                <!-- <div class="col l6 s12">
+                    <h5 class="white-text">Footer Content</h5>
+                    <p class="grey-text text-lighten-4">Some content goes here.</p>
+                </div> -->
+
+                <!-- <div class="col l4 offset-l2 s12"> -->
+                <div id="links" class="col s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="img/resume.pdf" target="blank"><i class="fa fa-fw fa-file-text-o"></i> View R&eacute;sum&eacute;</a></li>
+                        <li><a class="grey-text text-lighten-3" href="mailto:chase@chaseking.me"><i class="fa fa-fw fa-envelope-o"></i> Email</a></li>
+                        <li><a class="grey-text text-lighten-3" href="http://instagram.com/chase.king" target="blank"><i class="fa fa-fw fa-instagram"></i> Instagram <small>@chase.king</small></a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://twitter.com/chaseking22" target="blank"><i class="fa fa-fw fa-twitter"></i> Twitter <small>@chaseking22</small></a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://github.com/chaseking" target="blank"><i class="fa fa-github"></i> GitHub <small>@chaseking</small></a></li>
+                        <li><a class="grey-text text-lighten-3" href="https://www.strava.com/athletes/chaseking" target="blank"><i class="fa fa-fw fa-bicycle"></i> Strava</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-copyright indigo darken-3">
+            <div class="container">
+                &copy; 2017 Chase King
+                <a class="grey-text text-lighten-4 right" href="#!">Last Updated: November 2017</a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="smoothscrolling.js"></script>
+</body>
+</html>

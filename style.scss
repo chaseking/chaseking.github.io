@@ -1,0 +1,918 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif|Montserrat|Source+Sans+Pro');
+
+$fontHeader: "Futura";
+$fontParagraph: "Noto Serif", "Source Sans Pro", sans-serif;
+$fontTitle: "Montserrat", sans-serif;
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: $fontParagraph;
+}
+
+@keyframes slide-in {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    20% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes slide-out {
+    0% {
+        opacity: 1;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}
+
+[data-page] {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.page {
+    // min-height: 100vh;
+    // width: 90%;
+    margin: 0 auto; //Center;
+    // flex-direction: row;
+    // flex-wrap: wrap;
+    position: relative;
+    opacity: 0;
+    border-top: 4px solid black;
+
+    &:first-of-type {
+        margin-top: 65px;
+    }
+
+    @media (min-width: 768px){
+        border-left: 4px solid black; //Left border for non-mobile users
+        border-top: none;
+        margin-left: 30px;
+        margin-bottom: 40px;
+    }
+
+    .animate-letters .letter {
+        // transition: all 1s;
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(-100px);
+        animation-name: slide-out;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+
+        @for $i from 1 through 30 {
+            &:nth-child(#{$i}) {
+                animation-delay: #{250ms + $i * 100ms};
+            }
+        }
+    }
+
+    &.active {
+        opacity: 1;
+
+        .animate-letters .letter {
+            animation-name: slide-in;
+        }
+    }
+
+    .col {
+        position: relative;
+
+        @for $i from 1 through 20 {
+            &.span-#{$i*5} {
+                width: $i * 5%;
+            }
+        }
+    }
+}
+
+.background-image {
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.panel-content {
+    padding: 20px;
+}
+
+.panel-content-small {
+    padding: 5px 10px;
+}
+
+@media screen and (min-width: 512px){
+    .panel-content {
+        padding: 40px;
+        padding-bottom: 20px;
+    }
+
+    .panel-content-small {
+        padding: 10px 20px;
+    }
+}
+
+@media (min-width: 768px){
+    .panel-content {
+        padding: 0 60px 20px;
+    }
+
+    .panel-content-small {
+        padding: 30px 40px;
+    }
+}
+
+.flex-fill {
+    display: flex;
+    width: 100%;
+    height: 100%;
+
+    &.vertical-grid {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    &.horizontal-grid {
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+    &.stretch {
+        align-items: stretch;
+        align-content: stretch;
+    }
+}
+
+#about {
+    .i-am {
+        font-family: Menlo, Roboto Mono, Courier New, monospace;
+        font-weight: bold;
+        border-radius: 5px;
+        color: black;
+        font-size: 20px;
+        text-align: left;
+
+        &::after {
+            height: 100%;
+            content: "_";
+            display: inline;
+            animation-name: cursor-blink;
+            animation-duration: 1s;
+            animation-timing-function: steps(1, end);
+            animation-fill-mode: both;
+            animation-iteration-count: infinite;
+
+            @keyframes cursor-blink {
+                0% {
+                    opacity: 0;
+                }
+
+                50% {
+                    opacity: 1;
+                }
+
+                100% {
+                    opacity: 0;
+                }
+            }
+        }
+    }
+
+    .about-me-images {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        margin: 0 auto; //Center it
+
+        .avatar {
+            flex: 1;
+            margin: 10px;
+            max-width: 240px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                border-radius: 5px;
+            	border: 2px solid black;
+                box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+            }
+        }
+    }
+
+    @media screen and (min-width: 512px){
+
+    }
+
+    @media (min-width: 768px){
+        .i-am {
+            font-size: 24px;
+        }
+
+        .about-me-images {
+            max-width: 1000px; //Just so it doesn't look wonky at large screen widths
+
+            .avatar {
+                margin: 5px 20px;
+            }
+        }
+    }
+}
+
+#cycling {
+    .strava-feed {
+        height: 330px;
+        width: 280px;
+        border-radius: 5px;
+        border-color: black;
+        border-width: 3px;
+    }
+
+    #strava-feed-block {
+        margin: 10px;
+    }
+
+    #strava-feed-inline {
+        display: none;
+        float: right;
+        margin: 5px 30px;
+    }
+
+    @media screen and (min-width: 768px){
+        #strava-feed-block {
+            display: none;
+            float: right;
+            // display: inline-block;
+        }
+
+        #strava-feed-inline {
+            display: block;
+        }
+    }
+}
+
+#school {
+
+}
+
+#karate {
+    // display: flex;
+    // flex-direction: column;
+
+    @media screen and (min-width: 950px){
+        // flex-direction: row;
+    }
+}
+
+#photos {
+    .grid {
+        max-height: 100vh;
+        overflow-y: scroll;
+        background: lighten(black, 10%);
+    }
+}
+
+footer {
+    width: 100%;
+    color: white;
+    font-size: 14px;
+
+    a {
+        color: white;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .links {
+        padding: 20px 10%;
+
+        h3 {
+            font-size: 16px;
+            margin-bottom: 0.8em;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                margin-bottom: 0.2em;
+            }
+        }
+    }
+
+    .links {
+        background: rgb(34, 120, 207); //Light(ish) blue
+    }
+
+    .copyright {
+        background: rgb(41, 56, 145); //Dark blue
+        display: flex;
+        justify-content: space-between; //On either end
+        align-items: center;
+        padding: 10px 10%;
+
+        p {
+            margin: 0;
+        }
+    }
+
+    @media screen and (min-width: 768px){
+        font-size: 16px;
+
+        .links {
+            font-size: 18px;
+
+            h3 {
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+.offset-content-grid {
+    display: flex;
+    flex-direction: column;
+    $margin: 20px;
+    $offsetMobile: 10px;
+    $offsetDesktop: 0;
+
+    div {
+        padding: 10px 20px;
+        box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.2);
+
+        p {
+            text-align: left;
+        }
+
+        &:nth-child(odd){
+            margin: $margin #{-$offsetMobile} $margin $offsetMobile;
+        }
+
+        &:nth-child(even) {
+            margin: $margin $offsetMobile $margin #{-$offsetMobile};
+        }
+
+        &:nth-child(3n){
+            background: #CCDDF0;
+        }
+
+        &:nth-child(3n + 1){
+            background: #FCE5CF;
+        }
+
+        &:nth-child(3n + 2){
+            background: #E0F3CA;
+        }
+    }
+
+    @media screen and (min-width: 900px) {
+        flex-direction: row;
+
+        div {
+            &:nth-child(odd) {
+                margin: $margin;
+
+                &:first-child{
+                    margin-left: 0;
+                }
+            }
+
+            &:nth-child(even) {
+                margin: $margin $offsetDesktop $margin -$offsetDesktop;
+            }
+        }
+    }
+}
+
+.overflow-box {
+    // position: absolute;
+    // left: 40%;
+    // right: 20%;
+    margin-left: -40px;
+    // bottom: 0;
+    margin-top: -40px;
+    background: black;
+    color: white;
+    padding: 20px 40px;
+    // flex: 2;
+}
+
+.bg-tan {
+    background: #FCE5CF;
+}
+
+.small-line {
+    width: 60px;
+    height: 3px;
+    background: black;
+}
+
+.title-tagline {
+    font-family: $fontTitle;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5, {
+    margin: 0.25em 0;
+    font-family: $fontHeader;
+    line-height: 1.25em;
+}
+
+h3 {
+    @extend .title-tagline;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+a {
+    color: #2980b9;
+    text-decoration: none;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    z-index: 1;
+
+    .header-container {
+        margin: 10px 30px 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 18px;
+        text-transform: uppercase;
+        font-weight: bold;
+        white-space: nowrap; //Keep on one line
+        color: black;
+        border-bottom: 3px solid black;
+        transition: border-bottom-color 1000ms;
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        span {
+            font-weight: normal;
+        }
+    }
+
+    nav {
+        color: white;
+        background: tomato; //rgb(50, 72, 87);
+        display: none;
+        opacity: 0;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        text-align: center;
+        transition: all 250ms;
+
+        .nav-active-slider {
+            display: none;
+        }
+
+        &.active {
+            display: block;
+            opacity: 1;
+
+            + .nav-toggle {
+                .hamburger::before {
+                    transform: rotate(-225deg);
+                }
+
+                .hamburger {
+                    background: transparent;
+                }
+
+                .hamburger::after {
+                    transform: translateY(-3px) rotate(225deg); //Move up because we got rid of the middle bar
+                }
+            }
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+
+            li {
+                a {
+                    text-decoration: none;
+                    color: white;
+                    transition: all 250ms ease-in-out;
+                    display: block;
+                    padding: 1em 5em;
+
+                    &:hover {
+                        background: darken(tomato, 5%);
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (min-width: 768px){
+        // background: transparent;
+        border-bottom-right-radius: 20px; //Make it a little smoother...
+        right: auto;
+
+        .header-container {
+            flex-direction: row;
+            justify-content: flex-start;
+        }
+
+        h1 {
+            border-bottom: none;
+        }
+
+        nav {
+            position: relative;
+            display: block;
+            opacity: 1;
+            background: transparent;
+            text-align: left;
+            margin-left: 2em;
+
+            .nav-active-slider {
+                position: absolute;
+                display: block;
+                top: -5px;
+                left: 0;
+                height: 3px;
+                background-color: #2980b9;
+                width: 50px;
+                transition: all 250ms;
+            }
+
+            ul li { //Need the same specificity for the inline elements to work
+                display: inline-block;
+                padding-left: 2.5em;
+
+                &:first-child {
+                    padding-left: 0;
+                }
+
+                a {
+                    color: black;
+                    position: relative;
+                    padding: 0;
+                    display: inline-block;
+                    background: transparent;
+
+                    &::before {
+                        position: absolute;
+                        content: "";
+                        width: 0;
+                        height: 3px;
+                        margin: 0 auto;
+                        // background-color: black;
+                        transition: all 250ms ease-in-out;
+                        top: -5px;
+                        left: 0; //Keep it in
+                        right: 0; //the center
+                    }
+
+                    &:hover {
+                        background: transparent;
+
+                        &::before {
+                            width: 100%;
+                            background-color: black;
+                        }
+                    }
+                }
+            }
+        }
+
+        .nav-toggle {
+            display: none;
+        }
+    }
+
+    .nav-toggle {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        padding: 1em;
+        cursor: pointer;
+
+        .hamburger,
+        .hamburger::before,
+        .hamburger::after {
+            content: "";
+            display: block;
+            height: 3px;
+            width: 1.75em;
+            border-radius: 3px;
+            background: black;
+            transition: all ease-in-out 300ms;
+        }
+
+        .hamburger::before {
+            // background: red;
+            transform: translateY(-6px); //Otherwise it would be right on top of the center bar
+        }
+
+        .hamburger::after {
+            // background: blue;
+            transform: translateY(3px); //Otherwise it would be right below the center bar
+        }
+
+        &.active {
+            // .hamburger::before {
+            //     transform: rotate(-225deg);
+            // }
+            //
+            // .hamburger {
+            //     background: transparent;
+            // }
+            //
+            // .hamburger::after {
+            //     transform: translateY(-3px) rotate(225deg); //Move up because we got rid of the middle bar
+            // }
+        }
+    }
+}
+
+@media screen and (min-width: 700px){
+    .mobile-alert {
+        display: none;
+    }
+}
+
+.circle-icon-button {
+    font-size: 20px;
+    padding: 0.5em;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    color: black;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: center;
+    transition: 250ms;
+    margin-left: 0.15em;
+
+    &:hover {
+        padding: 0.65em;
+        margin-left: 0;
+    }
+}
+
+#next-page {
+    position: fixed;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+    display: none; //TODO
+
+    span {
+        @extend .circle-icon-button;
+        display: inline-block;
+        animation-name: pulse;
+        animation-duration: 500ms;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        animation-timing-function: ease-in-out;
+    }
+
+    &:hover {
+        span {
+            animation: none;
+        }
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(0.95);
+        }
+
+        100% {
+            transform: scale(1.05);
+        }
+    }
+}
+
+p {
+    font-family: $fontParagraph;
+    font-size: 13px;
+    line-height: 1.5em;
+    letter-spacing: 0.025em;
+    text-align: justify;
+}
+
+.big-text {
+    font-size: 42px;
+}
+
+@media screen and (min-width: 512px) {
+    p {
+        font-size: 14px;
+    }
+
+    .big-text {
+        font-size: 46px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    p {
+        font-size: 16px;
+    }
+
+    .big-text {
+        font-size: 52px;
+    }
+}
+
+.text-center {
+    text-align: center;
+}
+
+.slide-toggle {
+    margin-top: 20px;
+
+    a {
+        color: black;
+        font-size: 16px;
+        padding: 0.75em;
+        border: 1px solid rgba(black, 0.3);
+        border-radius: 50%;
+        text-decoration: none;
+        transition: all 300ms ease-in-out;
+
+        &:hover {
+            color: #d35400;
+            border-color: #d35400;
+        }
+    }
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.mobile-alert {
+    padding: 30px;
+    font-size: 14px;
+    background: darken(#3498db, 20%);
+    color: white;
+}
+
+.grid {
+    .grid-sizer,
+    .grid-item {
+        width: 33.333%;
+    }
+
+    .grid-item {
+        float: left;
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        &.span-2 {
+            width: 66.666%;
+        }
+    }
+}
+
+.border-red {
+	border-color: #c0392b;
+}
+
+.border-orange {
+    border-color: #e67e22;
+}
+
+.border-yellow {
+	border-color: #f39c12;
+}
+
+.border-green {
+	border-color: #1e8c4d;
+}
+
+.border-aqua {
+	border-color: #2980b9;
+}
+
+.border-darkblue {
+    border-color: #1B3F8B;
+}
+
+.border-purple {
+	border-color: #8e44ad;
+}
+
+
+
+//TOOLTIPS
+//https://codepen.io/cbracco/pen/qzukg?editors=1100
+
+/* Add this attribute to the element that needs a tooltip */
+[data-tooltip] {
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+}
+
+/* Hide the tooltip content by default */
+[data-tooltip]:before,
+[data-tooltip]:after {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 500ms ease-in-out;
+}
+
+$tooltipWidth: 100px;
+
+/* Position tooltip above the element */
+[data-tooltip]:before {
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    margin-bottom: 5px;
+    margin-left: -$tooltipWidth / 2;
+    padding: 7px;
+    width: $tooltipWidth;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background-color: #000;
+    background-color: hsla(0, 0%, 20%, 0.9);
+    color: #fff;
+    content: attr(data-tooltip);
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+/* Triangle hack to make tooltip look like a speech bubble */
+[data-tooltip]:after {
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    margin-left: -5px;
+    width: 0;
+    border-top: 5px solid #000;
+    border-top: 5px solid hsla(0, 0%, 20%, 0.9);
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    content: " ";
+    font-size: 0;
+    line-height: 0;
+}
+
+/* Show tooltip content on hover */
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+    visibility: visible;
+    opacity: 1;
+}
