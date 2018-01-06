@@ -15,7 +15,8 @@
     <script type="text/javascript" src="main.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.1/masonry.pkgd.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
 
     <!-- ZoomJS (https://github.com/fat/zoom.js/) -->
     <link rel="stylesheet" type="text/css" href="zoom.css">
@@ -272,8 +273,7 @@
         <div class="panel-content">
             <h1 class="big-text span-letters animate-letters">photos</h1>
 
-            <div class="grid">
-                <!-- data-masonry='{ "itemSelector": ".grid-item", "percentPosition": false, "columnWidth": ".grid-sizer" }' -->
+            <div class="grid" data-masonry='{ "itemSelector": ".grid-item", "percentPosition": false, "columnWidth": ".grid-sizer" }' -->
                 <div class="grid-sizer"></div>
                 <div class="grid-item span-2"><img src="img/teamswift.jpg" alt="Team Swift 2017" data-action="zoom"></div>
                 <div class="grid-item"><img src="img/prof2.jpg" alt="Karate Kyle"></div>
@@ -289,14 +289,6 @@
                 <div class="grid-item"><img src="img/lkhc-tunitas-2.jpg" alt="LKHC Tunitas Creek (2)" data-action="zoom"></div>
                 <!-- <div class="grid-item"><img src="img/.jpg" alt=""></div> -->
             </div>
-
-            <script type="text/javascript">
-            $("#photos .grid").masonry({
-                itemSelector: ".grid-item",
-                percentPosition: false,
-                columnWidth: ".grid-sizer"
-            });
-            </script>
         </div>
     </section>
 

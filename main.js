@@ -57,6 +57,15 @@ $(function(){
 
     $(document).scroll(onScroll);
     onScroll();
+
+    //Masonry imagesLoaded
+    $("[data-masonry]").each(function(){
+        let grid = $(this);
+
+        grid.imagesLoaded().progress(function(){
+            grid.masonry();
+        });
+    });
 });
 
 function toggleNav(elem){

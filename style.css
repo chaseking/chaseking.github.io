@@ -830,7 +830,7 @@ p {
 }
 
 .big-text {
-    font-size: 42px;
+    font-size: 32px;
 }
 
 @media screen and (min-width: 512px) {
@@ -838,7 +838,7 @@ p {
         font-size: 14px;
     }
     .big-text {
-        font-size: 46px;
+        font-size: 40px;
     }
 }
 
