@@ -58,7 +58,7 @@
         </div>
     </header>
 
-    <div id="header-placeholder"></div>
+    <!-- <div id="header-placeholder"></div> -->
 
     <div id="next-page">
         <span><i class="fas fa-fw fa-chevron-down"></i></span>
@@ -272,7 +272,8 @@
         <div class="panel-content">
             <h1 class="big-text span-letters animate-letters">photos</h1>
 
-            <div class="grid" data-masonry='{ "itemSelector": ".grid-item", "percentPosition": false, "columnWidth": ".grid-sizer" }'>
+            <div class="grid">
+                <!-- data-masonry='{ "itemSelector": ".grid-item", "percentPosition": false, "columnWidth": ".grid-sizer" }' -->
                 <div class="grid-sizer"></div>
                 <div class="grid-item span-2"><img src="img/teamswift.jpg" alt="Team Swift 2017" data-action="zoom"></div>
                 <div class="grid-item"><img src="img/prof2.jpg" alt="Karate Kyle"></div>
@@ -288,6 +289,14 @@
                 <div class="grid-item"><img src="img/lkhc-tunitas-2.jpg" alt="LKHC Tunitas Creek (2)" data-action="zoom"></div>
                 <!-- <div class="grid-item"><img src="img/.jpg" alt=""></div> -->
             </div>
+
+            <script type="text/javascript">
+            $("#photos .grid").masonry({
+                itemSelector: ".grid-item",
+                percentPosition: false,
+                columnWidth: ".grid-sizer"
+            });
+            </script>
         </div>
     </section>
 

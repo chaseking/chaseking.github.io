@@ -12,9 +12,6 @@ $(function(){
       }
     });
 
-    // pages.eq(0).css("marginTop", $("header").height() + "px");
-    // $("#header-placeholder").height($("header").height());
-
     $("[data-page]").click(function(event){
         event.preventDefault();
 
@@ -28,11 +25,6 @@ $(function(){
         //Close the nav menu
         $("nav").removeClass("active");
     });
-
-    setTimeout(function(){
-        // $("#karate").addClass("active");
-        $(".page").addClass("active");
-    }, 100);
 
     var slider = $(".nav-active-slider");
 

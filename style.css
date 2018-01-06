@@ -41,7 +41,6 @@ body {
 .page {
     margin: 0 auto;
     position: relative;
-    opacity: 0;
     border-top: 4px solid black;
 }
 
@@ -62,7 +61,7 @@ body {
     display: inline-block;
     opacity: 0;
     transform: translateY(-100px);
-    animation-name: slide-out;
+    animation-name: slide-in;
     animation-duration: 1s;
     animation-fill-mode: forwards;
 }
@@ -185,14 +184,6 @@ body {
 
 .page .animate-letters .letter:nth-child(30) {
     animation-delay: 3250ms;
-}
-
-.page.active {
-    opacity: 1;
-}
-
-.page.active .animate-letters .letter {
-    animation-name: slide-in;
 }
 
 .page .col {

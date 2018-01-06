@@ -56,7 +56,7 @@ body {
     // flex-direction: row;
     // flex-wrap: wrap;
     position: relative;
-    opacity: 0;
+    // opacity: 0;
     border-top: 4px solid black;
 
     &:first-of-type {
@@ -75,7 +75,8 @@ body {
         display: inline-block;
         opacity: 0;
         transform: translateY(-100px);
-        animation-name: slide-out;
+        animation-name: slide-in;
+        // animation-name: slide-out;
         animation-duration: 1s;
         animation-fill-mode: forwards;
 
@@ -83,14 +84,6 @@ body {
             &:nth-child(#{$i}) {
                 animation-delay: #{250ms + $i * 100ms};
             }
-        }
-    }
-
-    &.active {
-        opacity: 1;
-
-        .animate-letters .letter {
-            animation-name: slide-in;
         }
     }
 
