@@ -67,7 +67,7 @@ $(function(){
         });
 
         //Make all images zoomable
-        grid.find("img").data("action", "zoom");
+        grid.find("img").attr("data-action", "zoom");
     });
 });
 
