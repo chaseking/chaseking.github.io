@@ -65,6 +65,9 @@ $(function(){
         grid.imagesLoaded().progress(function(){
             grid.masonry();
         });
+
+        //Make all images zoomable
+        grid.find("img").data("action", "zoom");
     });
 });
 
