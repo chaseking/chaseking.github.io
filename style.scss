@@ -234,8 +234,9 @@ body {
 
 #cycling {
     .strava-feed {
-        max-height: 330px;
-        max-width: 280px;
+        height: 330px;
+        width: 220px;
+        max-width: 100%;
         border-radius: 5px;
         border-color: black;
         border-width: 3px;
@@ -252,6 +253,10 @@ body {
     }
 
     @media screen and (min-width: 768px){
+        .strava-feed {
+            width: 280px;
+        }
+
         #strava-feed-block {
             display: none;
             float: right;
@@ -299,7 +304,7 @@ footer {
     }
 
     .links {
-        padding: 20px 10%;
+        padding: 20px 5%;
 
         h3 {
             font-size: 16px;
@@ -326,7 +331,7 @@ footer {
         display: flex;
         justify-content: space-between; //On either end
         align-items: center;
-        padding: 10px 10%;
+        padding: 10px 5%;
 
         p {
             margin: 0;
@@ -338,10 +343,15 @@ footer {
 
         .links {
             font-size: 18px;
+            padding: 20px 10%;
 
             h3 {
                 font-size: 20px;
             }
+        }
+
+        .copyright {
+            padding: 10px 10%;
         }
     }
 }
