@@ -393,8 +393,8 @@ body {
 }
 
 #cycling .strava-feed {
-    height: 330px;
-    width: 280px;
+    max-height: 330px;
+    max-width: 280px;
     border-radius: 5px;
     border-color: black;
     border-width: 3px;
