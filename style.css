@@ -53,6 +53,7 @@ body {
         border-left: 4px solid black;
         border-top: none;
         margin-left: 30px;
+        margin-right: 30px;
         margin-bottom: 40px;
     }
 }
