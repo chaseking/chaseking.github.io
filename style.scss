@@ -356,16 +356,16 @@ footer {
     }
 }
 
-.offset-content-grid {
+.boxed-content-grid {
     display: flex;
     flex-direction: column;
     $margin: 20px;
-    $offsetMobile: 10px;
+    $offsetMobile: 0;//10px;
     $offsetDesktop: 0;
 
     div {
         padding: 10px 20px;
-        box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.2);
+        box-shadow: 8px 4px 4px rgba(0, 0, 0, 0.2);
 
         p {
             text-align: left;
