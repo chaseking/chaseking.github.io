@@ -486,7 +486,7 @@ header {
         font-weight: bold;
         white-space: nowrap; //Keep on one line
         color: black;
-        border-bottom: 3px solid black;
+        border-bottom: 4px solid black;
         transition: border-bottom-color 1000ms;
 
         a {
@@ -581,7 +581,7 @@ header {
                 display: block;
                 top: -5px;
                 left: 0;
-                height: 3px;
+                height: 4px;
                 background-color: #2980b9;
                 width: 50px;
                 transition: all 250ms;
@@ -606,7 +606,7 @@ header {
                         position: absolute;
                         content: "";
                         width: 0;
-                        height: 3px;
+                        height: 4px;
                         margin: 0 auto;
                         // background-color: black;
                         transition: all 250ms ease-in-out;
