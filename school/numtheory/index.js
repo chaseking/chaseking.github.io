@@ -195,6 +195,14 @@ $("#gcd_calculate").click(function(event){
     }
 });
 
+//https://www.desmos.com/api/v1.0/docs/index.html
+var triangleAreaDesmosCalculator = Desmos.GraphingCalculator(document.getElementById("triangle_area_graph"), {
+    keypad: false,
+    expressions: false,
+    settingsMenu: false,
+    expressionsTopbar: false
+});
+
 $("#triangle_area_graphupdate").click(function(e){
     var points = [
         [ getIntegerInput($("#triangle_area_x1")), getIntegerInput($("#triangle_area_y1")) ],
@@ -207,35 +215,40 @@ $("#triangle_area_graphupdate").click(function(e){
     var minY = Math.min(points[0][1], Math.min(points[1][1], points[2][1]));
     var maxY = Math.max(points[0][1], Math.max(points[1][1], points[2][1]));
 
-    var plotData = [
-        //The original triangle
-        {
-            fnType: "points",
-            graphType: "polyline",
-            // closed: true,
-            color: "blue",
-            points: [
-                [points[0][0], points[0][1]],
-                [points[1][0], points[1][1]],
-                [points[2][0], points[2][1]],
-                [points[0][0], points[0][1]] //Reconnect it to the beginning
-            ]
-        },
+    function drawPolygon(id, points, color, style){
+        for(let i = 0; i < points.length; i++){
+            let point1 = points[i];
+            let point2 = points[i == points.length - 1 ? 0 : i + 1];
+            let latex;
 
-        //The square surrounding the triangle
-        {
-            fnType: "points",
-            graphType: "polyline",
-            color: "black",
-            points: [
-                [minX, minY],
-                [minX, maxY],
-                [maxX, maxY],
-                [maxX, minY],
-                [minX, minY],
-            ]
+            if(point1[0] == point2[0]){
+                //Vertical line
+                latex = "x = " + point1[0] + " \\left\\{ " + Math.min(point1[1], point2[1]) + " <= y <= " + Math.max(point1[1], point2[1]) + " \\right\\}";
+            } else {
+                let slope = (point2[1] - point1[1]) / (point2[0] - point1[0]);
+
+                latex = "y - " + point1[1] + " = " + slope + " * (x - " + point1[0] + ") \\left\\{" + Math.min(point1[0], point2[0]) + " <= x <= " + Math.max(point1[0], point2[0]) + " \\right\\}";
+            }
+
+            triangleAreaDesmosCalculator.setExpression({
+                id: id + i,
+                latex: latex,
+                color: color,
+                style: style
+            });
         }
-    ];
+    }
+
+    //Draw the original triangle
+    drawPolygon("originalTriangle", points, Desmos.Colors.BLUE, Desmos.Styles.DOTTED);
+
+    //Draw the square surrounding the triangle
+    drawPolygon("originalSquare", [
+        [minX, minY],
+        [minX, maxY],
+        [maxX, maxY],
+        [maxX, minY]
+    ], Desmos.Colors.BLACK, Desmos.Styles.DOTTED);
 
     for(let i = 0; i < points.length; i++){
         let x = points[i][0];
@@ -254,19 +267,8 @@ $("#triangle_area_graphupdate").click(function(e){
                 points[j][1] -= y;
             }
 
-            //Add the translated triangle to the graph
-            plotData.push({
-                fnType: "points",
-                graphType: "polyline",
-                // closed: true,
-                color: "red",
-                points: [
-                    [points[0][0], points[0][1]],
-                    [points[1][0], points[1][1]],
-                    [points[2][0], points[2][1]],
-                    [points[0][0], points[0][1]],
-                ]
-            });
+            //Draw the translated triangle
+            drawPolygon("translatedTriangle", points, Desmos.Colors.RED, Desmos.Styles.SOLID);
 
             //Calculate area
             let a = 0, b = 0, c = 0, d = 0;
@@ -293,14 +295,6 @@ $("#triangle_area_graphupdate").click(function(e){
             }
         }
     }
-
-    //Update the graph
-    functionPlot({
-        target: "#triangle_area_graph",
-        data: plotData,
-        width: 800,
-        height: 500
-    });
 });
 
 //=============================

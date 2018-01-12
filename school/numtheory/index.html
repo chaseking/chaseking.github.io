@@ -22,9 +22,9 @@
     </script>
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-    <script src="https://wzrd.in/standalone/function-plot@1.18.1"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
     <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+    <script src="https://www.desmos.com/api/v1.0/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
 </head>
 
 <body>
@@ -97,11 +97,9 @@
             <div class="divider"></div>
 
             <div id="triangle_area" class="section">
-                <!-- http://www.chartjs.org/docs/latest/charts/scatter.html -->
-                <!-- http://www.chartjs.org/samples/latest/charts/scatter/basic.html -->
                 <h4>Triangle Area</h4>
                 <!-- <p></p> -->
-                <p>The graphing library used is <a href="https://github.com/mauriciopoppe/function-plot">mauriciopoppe/function-plot</a>.</p>
+                <p>Thanks to the <a href="https://www.desmos.com/api/">Desmos API</a> for the graphing library.</p>
 
                 <div class="row">
                     <div class="input-field col s6 m2">
@@ -139,7 +137,7 @@
 
                 <h5 id="triangle_area_value" style="line-height: 1.5em;"></h5>
 
-                <div id="triangle_area_graph"></div>
+                <div id="triangle_area_graph" style="width: 700px; height: 400px;"></div>
             </div>
 
             <div class="divider"></div>
