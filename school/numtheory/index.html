@@ -261,12 +261,43 @@
                     </table>
                 </div>
             </div>
+
+            <div id="num_to_base" class="section">
+                <h4>Number to Base</h4>
+                <p>Convert a number from base 10 to another base.</strong></p>
+
+                <div class="row">
+                    <div class="input-field col s6 m2">
+                        <input type="number" id="num_to_base_num" class="validate" value="144"></input>
+                        <label for="num_to_base_num">Number</label>
+                    </div>
+
+                    <div class="input-field col s6 m2">
+                        <input type="number" id="num_to_base_base" class="validate" value="2"></input>
+                        <label for="num_to_base_base">Base</label>
+                    </div>
+
+                    <a class="btn waves-effect waves-light" id="num_to_base_update">Convert</a>
+                </div>
+
+                <div id="num_to_base_data" style="display: none;">
+                    <!-- <table id="num_to_base_table" class="bordered striped highlight centered">
+                        <thead>
+                            <th>Step</th>
+                            <th>x</th>
+                            <th>y</th>
+                        </thead>
+
+                        <tbody></tbody>
+                    </table> -->
+                </div>
+            </div>
         </div>
     </main>
 
     <footer>
         Made for Number Theory 2017-2018 by <a href="http://chaseking.me" target="blank">Chase King</a>.
-    </div>
+    </footer>
 
     <script type="text/javascript" src="index.js"></script>
 </body>

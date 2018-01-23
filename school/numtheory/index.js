@@ -749,3 +749,53 @@ $("#modular_equations_update").click(function(){
         }
     }
 });
+
+/**
+ * Converts a number to a certain base
+ */
+function numToBase(num, base){
+    let data = {
+        num: num,
+        base: base,
+        steps: [],
+        result: []
+    };
+
+    while(num > 0){
+        let coefficient = Math.floor(num / base);
+        let remainder = num - (base * Math.floor(num / base));
+
+        data.steps.push({
+            num: num,
+            coefficient: coefficient,
+            remainder: remainder
+        });
+
+        data.result.unshift(remainder); //Add remainder to beginning of array (larger power) (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift)
+
+        //"Shift" it
+        num = coefficient;
+    }
+
+    return data;
+}
+
+$("#num_to_base_update").click(function(){
+    let num = getIntegerInput($("#num_to_base_num"));
+    let base = getIntegerInput($("#num_to_base_base"));
+    if(!num || !base) return;
+    let data = numToBase(num, base);
+    let div = $("#num_to_base_data");
+    div.empty();
+    div.show();
+    // let table = $("#num_to_base_table");
+    // table.empty();
+
+    for(let i = 0; i < data.steps.length; i++){
+        let step = data.steps[i];
+
+        div.append("<p>" + step.num + " = " + base + "*" + step.coefficient + " + " + "<span class='highlight'>" + step.remainder + "</span>" + "</p>");
+    }
+
+    div.append("<h5>" + num + " (Base-10) = " + "<span class='highlight'>" + data.result.join("") + "</span>" + " (Base-" + base + ")" + "</h5>");
+});
