@@ -291,6 +291,14 @@ body {
     }
 }
 
+.zoom-overlay-open {
+    #photos .panel-content {
+        .grid {
+            // overflow-y: visible;
+        }
+    }
+}
+
 footer {
     width: 100%;
     color: white;

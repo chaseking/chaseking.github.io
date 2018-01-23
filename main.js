@@ -36,7 +36,7 @@ $(function(){
             let pageTop = page.offset().top;
             let pageHeight = page.height();
 
-            if(pageTop < windowTop + (pageHeight * 0.2)){ //If most of the page is in view
+            if(pageTop < windowTop + (pageHeight * 0.3)){ //If most of the page is in view
                 let pageNavItem = $("nav a[data-page='" + page.attr("id") + "']");
                 let pageColor = page.css("border-color");
 
