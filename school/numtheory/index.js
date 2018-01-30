@@ -791,11 +791,167 @@ $("#num_to_base_update").click(function(){
     // let table = $("#num_to_base_table");
     // table.empty();
 
+    div.append("<h5>" + num + " (Base-10) = " + "<span class='highlight'>" + data.result.join("") + "</span>" + " (Base-" + base + ")" + "</h5>");
+
     for(let i = 0; i < data.steps.length; i++){
         let step = data.steps[i];
 
         div.append("<p>" + step.num + " = " + base + "*" + step.coefficient + " + " + "<span class='highlight'>" + step.remainder + "</span>" + "</p>");
     }
-
-    div.append("<h5>" + num + " (Base-10) = " + "<span class='highlight'>" + data.result.join("") + "</span>" + " (Base-" + base + ")" + "</h5>");
 });
+
+//TODO - Use a math library for pretty printing?
+var modExpNum = $("#modular_exponentiation_num");
+var modExpExp = $("#modular_exponentiation_exponent");
+var modExpMod = $("#modular_exponentiation_modulus");
+
+function modularExponentiationUpdateCalculation(){
+    let num = getIntegerInput(modExpNum);
+    let exp = getIntegerInput(modExpExp);
+    let mod = getIntegerInput(modExpMod);
+
+    if(!num || !exp || !mod){
+        // $("#modular_exponentiation_calculation").text("Invalid input");
+    } else {
+        $("#modular_exponentiation_calculation").html(num + " ^ " + exp + " = ? <em>(mod " + mod + ")</em>");
+    }
+}
+
+modularExponentiationUpdateCalculation();
+modExpNum.on("input", modularExponentiationUpdateCalculation);
+modExpExp.on("input", modularExponentiationUpdateCalculation);
+modExpMod.on("input", modularExponentiationUpdateCalculation);
+
+$("#modular_exponentiation_update").click(function(){
+    let num = getIntegerInput(modExpNum);
+    let exp = getIntegerInput(modExpExp);
+    let mod = getIntegerInput(modExpMod);
+
+    if(!num || !exp || !mod){
+        alert("Please enter valid numbers.");
+        return;
+    }
+
+    var dataDiv = $("#modular_exponentiation_data");
+    dataDiv.empty().show();
+
+    dataDiv.append("<h5>Step 1: Convert to binary (see above)</h5>");
+    let binary = numToBase(exp, 2);
+    let elem = "<p>" + exp + " = " + binary.result.join("") + " base-2 = ";
+
+    for(let i = 0; i < binary.result.length; i++){
+        if(binary.result[i] == 1){
+            elem += Math.pow(2, binary.result.length - 1 - i);
+
+            if(i != binary.result.length - 1){
+                elem += " + ";
+            }
+        }
+    }
+
+    dataDiv.append(elem + "</p>");
+
+    dataDiv.append("<h5>Step 2: Find least residue of powers of " + num + " <em>(mod " + mod + ")</em></h5>");
+
+    elem = "<table class='bordered striped'>\
+    <thead>\
+    <th>k</th>\
+    <th>" + num + "<sup>k</sup> <em>(mod " + mod + ")</em></th>\
+    </thead>\
+    <tbody>";
+
+    let leastResidues = [];
+
+    for(let k = 0; k < binary.result.length; k++){
+        let leastResidue = (leastResidues.length == 0 ? num : Math.pow(leastResidues[leastResidues.length - 1], 2)) % mod;
+        leastResidues.push(leastResidue);
+
+        elem += "<tr>";
+
+        elem += "<td>" + "2<sup>" + k + "</sup> = <span class='highlight bold'>" + Math.pow(2, k) + "</span></td>";
+        elem += "<td><strong>" + num + "<sup>" + Math.pow(2, k) + "</sup></strong> <em>(mod " + mod + ")</em> = ";
+
+        let lastResidue = (k == 0 ? leastResidue : leastResidues[leastResidues.length - 1]);
+
+        if(k == 0){
+            elem += "<span class='highlight bold'>" + leastResidue + "</span>";
+        } else {
+            let lastResidue = leastResidues[leastResidues.length - 2]; //-2 since we already added it
+
+            elem += "<strong>" + lastResidue + "<sup>2</sup></strong> <em>(mod " + mod + ")</em> = " + Math.pow(lastResidue, 2) + " = <span class='highlight bold'>" + leastResidue + "</span>";
+        }
+
+        elem += "</td>";
+        elem += "</tr>";
+    }
+
+    console.log(leastResidues);
+    console.log(elem);
+
+    dataDiv.append(elem + "</tbody></table>");
+
+    dataDiv.append("<h5>Step 3: Calculate least residue</h5>");
+
+    let total = 1;
+    elem = "<p>" + num + "<sup>" + exp + "</sup> <em>(mod " + mod + ") = ";
+
+    for(let i = 0; i < binary.result.length; i++){
+        if(binary.result[i] == 1){
+            elem += num + "<sup>" + Math.pow(2, binary.result.length - 1 - i) + "</sup>";
+
+            if(i != binary.result.length - 1){
+                elem += " * ";
+            }
+        }
+    }
+
+    dataDiv.append(elem + " <em>(mod " + mod + ")</p>");
+    elem = "<p> = ";
+
+    for(let i = 0; i < binary.result.length; i++){
+        let k = binary.result.length - i - 1; //The actual power of 2
+        if(binary.result[i] == 1){
+            console.log("2^" + k + " = " + Math.pow(2, k), leastResidues[k]);
+            total *= leastResidues[k];
+            elem += leastResidues[k];
+
+            if(i != binary.result.length - 1){
+                elem += " * ";
+            }
+        }
+    }
+
+    dataDiv.append(elem + " <em>(mod " + mod + ")</em> = " + total + " <em>(mod " + mod + ")</em> = <span class='highlight bold'>" + (total % mod) + "</span></p>");
+});
+
+function modularExponentiation(number, power, modulo){
+    //Step 1 - Convert to binary
+    let binary = numToBase(power, 2);
+
+    console.log(number + " in binary: " + binary.result.join(""));
+
+    //Step 2 - Table: k | a^k (mod n)
+    let leastResidues = [];
+
+    for(let k = 0; k < binary.result.length; k++){
+        let leastResidue = (leastResidues.length == 0 ? number : Math.pow(leastResidues[leastResidues.length - 1], 2)) % modulo;
+        console.log("2^" + k + " = " + Math.pow(2, k),
+        k == 0 ? leastResidue : leastResidues[leastResidues.length - 1] + "^2 = " + Math.pow(leastResidues[leastResidues.length - 1], 2) + " = " + leastResidue + " (mod " + modulo + ")");
+        leastResidues.push(leastResidue);
+    }
+
+    console.log(leastResidues);
+
+    let total = 1;
+
+    for(let i = 0; i < binary.result.length; i++){
+        let k = binary.result.length - i - 1; //The actual power of 2
+        if(binary.result[i] == 1){
+            console.log("2^" + k + " = " + Math.pow(2, k), leastResidues[k]);
+            total *= leastResidues[k];
+        }
+    }
+
+    console.log(number + "^" + power + " = " + (total % modulo) + " (mod " + modulo + ")");
+    return total % modulo;
+}

@@ -63,6 +63,10 @@ span.highlight {
     background-color: rgba(241, 196, 15, 0.5);
 }
 
+span.bold {
+    font-weight: bold;
+}
+
 #about {
     background: rgba(0, 0, 0, 0.1);
     border-radius: 10px;

@@ -264,7 +264,7 @@
 
             <div id="num_to_base" class="section">
                 <h4>Number to Base</h4>
-                <p>Convert a number from base 10 to another base.</strong></p>
+                <p>Convert a number from base 10 to another base.</p>
 
                 <div class="row">
                     <div class="input-field col s6 m2">
@@ -290,6 +290,36 @@
 
                         <tbody></tbody>
                     </table> -->
+                </div>
+            </div>
+
+            <div id="modular_exponentiation" class="section">
+                <h4>Modular Exponentiation</h4>
+                <p></p>
+
+                <h5 id="modular_exponentiation_calculation"></h5>
+
+                <div class="row">
+                    <div class="input-field col s4 m2">
+                        <input type="number" id="modular_exponentiation_num" class="validate" value="497"></input>
+                        <label for="modular_exponentiation_num">Number</label>
+                    </div>
+
+                    <div class="input-field col s4 m2">
+                        <input type="number" id="modular_exponentiation_exponent" class="validate" value="153"></input>
+                        <label for="modular_exponentiation_exponent">Exponent</label>
+                    </div>
+
+                    <div class="input-field col s4 m2">
+                        <input type="number" id="modular_exponentiation_modulus" class="validate" value="653"></input>
+                        <label for="modular_exponentiation_modulus">Modulus</label>
+                    </div>
+
+                    <a class="btn waves-effect waves-light" id="modular_exponentiation_update">Calculate</a>
+                </div>
+
+                <div id="modular_exponentiation_data" style="display: none;">
+
                 </div>
             </div>
         </div>
