@@ -1,0 +1,328 @@
+$fontHeader: "Futura";
+$fontParagraph: "Avenir", "Source Sans Pro", sans-serif;
+$fontTitle: "Montserrat", sans-serif;
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Source+Sans+Pro');
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    // padding: 0 !important;
+    font-family: $fontParagraph;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5, {
+    font-family: $fontHeader;
+    line-height: 1.25em;
+}
+
+header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 10000;
+    background: #2d3436;
+    color: white;
+
+    .header-container {
+        padding: 5px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 18px;
+        text-transform: uppercase;
+        font-weight: bold;
+        white-space: nowrap; //Keep on one line
+        color: #009432;
+
+        span::before {
+            content: "Marin Academy "; //TODO - Compress to "MA" for mobile?
+            color: white;
+            font-weight: normal;
+        }
+
+        @media screen and (min-width: 600px) {
+            font-size: 20px;
+        }
+    }
+}
+
+.container {
+    margin: 80px auto 0;
+    max-width: 1000px;
+    padding: 0 15px;
+}
+
+section {
+    margin-top: 50px;
+
+    h2 {
+        text-transform: uppercase;
+        // font-weight: normal;
+        border-bottom: 4px solid #3c40c6;
+        margin-bottom: 10px;
+    }
+
+    h3 {
+        padding: 0;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+    }
+
+    p {
+        margin-top: 0;
+    }
+}
+
+#catalog {
+    .outings-boxes {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -15px; //Fill the screen for mobile
+
+        @media screen and (min-width: 600px){
+            margin: 0;
+        }
+
+        .outing-slide {
+            flex: 280px;
+            padding: 16px 25px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 500ms, transform 300ms;
+            color: white;
+            position: relative;
+            background: black; //Dynamically changed with JS
+
+            &:hover {
+                transform: scale(1.05);
+                z-index: 100;
+            }
+
+            .outing-title {
+                margin: 0;
+                font-size: 16px;
+                text-align: center;
+                font-weight: normal;
+                text-transform: uppercase;
+            }
+
+            .outing-leaders {
+                margin: 10px 0 25px;
+                font-weight: normal;
+                font-size: 13px;
+                font-family: $fontTitle;
+                font-style: italic;
+            }
+
+            .outing-date {
+                display: none;
+
+                p {
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+
+            .outing-tags {
+                position: absolute;
+                bottom: 10px;
+
+                .outing-tag {
+                    padding: 0.1em 0.25em;
+                    border-radius: 5px;
+                    background: rgba(black, 0.5);
+                    color: white;
+                    display: inline;
+                }
+            }
+
+            .outing-description {
+                display: none;
+            }
+
+            .outing-info {
+                display: none;
+
+                p {
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+
+            &.expanded {
+                cursor: default;
+                flex: 100%;
+                padding: 10px 20px;
+                border: 15px solid;
+                background: transparent !important;
+                color: black;
+
+                @media screen and (min-width: 600px){
+                    order: -1;
+                }
+
+                &:hover {
+                    transform: none;
+                }
+
+                .outing-title {
+                    font-size: 20px;
+                    text-align: left;
+                }
+
+                .outing-leaders {
+                    font-weight: normal;
+                    font-size: 14px;
+                }
+
+                .outing-date {
+                    display: block;
+                }
+
+                .outing-description {
+                    display: block;
+                }
+
+                .outing-info {
+                    display: block;
+                }
+
+                .outing-tags {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    bottom: auto;
+
+                    .outing-tag {
+                        padding: 0.1em 0.25em;
+                        border-radius: 5px;
+                        background: black;
+                        color: white;
+                        display: inline;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#extra-info {
+    h3:not(:first-of-type)::before {
+        // border-top: 3px solid black;
+        // padding-top: 10px;
+        // width: 50%;
+        width: 50%;
+        content: "";
+        height: 3px;
+        background: black;
+        display: block;
+        border-radius: 5px;
+        margin-bottom: 5px;
+    }
+}
+
+footer {
+    margin-top: 30px;
+    background: #2d3436;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    align-items: center;
+    font-family: $fontTitle;
+    font-size: 12px;
+
+    a {
+        color: inherit;
+    }
+
+    div {
+        &:nth-of-type(2) {
+            text-align: right;
+        }
+    }
+
+    @media screen and (min-width: 600px){
+        font-size: 14px;
+        justify-content: space-around;
+    }
+}
+
+//TOOLTIPS
+//https://codepen.io/cbracco/pen/qzukg?editors=1100
+
+/* Add this attribute to the element that needs a tooltip */
+[data-tooltip] {
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+}
+
+/* Hide the tooltip content by default */
+[data-tooltip]:before,
+[data-tooltip]:after {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    // transition: opacity 500ms ease-in-out;
+}
+
+$tooltipWidth: 100px;
+
+/* Position tooltip above the element */
+[data-tooltip]:before {
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    margin-bottom: 5px;
+    margin-left: -$tooltipWidth / 2;
+    padding: 7px;
+    width: $tooltipWidth;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background-color: #000;
+    background-color: hsla(0, 0%, 20%, 0.9);
+    color: #fff;
+    content: attr(data-tooltip);
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+/* Triangle hack to make tooltip look like a speech bubble */
+[data-tooltip]:after {
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    margin-left: -5px;
+    width: 0;
+    border-top: 5px solid #000;
+    border-top: 5px solid hsla(0, 0%, 20%, 0.9);
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    content: " ";
+    font-size: 0;
+    line-height: 0;
+}
+
+/* Show tooltip content on hover */
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+    visibility: visible;
+    opacity: 1;
+}
