@@ -31,12 +31,24 @@ header {
     background: #2d3436;
     color: white;
 
+    .logo {
+        position: absolute;
+        display: block;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 120px;
+        transition: all 500ms;
+
+        @media screen and (min-width: 600px){
+            height: 160px;
+        }
+    }
+
     .header-container {
         padding: 5px 30px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        position: relative;
         flex-direction: column;
     }
 
@@ -46,21 +58,61 @@ header {
         font-weight: bold;
         white-space: nowrap; //Keep on one line
         color: #009432;
+        margin: 15px auto;
+        margin-top: calc(10px + 120px + 40px); //Space for the header (h1margin + image + imagemargin)
+        transition: all 500ms;
 
-        span::before {
-            content: "Marin Academy "; //TODO - Compress to "MA" for mobile?
+        #header-text-title::before {
+            content: "Marin Academy ";
             color: white;
             font-weight: normal;
         }
 
         @media screen and (min-width: 600px) {
-            font-size: 20px;
+            font-size: 22px;
+        }
+    }
+
+    &.collapsed {
+        .logo {
+            position: absolute;
+            left: 5%;
+            height: 46px;
+            top: calc(50% - 23px);
+        }
+
+        h1 {
+            margin-top: 10px;
+        }
+
+        #header-text-title::before {
+            content: "MA ";
+        }
+
+        @media screen and (min-width: 550px){
+            .logo {
+                height: 58px;
+                top: calc(50% - 29px);
+                left: 5%;
+            }
+        }
+
+        @media screen and (min-width: 600px){
+            #header-text-title::before {
+                content: "Marin Academy ";
+            }
+        }
+
+        @media screen and (min-width: 850px){
+            .logo {
+                left: 10%;
+            }
         }
     }
 }
 
-.container {
-    margin: 80px auto 0;
+main {
+    margin: 0 auto;
     max-width: 1000px;
     padding: 0 15px;
 }
@@ -88,18 +140,29 @@ section {
 
 #catalog {
     .outings-boxes {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0 -15px; //Fill the screen for mobile
+        // display: flex;
+        // flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 10px;
+        // margin: 0 -15px; //Fill the screen for mobile
 
         @media screen and (min-width: 600px){
             margin: 0;
+            grid-template-columns: repeat(2, 1fr);
+            // grid-gap: 10px;
+        }
+
+        @media screen and (min-width: 800px){
+            margin: 0;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
         }
 
         .outing-slide {
-            flex: 280px;
+            // flex: 280px;
             padding: 16px 25px;
-            margin: 5px;
+            // margin: 5px;
             border-radius: 5px;
             cursor: pointer;
             transition: all 500ms, transform 300ms;
@@ -165,7 +228,8 @@ section {
 
             &.expanded {
                 cursor: default;
-                flex: 100%;
+                // flex: 100%;
+                grid-column: 1 / -1;
                 padding: 10px 20px;
                 border: 15px solid;
                 background: transparent !important;

@@ -18,6 +18,7 @@ const BACKGROUND_COLORS = [
 
 $(document).ready(function(){
     var slides = $(".outing-slide");
+    var header = $("header");
 
     slides.each(function(n){
         let slide = $(this);
@@ -36,5 +37,17 @@ $(document).ready(function(){
                 slide.toggleClass("expanded");
             }
         })
+    });
+
+    $("main").css("margin-top", (header.height() + 20) + "px");
+
+    $(window).scroll(function(){
+        let win = $(window);
+
+        if(win.scrollTop() > 0){
+            header.addClass("collapsed");
+        } else {
+            header.removeClass("collapsed");
+        }
     });
 });
