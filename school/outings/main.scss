@@ -90,8 +90,8 @@ header {
     &.collapsed {
         .logo {
             left: 12%;
-            height: 40px;
-            top: calc(50% - 20px);
+            height: 34px;
+            top: calc(50% - 17px);
         }
 
         h1 {
@@ -102,11 +102,11 @@ header {
             content: "MA ";
         }
 
-        @media screen and (min-width: 550px){
-            .logo {
-                left: 12%;
-            }
-        }
+        // @media screen and (min-width: 550px){
+        //     .logo {
+        //         left: 12%;
+        //     }
+        // }
 
         @media screen and (min-width: 600px){
             #header-text-title::before {
