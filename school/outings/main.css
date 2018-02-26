@@ -76,8 +76,8 @@ header h1 #header-text-title::before {
 
 header.collapsed .logo {
     left: 12%;
-    height: 46px;
-    top: calc(50% - 23px);
+    height: 40px;
+    top: calc(50% - 20px);
 }
 
 header.collapsed h1 {
