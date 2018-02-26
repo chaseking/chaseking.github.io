@@ -76,8 +76,8 @@ header h1 #header-text-title::before {
 
 header.collapsed .logo {
     left: 12%;
-    height: 30px;
-    top: calc(50% - 15px);
+    height: 34px;
+    top: calc(50% - 17px);
 }
 
 header.collapsed h1 {
@@ -90,8 +90,8 @@ header.collapsed #header-text-title::before {
 
 @media screen and (min-width: 550px) {
     header.collapsed .logo {
-        height: 36px;
-        top: calc(50% - 18px);
+        height: 40px;
+        top: calc(50% - 20px);
     }
 }
 

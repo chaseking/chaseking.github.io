@@ -90,8 +90,8 @@ header {
     &.collapsed {
         .logo {
             left: 12%;
-            height: 30px;
-            top: calc(50% - 15px);
+            height: 34px;
+            top: calc(50% - 17px);
         }
 
         h1 {
@@ -105,8 +105,8 @@ header {
         @media screen and (min-width: 550px){
             .logo {
                 // left: 12%;
-                height: 36px;
-                top: calc(50% - 18px);
+                height: 40px;
+                top: calc(50% - 20px);
             }
         }
 
