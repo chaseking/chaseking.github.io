@@ -75,9 +75,9 @@ header h1 #header-text-title::before {
 }
 
 header.collapsed .logo {
-    left: 12%;
-    height: 34px;
-    top: calc(50% - 17px);
+    left: 13%;
+    height: 36px;
+    top: calc(50% - 18px);
 }
 
 header.collapsed h1 {
