@@ -679,48 +679,92 @@ function buildVigenereSlider(letterIndex){
 
 
 
-$("#modular_equations_update").click(function(){
-    let value = getIntegerInput($("#modular_equations_value"));
-    let modulus = getIntegerInput($("#modular_equations_modulus"));
+
+
+
+
+
+
+
+
+
+//================================================
+//  LINEAR CONGRUENCES
+var linCongA = $("#linear_congruence_a");
+var linCongB = $("#linear_congruence_b");
+var linCongMod = $("#linear_congruence_modulus");
+
+function linCongUpdateCalculation(){
+    let a = getIntegerInput(linCongA);
+    let b = getIntegerInput(linCongB);
+    let mod = getIntegerInput(linCongMod);
+
+    if(!a || !b || !mod){
+        // $("#linear_congruence_calculation").text("Invalid input");
+    } else {
+        $("#linear_congruence_calculation").html(a + "x = " + b + " <em>(mod " + mod + ")</em>");
+    }
+}
+
+linCongUpdateCalculation();
+linCongA.on("input", linCongUpdateCalculation);
+linCongB.on("input", linCongUpdateCalculation);
+linCongMod.on("input", linCongUpdateCalculation);
+
+$("#linear_congruence_update").click(function(){
+    let a = getIntegerInput(linCongA);
+    let b = getIntegerInput(linCongB);
+    let mod = getIntegerInput(linCongMod);
 
     //Calculuate the GCD
-    var data = gcd(value, modulus);
+    var data = gcd(a, -mod);
 
-    $("#modular_equations_data").show();
-    $("#modular_equations_info").empty().append("<div>"
-        + "The GCD of (" + value + ", " + modulus + ") = " + data.gcd + "<br>"
-        + value + "x = " + data.gcd + " (mod " + modulus + ")" + "<br>"
-        + value + "x - " + data.gcd + " = " + modulus + "y" + "<br>"
-        + value + "x - " + modulus + "y" + " = " + data.gcd + "<br>"
-        + "<em>(Run Euclidean algorithm)</em>" + "<br>"
+    console.log(data);
+
+    $("#linear_congruence_data").show();
+    $("#linear_congruence_info").empty().append("<div>"
+        + "Finding solutions to: " + a + "x = " + b + " (mod " + mod + ")" + "<br>"
+        + a + "x - " + b + " = " + mod + "y" + "<br>"
+        + a + "x - " + mod + "y = " + b + "<br>"
+        + "</div>");
+
+    if(b % data.gcd != 0){
+        alert("There are no solutions since the GCD does not divide into B (" + b + ")!")
+        return;
+    }
+
+    //Scale the solution up
+    data.xSolution *= b / data.gcd;
+    data.ySolution *= b / data.gcd;
+
+    $("#linear_congruence_info").append("<div>"
+        + "The GCD of (a, -mod) = (" + a + ", " + -mod + ") = " + data.gcd + "<br><br>"
+        + "Initial solution: " + "<span class='bold'>" + a + "(" + data.xSolution + ") - " + mod + "(" + data.ySolution + ") = " + b + "</span>" + "<br><br>"
         + "</div>");
 
     var modSolution = data.xSolution;
 
-    if(modSolution < 0) modSolution += modulus;
-    if(modSolution > modulus) modSolution -= modulus;
+    // while(modSolution < 0) modSolution += mod;
+    // while(modSolution > mod) modSolution -= mod;
 
-    $("#modular_equations_info").append("<h5>" + value + "(<span class='highlight'>" + data.xSolution + "</span>) - " + modulus + "(" + (-data.ySolution) + ")" + " = " + data.gcd + "</h5>");
-    $("#modular_equations_info").append("<h5>" + value + "(<span class='highlight'>" + modSolution + "</span>) = " + data.gcd + " (mod " + modulus + ")" + "</h5>");
-
-    var ttable = $("#modular_equations_t_table tbody");
+    var ttable = $("#linear_congruence_t_table tbody");
     ttable.empty();
 
     if(data.gcd == 1){
         //Hide the table
-        $("#modular_equations_t_table").hide();
+        $("#linear_congruence_t_table").hide();
 
         //Only one solution
-        $("#modular_equations_info").append("<div style='font-size: 18px;'>The modular inverse of <strong>" + value + " (mod " + modulus + ") = " + data.xSolution + " = " + "<span class='highlight'>" + modSolution + "</span>" + "</strong></div>")
+        $("#linear_congruence_info").append("<div style='font-size: 18px;'>The modular inverse of <strong>" + a + " (mod " + mod + ") = " + data.xSolution + " = " + "<span class='highlight'>" + modSolution + "</span>" + "</strong></div>")
     } else {
-        $("#modular_equations_info").append("<div style='font-size: 18px;'>\
+        $("#linear_congruence_info").append("<div style='font-size: 18px;'>\
         x = x<sub>0</sub> + (|b| / d)t\
-         = " + data.xSolution + " + (" + Math.abs(modulus) + " / " + data.gcd + ")t\
-         = " + data.xSolution + " + " + (Math.abs(modulus) / data.gcd) + "t\
+         <br> = " + data.xSolution + " + (" + Math.abs(mod) + " / " + data.gcd + ")t\
+         <br> = " + data.xSolution + " + " + (Math.abs(mod) / data.gcd) + "t\
         <br>\
         y = y<sub>0</sub> + (|a| / d)t\
-         = " + data.ySolution + " - (" + Math.abs(value) + " / " + data.gcd + ")t\
-         = " + data.ySolution + " - " + (Math.abs(value) / data.gcd) + "t\
+         <br>    = " + data.ySolution + " - (" + Math.abs(a) + " / " + data.gcd + ")t\
+         <br>    = " + data.ySolution + " - " + (Math.abs(a) / data.gcd) + "t\
          </div>");
 
         for(let t = 0; t < data.gcd; t++){
@@ -729,19 +773,28 @@ $("#modular_equations_update").click(function(){
 
             //X
             tr += "<td>";
-            tr += data.xSolution + " + " + (Math.abs(modulus) / data.gcd) + "(" + t + ")";
-            tr += "<br> = <span class='highlight'>" + (data.xSolution + (Math.abs(modulus) / data.gcd) * t) + "</span>";
+            let solution = data.xSolution + (Math.abs(mod) / data.gcd) * t
+            tr += data.xSolution + " + " + (Math.abs(mod) / data.gcd) + "(" + t + ")";
+            tr += "<br> = <span class=''>" + solution + "</span>";
             tr += "</td>";
 
             //Y
-            tr += "<td>";
-            tr += data.ySolution + " - " + (Math.abs(value) / data.gcd) + "(" + t + ")";
-            tr += "<br> = " + (data.ySolution - (Math.abs(value) / data.gcd) * t);
-            tr += "</td>";
+            // tr += "<td>";
+            // tr += data.ySolution + " - " + (Math.abs(a) / data.gcd) + "(" + t + ")";
+            // tr += "<br> = " + (data.ySolution - (Math.abs(a) / data.gcd) * t);
+            // tr += "</td>";
 
             //Solution
             tr += "<td>";
-            tr += value + "*(" + (data.xSolution + (Math.abs(modulus) / data.gcd) * t) + ") - " + modulus + "*(" + -(data.ySolution - (Math.abs(value) / data.gcd) * t) + ") = " + data.gcd;
+            tr += "= " + solution + " <em>(mod " + mod + ")</em><br>"
+
+            //Wrap within bounds of [0, mod)
+            while(solution < 0) solution += mod;
+            while(solution > mod) solution -= mod;
+
+            tr += "= <span class='highlight bold'>" + solution + "</span>";
+
+            // tr += a + "*(" + (data.xSolution + (Math.abs(mod) / data.gcd) * t) + ") - " + mod + "*(" + -(data.ySolution - (Math.abs(a) / data.gcd) * t) + ") = " + data.gcd;
             tr += "</td>";
 
             tr += "</tr>";
@@ -955,3 +1008,172 @@ function modularExponentiation(number, power, modulo){
     console.log(number + "^" + power + " = " + (total % modulo) + " (mod " + modulo + ")");
     return total % modulo;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+const FIRST_PRIMES = [ 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 ];
+// const FIRST_PRIMES = []
+
+function getPrimes(size, primes){
+    if(!primes) primes = FIRST_PRIMES.slice(0, size); //Clones array
+
+    while(primes.length < size){
+        let num = primes[primes.length - 1];
+
+        for(let i = primes.length; i < size; i++){
+            do {
+                num += 2;
+            } while(!isPrime(num, primes));
+
+            primes.push(num);
+        }
+    }
+
+    return primes;
+}
+
+function getPrimesStopAt(end){
+    let primes = [ 2, 3 ];
+
+    while(primes[primes.length - 1] < end){
+        let prime = primes[primes.length - 1];
+
+        do {
+            prime += 2;
+        } while(!isPrime(prime, primes));
+
+        if(prime <= end) primes.push(prime);
+        else break;
+    }
+
+    return primes;
+}
+
+$("#prime_list_update").click(function(){
+    let resultText = $("#prime_list_result");
+    let primes;
+
+    if($("#prime_list_upto").val()){
+        primes = getPrimesStopAt(parseInt($("#prime_list_upto").val()));
+    } else {
+        primes = getPrimes(Math.max(getIntegerInput($("#prime_list_size")), 0) || 100);
+    }
+
+    resultText.val(primes.join(($("#prime_list_joiner").val() || " ").replace(/\\n/g, "\n"))); //Replace all occurrences of \n
+});
+
+function isPrime(number, prevPrimes){
+    let sqrt = Math.sqrt(number); //Only run once to increase efficiency
+
+    for(let i in prevPrimes){
+        let prime = prevPrimes[i];
+
+        if(prime > sqrt || prime == 0){
+            return true;
+            break;
+        }
+
+        if(number % prime == 0){
+            //Number is composite
+            return false;
+        }
+    }
+
+    //If not all primes were in the list, then assume it is composite
+    return false;
+}
+
+
+
+
+
+
+
+
+function getPrimeFactorization(number, primes){
+    let factorization = [];
+    let i = 0;
+
+    while(number > 1){
+        let prime = primes[i++];
+        let power = 0;
+
+        while(number % prime == 0){
+            number /= prime;
+            power++;
+        }
+
+        if(power > 0){
+            factorization.push({
+                prime: prime,
+                power: power
+            });
+        }
+
+        if(i == primes.length){
+            primes = getPrimes(primes.length + 1);
+        }
+    }
+
+    return factorization;
+}
+
+$("#tau_phi_update").click(function(){
+    let number = getIntegerInput($("#tau_phi_number"));
+    let data = $("#tau_phi_data");
+    data.show().empty();
+
+    //Tau
+    let primes = getPrimesStopAt(Math.sqrt(number));
+    let factorization = getPrimeFactorization(number, primes);
+
+    console.log(factorization);
+
+    let primeExpansion = "";
+    let tau = 1;
+    let tauData = "&tau;(" + number + ") = ";
+    let phi = 1;
+    let phiData = "&phi;(" + number + ") = ";
+
+    for(let i = 0; i < factorization.length; i++){
+        let comp = factorization[i]; //Component
+
+        if(primeExpansion) primeExpansion += " * ";
+        primeExpansion += comp.prime + "<sup>" + comp.power + "</sup>";
+
+        tau *= comp.power + 1;
+
+        if(i != 0) tauData += " * ";
+        tauData += "(" + comp.power + " + 1)";
+
+        if(comp.power > 1){
+            if(i != 0) phiData += " * ";
+            phiData += comp.prime + "<sup>" + (comp.power - 1) + "</sup>";
+            phi *= Math.pow(comp.prime, comp.power - 1);
+        }
+
+        if(i != 0) phiData += " * ";
+        phiData += "&Phi;(" + comp.prime + ")";
+        phi *= comp.prime - 1;
+    }
+
+    data.append("<h5>" + number + " = " + primeExpansion + "</h5>");
+    data.append("<h5>&tau;(" + number + ") = " + "<span class='highlight bold'>" + tau + "</span>" + "</h5>");
+    data.append("<div style='margin-left: 1em;'><p>" + tauData + "<br>" + "= " + tau + "</p></div>");
+    data.append("<h5>&Phi;(" + number + ") = " + "<span class='highlight bold'>" + phi + "</span>" + "</h5>");
+    data.append("<div style='margin-left: 1em;'><p>" + phiData + "<br>" + "= " + phi + "</p></div>");
+
+    console.log(number + " = " + primeExpansion);
+    console.log("Tau of " + number + " = " + tau);
+    console.log(phiData);
+    console.log("Phi of " + number + " = " + phi);
+});

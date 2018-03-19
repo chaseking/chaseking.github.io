@@ -229,36 +229,73 @@
                 </div>
             </div>
 
-            <div id="modular_equations" class="section">
-                <h4>Modular Equations</h4>
-                <p>Calculate multiplicative inverses and all solutions to modular equations with the form <strong>Ax = GCD (mod M)</strong></p>
+            <div id="linear_congruence" class="section">
+                <h4>Linear Congruences</h4>
+                <p>Calculate all solutions to modular equations with the form <strong>Ax = B <em>(mod M)</em></strong></p>
+
+                <h5 id="linear_congruence_calculation"></h5>
 
                 <div class="row">
-                    <div class="input-field col s6 m2">
-                        <input type="number" id="modular_equations_value" class="validate" value="15"></input>
-                        <label for="modular_equations_value">Value</label>
+                    <div class="input-field col s4 m2">
+                        <input type="number" id="linear_congruence_a" class="validate" value="42"></input>
+                        <label for="linear_congruence_a">A</label>
                     </div>
 
-                    <div class="input-field col s6 m2">
-                        <input type="number" id="modular_equations_modulus" class="validate" value="9"></input>
-                        <label for="modular_equations_modulus">Modulus</label>
+                    <div class="input-field col s4 m2">
+                        <input type="number" id="linear_congruence_b" class="validate" value="8"></input>
+                        <label for="linear_congruence_b">B</label>
                     </div>
 
-                    <a class="btn waves-effect waves-light" id="modular_equations_update">Calculate</a>
+                    <div class="input-field col s4 m2">
+                        <input type="number" id="linear_congruence_modulus" class="validate" value="110"></input>
+                        <label for="linear_congruence_modulus">Modulus</label>
+                    </div>
+
+                    <a class="btn waves-effect waves-light" id="linear_congruence_update">Calculate</a>
                 </div>
 
-                <div id="modular_equations_data" style="display: none;">
-                    <div id="modular_equations_info"></div>
+                <div id="linear_congruence_data" style="display: none;">
+                    <div id="linear_congruence_info"></div>
 
-                    <table id="modular_equations_t_table" class="bordered striped highlight centered">
+                    <table id="linear_congruence_t_table" class="bordered striped highlight centered">
                         <thead>
                             <th>t</th>
                             <th>x</th>
-                            <th>y</th>
+                            <th>Solution: x (mod M)</th>
                         </thead>
 
                         <tbody></tbody>
                     </table>
+                </div>
+            </div>
+
+            <div id="modular_exponentiation" class="section">
+                <h4>Modular Exponentiation</h4>
+                <p></p>
+
+                <h5 id="modular_exponentiation_calculation"></h5>
+
+                <div class="row">
+                    <div class="input-field col s4 m2">
+                        <input type="number" id="modular_exponentiation_num" class="validate" value="497"></input>
+                        <label for="modular_exponentiation_num">Number</label>
+                    </div>
+
+                    <div class="input-field col s4 m2">
+                        <input type="number" id="modular_exponentiation_exponent" class="validate" value="153"></input>
+                        <label for="modular_exponentiation_exponent">Exponent</label>
+                    </div>
+
+                    <div class="input-field col s4 m2">
+                        <input type="number" id="modular_exponentiation_modulus" class="validate" value="653"></input>
+                        <label for="modular_exponentiation_modulus">Modulus</label>
+                    </div>
+
+                    <a class="btn waves-effect waves-light" id="modular_exponentiation_update">Calculate</a>
+                </div>
+
+                <div id="modular_exponentiation_data" style="display: none;">
+
                 </div>
             </div>
 
@@ -293,11 +330,42 @@
                 </div>
             </div>
 
-            <div id="modular_exponentiation" class="section">
-                <h4>Modular Exponentiation</h4>
-                <p></p>
+            <div id="binary" class="section">
+                <h4>Binary: Two's Complement & Addition/Subtraction</h4>
+                <p>Coming soon.</p>
+            </div>
 
-                <h5 id="modular_exponentiation_calculation"></h5>
+            <div id="prime_list" class="section">
+                <h4>List of Primes</h4>
+                <p>Use this to generate a list of prime numbers. You can either set a list size, or an "up to" value (i.e. only prime numbers up to that number). Also customize the joiner (defaults to a space) if you would like to change how the numbers are outputted. "\n" for newline.</p>
+
+                <div class="row">
+                    <div class="input-field col s4 m2">
+                        <input type="number" id="prime_list_size" class="validate" value="100"></input>
+                        <label for="prime_list_size">List Size</label>
+                    </div>
+
+                    <div class="input-field col s4 m2">
+                        <input type="number" id="prime_list_upto" class="validate" value=""></input>
+                        <label for="prime_list_upto">Up To</label>
+                    </div>
+
+                    <div class="input-field col s4 m2">
+                        <input type="text" id="prime_list_joiner" class="validate" value=" "></input>
+                        <label for="prime_list_joiner">Joiner</label>
+                    </div>
+
+                    <div class="input-field col s4 m2">
+                        <a class="btn waves-effect waves-light" id="prime_list_update">Find Primes</a>
+                    </div>
+
+                    <div class="input-field col s12" style="margin-top: 30px;">
+                        <textarea id="prime_list_result" class="materialize-textarea">Click the button above to calculate!</textarea>
+                        <label for="prime_list_result">Output</label>
+                    </div>
+                </div>
+
+                <!-- <h5 id="modular_exponentiation_calculation"></h5>
 
                 <div class="row">
                     <div class="input-field col s4 m2">
@@ -320,7 +388,25 @@
 
                 <div id="modular_exponentiation_data" style="display: none;">
 
+                </div> -->
+            </div>
+
+            <div id="tau_phi" class="section">
+                <h4>Tau and Phi</h4>
+                <p>Calculate <a href="https://en.wikipedia.org/wiki/Euler%27s_totient_function">Phi (Euler's totient function; &Phi;)</a> and Tau (&tau;) of a number.</p>
+
+                <div class="row">
+                    <div class="input-field col s4 m2">
+                        <input type="number" id="tau_phi_number" class="validate" value="12"></input>
+                        <label for="tau_phi_number">Number</label>
+                    </div>
+
+                    <div class="input-field col s4 m2">
+                        <a class="btn waves-effect waves-light" id="tau_phi_update">Calculate</a>
+                    </div>
                 </div>
+
+                <div id="tau_phi_data" style="display: none;">
             </div>
         </div>
     </main>

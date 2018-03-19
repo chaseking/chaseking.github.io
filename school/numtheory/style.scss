@@ -76,14 +76,12 @@ header {
 
 // table td + td { border-left:2px solid black; }
 
-span {
-    &.highlight {
-        background-color: rgba(#f1c40f, 0.5);
-    }
+span.highlight, strong.highlight {
+    background-color: rgba(#f1c40f, 0.5);
+}
 
-    &.bold {
-        font-weight: bold;
-    }
+span.bold {
+    font-weight: bold;
 }
 
 #about {
