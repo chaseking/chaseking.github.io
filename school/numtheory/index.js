@@ -931,7 +931,7 @@ $("#modular_exponentiation_update").click(function(){
         } else {
             let lastResidue = leastResidues[leastResidues.length - 2]; //-2 since we already added it
 
-            elem += "<strong>" + lastResidue + "<sup>2</sup></strong> <em>(mod " + mod + ")</em> = " + Math.pow(lastResidue, 2) + " = <span class='highlight bold'>" + leastResidue + "</span>";
+            elem += "<strong>" + lastResidue + "<sup>2</sup></strong> <em>(mod " + mod + ")</em> = " + (lastResidue * lastResidue) + " = <span class='highlight bold'>" + leastResidue + "</span>";
         }
 
         elem += "</td>";
@@ -945,7 +945,6 @@ $("#modular_exponentiation_update").click(function(){
 
     dataDiv.append("<h5>Step 3: Calculate least residue</h5>");
 
-    let total = 1;
     elem = "<p>" + num + "<sup>" + exp + "</sup> <em>(mod " + mod + ") = ";
 
     for(let i = 0; i < binary.result.length; i++){
@@ -961,20 +960,24 @@ $("#modular_exponentiation_update").click(function(){
     dataDiv.append(elem + " <em>(mod " + mod + ")</p>");
     elem = "<p> = ";
 
+    let solution = 1;
+
     for(let i = 0; i < binary.result.length; i++){
         let k = binary.result.length - i - 1; //The actual power of 2
         if(binary.result[i] == 1){
             console.log("2^" + k + " = " + Math.pow(2, k), leastResidues[k]);
-            total *= leastResidues[k];
             elem += leastResidues[k];
 
             if(i != binary.result.length - 1){
                 elem += " * ";
             }
+
+            solution *= leastResidues[k];
+            solution %= mod;
         }
     }
 
-    dataDiv.append(elem + " <em>(mod " + mod + ")</em> = " + total + " <em>(mod " + mod + ")</em> = <span class='highlight bold'>" + (total % mod) + "</span></p>");
+    dataDiv.append(elem + " <em>(mod " + mod + ")</em> = <span class='highlight bold'>" + solution + "</span></p>");
 });
 
 function modularExponentiation(number, power, modulo){
