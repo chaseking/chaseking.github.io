@@ -244,7 +244,8 @@ body {
     }
 
     #strava-feed-block {
-        margin: 10px;
+        margin: 10px 0;
+        max-width: 300px;
     }
 
     #strava-feed-inline {
@@ -445,9 +446,6 @@ footer {
 .boxed-content-grid {
     display: flex;
     flex-direction: column;
-    $margin: 20px;
-    $offsetMobile: 0;//10px;
-    $offsetDesktop: 0;
 
     div {
         padding: 10px 20px;
@@ -457,13 +455,17 @@ footer {
             text-align: left;
         }
 
-        &:nth-child(odd){
-            margin: $margin #{-$offsetMobile} $margin $offsetMobile;
+        &:not(:first-child) {
+            margin-top: 20px;
         }
 
-        &:nth-child(even) {
-            margin: $margin $offsetMobile $margin #{-$offsetMobile};
-        }
+        // &:nth-child(odd){
+        //     margin: 10px #{-$offsetMobile} 10px $offsetMobile;
+        // }
+        //
+        // &:nth-child(even) {
+        //     margin: 10px $offsetMobile 10px #{-$offsetMobile};
+        // }
 
         &:nth-child(3n){
             background: #CCDDF0;
@@ -482,16 +484,9 @@ footer {
         flex-direction: row;
 
         div {
-            &:nth-child(odd) {
-                margin: $margin;
-
-                &:first-child{
-                    margin-left: 0;
-                }
-            }
-
-            &:nth-child(even) {
-                margin: $margin $offsetDesktop $margin -$offsetDesktop;
+            &:not(:first-child) {
+                margin-top: 0;
+                margin-left: 20px;
             }
         }
     }

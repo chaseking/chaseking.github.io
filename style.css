@@ -403,7 +403,8 @@ body {
 }
 
 #cycling #strava-feed-block {
-    margin: 10px;
+    margin: 10px 0;
+    max-width: 300px;
 }
 
 #cycling #strava-feed-inline {
@@ -582,12 +583,8 @@ footer .copyright p {
     text-align: left;
 }
 
-.boxed-content-grid div:nth-child(odd) {
-    margin: 20px 0 20px 0;
-}
-
-.boxed-content-grid div:nth-child(even) {
-    margin: 20px 0 20px 0;
+.boxed-content-grid div:not(:first-child) {
+    margin-top: 20px;
 }
 
 .boxed-content-grid div:nth-child(3n) {
@@ -606,14 +603,9 @@ footer .copyright p {
     .boxed-content-grid {
         flex-direction: row;
     }
-    .boxed-content-grid div:nth-child(odd) {
-        margin: 20px;
-    }
-    .boxed-content-grid div:nth-child(odd):first-child {
-        margin-left: 0;
-    }
-    .boxed-content-grid div:nth-child(even) {
-        margin: 20px 0 20px;
+    .boxed-content-grid div:not(:first-child) {
+        margin-top: 0;
+        margin-left: 20px;
     }
 }
 
