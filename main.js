@@ -69,6 +69,23 @@ $(function(){
         //Make all images zoomable
         grid.find("img").attr("data-action", "zoom");
     });
+
+    $(".tab-title").click(function(){
+        let title = $(this);
+        let item = title.closest(".tab-item");
+        let content = title.siblings(".tab-content");
+
+        if(item.hasClass("expanded")){
+            item.removeClass("expanded");
+            content.slideUp(250);
+            // setTimeout(() => content.slideUp(500), 1000);
+        } else {
+            item.siblings(".tab-item.expanded").removeClass("expanded").find(".tab-content").slideUp(250);
+            item.addClass("expanded");
+
+            content.slideDown(250);
+        }
+    });
 });
 
 function toggleNav(elem){

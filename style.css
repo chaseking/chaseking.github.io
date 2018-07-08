@@ -496,6 +496,78 @@ footer .copyright p {
     }
 }
 
+.tab-horizontal {
+    padding: 0;
+    list-style-type: none;
+}
+
+.tab-horizontal li.tab-item {
+    overflow: hidden;
+    margin-top: 1em;
+}
+
+.tab-horizontal li.tab-item .tab-title {
+    color: white;
+    background: #6c5ce7;
+    padding: 0.5em 0.5em 0.5em 0.75em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.25s;
+    font-family: "Montserrat", sans-serif;
+}
+
+.tab-horizontal li.tab-item .tab-title .date {
+    font-size: 80%;
+}
+
+.tab-horizontal li.tab-item .tab-title .place {
+    float: right;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 0.1em 0.3em;
+    font-size: 90%;
+}
+
+.tab-horizontal li.tab-item .tab-title .place.gold {
+    background: #D9A441;
+}
+
+.tab-horizontal li.tab-item .tab-title .place.silver {
+    background: #A8A8A8;
+}
+
+.tab-horizontal li.tab-item .tab-title .place.bronze {
+    background: #965A38;
+}
+
+.tab-horizontal li.tab-item .tab-content {
+    display: none;
+    padding: 0 1em;
+    color: black;
+    border: 1px solid transparent;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.tab-horizontal li.tab-item .tab-content p {
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+
+.tab-horizontal li.tab-item.expanded .tab-title {
+    background: #2980b9;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.tab-horizontal li.tab-item.expanded .tab-content {
+    border-color: black;
+}
+
+.tab-horizontal li.tab-item.expanded .tab-content p {
+    opacity: 1;
+}
+
 .boxed-content-grid {
     display: flex;
     flex-direction: column;
