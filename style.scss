@@ -237,7 +237,6 @@ body {
     .strava-feed {
         height: 330px;
         width: 220px;
-        max-width: 100%;
         border-radius: 5px;
         border-color: black;
         border-width: 3px;
@@ -245,7 +244,8 @@ body {
 
     #strava-feed-block {
         margin: 10px 0;
-        max-width: 300px;
+        width: 300px;
+        overflow-x: scroll;
     }
 
     #strava-feed-inline {
@@ -256,7 +256,7 @@ body {
 
     @media screen and (min-width: 768px){
         .strava-feed {
-            width: 280px;
+            width: 300px;
         }
 
         #strava-feed-block {

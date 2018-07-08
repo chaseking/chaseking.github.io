@@ -396,7 +396,6 @@ body {
 #cycling .strava-feed {
     height: 330px;
     width: 220px;
-    max-width: 100%;
     border-radius: 5px;
     border-color: black;
     border-width: 3px;
@@ -404,7 +403,8 @@ body {
 
 #cycling #strava-feed-block {
     margin: 10px 0;
-    max-width: 300px;
+    width: 300px;
+    overflow-x: scroll;
 }
 
 #cycling #strava-feed-inline {
@@ -415,7 +415,7 @@ body {
 
 @media screen and (min-width: 768px) {
     #cycling .strava-feed {
-        width: 280px;
+        width: 300px;
     }
     #cycling #strava-feed-block {
         display: none;
