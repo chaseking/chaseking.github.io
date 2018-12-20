@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>MATH 134 Notes</title>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110077560-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-110077560-1');
+    </script>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async>
+    MathJax.Hub.Config({
+        jax: ["input/TeX","output/HTML-CSS"],
+        displayAlign: "left"
+    });
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>MATH 134 Notes</h1>
+        <h2>UW Fall 2018 &ndash; By <a href="https://chaseking.me">Chase King</a></h2>
+    </header>
+
+    <main>
+        <!-- <div style="padding: 30px 50px;"> -->
+        <div class="container">
+            <div id="about" class="section">
+                <h5>About This Page</h5>
+                <p>This page holds random notes that I took while enrolled in MATH 134 (Accelerated Honors Calculus) this quarter at UW. You can take a look at the source code <a href="https://github.com/chaseking/chaseking.github.io/tree/master/school/math134">here</a>.</p>
+                <p><a href="https://chaseking.me">Click here to return to my home page.</a></p>
+            </div>
+
+            <div class="divider"></div>
+
+            <div id="lub" class="section">
+                <h4>Least Upper Bound Axiom</h4>
+
+                <p>Any <strong>nonempty</strong> set \(S\) of real numbers that is <strong>bounded above</strong> so that there is \(x \in \mathbb{R}\) such that \(y \le x\) for all \(y \in S\) has a least upper bound, \(x := sup(S)\). That is, there is a unique smallest upper bound for S.</p>
+            </div>
+
+            <div class="divider"></div>
+
+            <div id="sqrt2_exists" class="section">
+                <h4>Proof: \(\sqrt{2}\) exists</h4>
+
+                <ul class="browser-default">
+                    <li><u>Proof.</u> Let set \(S = \{y \in \mathbb{R} : x^2 \le 2\}\).
+                        <ul class="browser-default">
+                            <li>\(S\) has an upper bound of 2. That is, \(\forall y \in S, x \le 2\). (Since if \(y \in S > 2\), then \(y^2 = 4 > 2\).)</li>
+                            <li>\(S\) is non-empty. (For example, \(1 \in S\).)</li>
+                        </ul>
+                    </li>
+
+                    <li>Thus, according to the Least Upper Bound axiom, \(\exists x \in S\), which is the least upper bound of \(S\).</li>
+
+                    <li>Now, we will show, by contradiction, that \(x^2 = 2\).</li>
+                    <br>
+                    <li>First, suppose \(x^2 < 2\). Let \(0 < \epsilon < 1\) be an arbitrary small number.
+                        <ul class="browser-default">
+                            <li>
+                                \[
+                                \begin{align}
+                                (x + \epsilon)^2 & = x^2 + 2x\epsilon + a^2 \\
+                                                   & < x^2 + 4\epsilon + \epsilon & (x \le 2 \Rightarrow 2x\epsilon < 4\epsilon \text{ and } 0 < \epsilon < 1 \Rightarrow \epsilon^2 < \epsilon) \\
+                                                   & = x^2 + 5\epsilon
+                                \end{align}
+                                \]
+                            </li>
+
+                            <li>Thus, we can choose an \(\epsilon\) such that \(x^2 + 5\epsilon < 2 \Rightarrow (x + \epsilon)^2 < 2\).</li>
+                            <li>However, this contradicts the fact that \(x\) is the least upper bound of \(S\).</li>
+                        </ul>
+                    </li>
+
+                    <br>
+                    <li>Second, suppose \(x^2 > 2\). Let \(0 < \epsilon < 1\) be an arbitrary small number.
+                        <ul class="browser-default">
+                            <li>
+                                \[
+                                \begin{align}
+                                (x - \epsilon)^2 & = x^2 - 2x\epsilon + a^2 \\
+                                                 & > x^2 - 2x\epsilon \\
+                                                 & \ge x^2 - 4\epsilon & (x \le 2 \Rightarrow 2x\epsilon \le 4\epsilon \Rightarrow -2x\epsilon \ge -4\epsilon) \\
+                                \end{align}
+                                \]
+                            </li>
+
+                            <li>Since \(x^2 > 2\), we can choose \(\epsilon\) such that \(x^2 - 4\epsilon > 2 \Rightarrow (x - \epsilon)^2 > 2\).</li>
+                            <li>However, this also implies that \(x - \epsilon > y, \forall y \in S\).</li>
+                            <li>Thus, \(x - \epsilon\) is an upper bound for \(S\), contradicting the fact that \(x\) is its least upper bound.</li>
+                        </ul>
+                    </li>
+                    <br>
+                    <li>From these contradictions, we can see that \(x^2 = 2\).</li>
+                </ul>
+            </div>
+
+            <div class="divider"></div>
+
+            <div id="limits" class="section">
+                <h4>\(\epsilon\) &ndash; \(\delta\) Definition of a Limit</h4>
+
+                <p>\(\displaystyle{\lim_{x \to a} f(x) = L}\) if for every \(\epsilon > 0\), there exists \(\delta > 0\) such that if \(0 < |x - a| < \delta\), then \(|f(x) - L| < \epsilon\).</p>
+
+                <h5>Example limit proof: \(lim_{x \to 4} (2x - 5) = 3\)</h5>
+                <p>Let \(\epsilon > 0\). We seek \(\delta > 0\) so that if \(0 < |x-4| < \delta\), then \(|2x - 5 - 3| < \epsilon\).</p>
+                <p>
+                    \[
+                    \begin{align}
+                    |2x - 5 - 3| & = |2x - 8| \\
+                                 & = 2|x - 4| \\
+                                 & < \epsilon \\
+                                 & \Rightarrow |x - 4| < \frac{\epsilon}{2}\
+                    \end{align}
+                    \]
+                </p>
+                <p>Let \(\delta = \frac{\epsilon}{2}\). If \(|x - 4| < \delta\), consider</p>
+                <p>
+                    \[
+                    \begin{align}
+                    |f(x) - L| & = |2x - 5 - 3| \\
+                               & = 2|x - 4| \\
+                               & < 2(\frac{\epsilon}{2}) \\
+                               & = \epsilon
+                    \end{align}
+                    \]
+                </p>
+                <p>Thus, \(0 < |x-4| < \delta\ \Rightarrow |2x - 5 - 3| < \epsilon), as desired.</p>
+            </div>
+
+            <div class="divider"></div>
+
+            <div id="cont_func_props" class="section">
+                <h4>Properties of Continuous Functions</h4>
+                <p class="bold">Given a function \(f(x)\) continuous on \([a, b]\) (that is, continuous on <em>every element of</em> \([a, b]\))...</p>
+
+                <h5>1. Intermediate Value Theorem</h5>
+                <p class="bold">...and given \(c\) between \(f(a)\) and \(f(b)\), then there exists \(\exists y \in [a, b]\), with \(f(y) = c\).</p>
+                <p>In other words, \(f\) "takes on" all intermediate values between \(f(a)\) and \(f(b)\). The graph of \(f\) can be drawn without lifting your pencil from the paper; it cannot start below the x-axis and end above it without crossing it.</p>
+
+                <ul class="browser-default">
+                    <li><u>Proof.</u> ...
+                        <ul class="browser-default">
+                            <li>...</li>
+                        </ul>
+                    </li>
+
+                    <li>...</li>
+                </ul>
+
+                <h5>2. Boundedness Property</h5>
+                <p class="bold">...then \(f\) is bounded on the closed interval \([a, b]\). That is, \(\exists M\) such that \(|f(x)| \le m, \forall x \in [a, b]\).</p>
+
+                <h5>3. Extreme Value Theorem</h5>
+                <p class="bold">...then \(f\) takes on a maximum and minimum value on \([a, b]\).</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        Made for UW MATH 134, Fall 2018 by <a href="http://chaseking.me" target="blank">Chase King</a>.
+    </footer>
+
+    <script type="text/javascript" src="index.js"></script>
+</body>
+</html>
