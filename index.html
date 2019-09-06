@@ -148,7 +148,7 @@
                     }
 
                     function changeText(){
-                        deleteCurrent(function(){
+                        deleteCurrent(() => {
                             currentText = words[index++ % words.length];
                             writeNew(() => setTimeout(changeText, 3500)); // Change text 3.5 seconds after the new text has been written
                         });
@@ -163,9 +163,9 @@
                     <li>CSE 311: <em>Foundations of Computing I</em></li>
                     <li>CSE 351: <em>The Hardware/Software Interface</em></li>
                     <li>CSE 391: <em>System and Software Tools</em></li>
+                    <li>AMATH 301: <em>Beginning Scientific Computing</em></li>
                     <li>PSYCH 210: <em>The Diversity of Human Sexuality</em></li>
                     <li>ARCH 150: <em>Appreciation of Architecture I</em></li>
-                    <li>AMATH 301: <em>Beginning Scientific Computing</em></li>
                 </ul>
                 
                 <details>
@@ -174,9 +174,9 @@
                         <li>Spring 2019
                             <ul>
                                 <li>MATH 136: <em>Accelerated Honors Calculus</em></li>
+                                <li>AMATH 351: <em>Applied Linear Algebra and Numerical Analysis</em></li>
                                 <li>PHYS 122: <em>Electromagnetism</em></li>
                                 <li>LING 200: <em>Introduction to Linguistics</em></li>
-                                <li>AMATH 351: <em>Applied Linear Algebra and Numerical Analysis</em></li>
                             </ul>
                         </li>
                         <li>Winter 2019
