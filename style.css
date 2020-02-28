@@ -71,6 +71,11 @@ body {
   cursor: pointer;
 }
 
+.page-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
 .page {
   margin: 0 auto;
   position: relative;

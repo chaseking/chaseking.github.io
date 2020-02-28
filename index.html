@@ -65,417 +65,419 @@
         <span><i class="fas fa-fw fa-chevron-down"></i></span>
     </div>
 
-    <section class="page border-aqua" id="about">
-        <div class="col span-100">
-            <div class="panel-content">
-                <div class="about-me-images">
-                    <div class="avatar"><img src="img/prof-seiku.jpg"></div>
-                    <div class="avatar"><img src="img/chase-square.jpg"></div>
-                    <div class="avatar"><img src="img/prof-bike.jpg"></div>
-                </div>
-
-                <h1 class="big-text span-letters animate-letters">Hi, I'm Chase.</h1>
-
-                <div class="i-am">> I am <span id="infoText"></span></div>
-
-                <script type="text/javascript">
-                    // https://stackoverflow.com/questions/5766263/run-settimeout-only-when-tab-is-active
-                    window.addEventListener("blur", () => window.blurred = true);
-                    window.addEventListener("focus", () => window.blurred = false);
-
-                    const words = [
-                        "motivated and driven",
-                        "inquisitive",
-                        "a numbers guy",
-                        "creative",
-                        "a mathematician",
-                        "a code junkie",
-                        "a black belt",
-                        "an opportunist",
-                        "hungry for more",
-                        "an outdoors person",
-                        "an engineer",
-                        "a cyclist",
-                        "a hill climber",
-                        "an environmental advocate",
-                        "a foodie",
-                        "observant",
-                        "a critical thinker",
-                        "a mango connoisseur",
-                        "a problem solver"
-                    ];
-
-                    var infoText = document.getElementById("infoText");
-
-                    // Randomize array
-                    words.sort((a, b) => 0.5 - Math.random());
-
-                    var index = 0;
-                    var currentText;
-
-                    function deleteCurrent(done){
-                        if(!currentText){
-                            done();
-                            return;
+    <main class="page-container">
+        <section class="page border-aqua" id="about">
+            <div class="col span-100">
+                <div class="panel-content">
+                    <div class="about-me-images">
+                        <div class="avatar"><img src="img/prof-seiku.jpg"></div>
+                        <div class="avatar"><img src="img/chase-square.jpg"></div>
+                        <div class="avatar"><img src="img/prof-bike.jpg"></div>
+                    </div>
+    
+                    <h1 class="big-text span-letters animate-letters">Hi, I'm Chase.</h1>
+    
+                    <div class="i-am">> I am <span id="infoText"></span></div>
+    
+                    <script type="text/javascript">
+                        // https://stackoverflow.com/questions/5766263/run-settimeout-only-when-tab-is-active
+                        window.addEventListener("blur", () => window.blurred = true);
+                        window.addEventListener("focus", () => window.blurred = false);
+    
+                        const words = [
+                            "motivated and driven",
+                            "inquisitive",
+                            "a numbers guy",
+                            "creative",
+                            "a mathematician",
+                            "a code junkie",
+                            "a black belt",
+                            "an opportunist",
+                            "hungry for more",
+                            "an outdoors person",
+                            "an engineer",
+                            "a cyclist",
+                            "a hill climber",
+                            "an environmental advocate",
+                            "a foodie",
+                            "observant",
+                            "a critical thinker",
+                            "a mango connoisseur",
+                            "a problem solver"
+                        ];
+    
+                        var infoText = document.getElementById("infoText");
+    
+                        // Randomize array
+                        words.sort((a, b) => 0.5 - Math.random());
+    
+                        var index = 0;
+                        var currentText;
+    
+                        function deleteCurrent(done){
+                            if(!currentText){
+                                done();
+                                return;
+                            }
+    
+                            var id = setInterval(() => {
+                                currentText = currentText.substr(0, currentText.length - 1);
+                                infoText.innerHTML = currentText;
+    
+                                if(currentText.length == 0){
+                                    clearInterval(id);
+                                    done();
+                                }
+                            }, 40);
                         }
-
-                        var id = setInterval(() => {
-                            currentText = currentText.substr(0, currentText.length - 1);
-                            infoText.innerHTML = currentText;
-
-                            if(currentText.length == 0){
-                                clearInterval(id);
-                                done();
-                            }
-                        }, 40);
-                    }
-
-                    function writeNew(done){
-                        var end = 1;
-
-                        var id = setInterval(() => {
-                            var substr = currentText.substr(0, end++);
-
-                            infoText.innerHTML = substr;
-
-                            if(end > currentText.length){
-                                clearInterval(id);
-                                done();
-                            }
-                        }, 60);
-                    }
-
-                    function changeText(){
-                        deleteCurrent(() => {
-                            currentText = words[index++ % words.length];
-                            writeNew(() => setTimeout(changeText, 3500)); // Change text 3.5 seconds after the new text has been written
-                        });
-                    }
-
-                    changeText();
-                </script>
-
-                <p>I was born and raised in the Bay Area and am currently a sophomore undergraduate at the <a href="http://www.washington.edu">University of Washington</a> in Seattle, Washington, studying <a href="https://www.cs.washington.edu">computer science</a>, <a href="https://amath.washington.edu">applied mathematics</a>, and <a href="https://cneuro-web01.s.uw.edu">computational neuroscience</a>. My academic interests primarily revolve around artificial intelligence and machine learning, and using principals from the human neocortex as a paradigm for designing intelligent machines.</p>
-                <p>I work at <a href="https://www.beewriter.com/">Beewriter</a>, an AI startup helping people improve their writing by offering smart suggestions.</p>
-                <p>When I'm not in classes or working, I enjoy spending time outdoors on my road bike, <a href="https://www.strava.com/athletes/chaseking">riding up hills</a> and competing in pro/cat 1/cat 2 USAC races with the <a href="https://www.krykisports.com">Audi Cycling Team</a>.</p>
-
-                <p style="margin-bottom: 0; font-weight: bold">Current Coursework (Winter 2020)</p>
-                <ul style="margin-top: 0;">
-                    <li>CSE 312: <em>Foundations of Computing II</em></li>
-                    <li>CSE 332: <em>Data Structures and Parallelism</em></li>
-                    <li>AMATH 342 <em>Introduction to Neural Coding and Computation</em></li>
-                    <li>STAT 394: <em>Probability I</em></li>
-                </ul>
-
-                <details>
-                    <summary>Planned Coursework (Spring 2020)</summary>
+    
+                        function writeNew(done){
+                            var end = 1;
+    
+                            var id = setInterval(() => {
+                                var substr = currentText.substr(0, end++);
+    
+                                infoText.innerHTML = substr;
+    
+                                if(end > currentText.length){
+                                    clearInterval(id);
+                                    done();
+                                }
+                            }, 60);
+                        }
+    
+                        function changeText(){
+                            deleteCurrent(() => {
+                                currentText = words[index++ % words.length];
+                                writeNew(() => setTimeout(changeText, 3500)); // Change text 3.5 seconds after the new text has been written
+                            });
+                        }
+    
+                        changeText();
+                    </script>
+    
+                    <p>I was born and raised in the Bay Area and am currently a sophomore undergraduate at the <a href="http://www.washington.edu">University of Washington</a> in Seattle, Washington, studying <a href="https://www.cs.washington.edu">computer science</a>, <a href="https://amath.washington.edu">applied mathematics</a>, and <a href="https://cneuro-web01.s.uw.edu">computational neuroscience</a>. My academic interests primarily revolve around artificial intelligence and machine learning, and using principals from the human neocortex as a paradigm for designing intelligent machines.</p>
+                    <p>I work at <a href="https://www.beewriter.com/">Beewriter</a>, an AI startup helping people improve their writing by offering smart suggestions.</p>
+                    <p>When I'm not in classes or working, I enjoy spending time outdoors on my road bike, <a href="https://www.strava.com/athletes/chaseking">riding up hills</a> and competing in pro/cat 1/cat 2 USAC races with the <a href="https://www.krykisports.com">Audi Cycling Team</a>.</p>
+    
+                    <p style="margin-bottom: 0; font-weight: bold">Current Coursework (Winter 2020)</p>
                     <ul style="margin-top: 0;">
-                        <li>CSE 446: <em>Machine Learning</em></li>
-                        <li>CSE 528: <em>Computational Neuroscience</em></li>
-                        <li>BIOL 130: <em>Introduction to Neuroscience</em></li>
-                        <li>ARCH 151: <em>Appreciation of Architecture II</em></li>
+                        <li>CSE 312: <em>Foundations of Computing II</em></li>
+                        <li>CSE 332: <em>Data Structures and Parallelism</em></li>
+                        <li>AMATH 342 <em>Introduction to Neural Coding and Computation</em></li>
+                        <li>STAT 394: <em>Probability I</em></li>
                     </ul>
-                    <p>Note: Currently tentative; subject to change.</p>
-                </details>
-                
-                <details>
-                    <summary>Previous Quarters</summary>
-                    <ul style="margin-top: 0.5em;">
-                        <li>Autumn 2020
-                            <ul>
-                                <li>CSE 311: <em>Foundations of Computing I</em></li>
-                                <li>CSE 351: <em>The Hardware/Software Interface</em></li>
-                                <li>CSE 391: <em>System and Software Tools</em></li>
-                                <li>AMATH 301: <em>Beginning Scientific Computing</em></li>
-                                <li>PSYCH 210: <em>The Diversity of Human Sexuality</em></li>
-                                <li>ARCH 150: <em>Appreciation of Architecture I</em></li>
-                            </ul>
-                        </li>
-                        <li style="margin-top: 1em;">Spring 2019
-                            <ul>
-                                <li>MATH 136: <em>Accelerated Honors Calculus</em></li>
-                                <li>AMATH 351: <em>Applied Linear Algebra and Numerical Analysis</em></li>
-                                <li>PHYS 122: <em>Electromagnetism</em></li>
-                                <li>LING 200: <em>Introduction to Linguistics</em></li>
-                            </ul>
-                        </li>
-                        <li style="margin-top: 1em;">Winter 2019
-                            <ul>
-                                <li>MATH 135: <em>Accelerated Honors Calculus</em></li>
-                                <li>ENGL 111: <em>Composition</em></li>
-                                <li>PSYCH 101: <em>Introduction to Psychology</em></li>
-                            </ul>
-                        </li>
-                        <li style="margin-top: 1em;">Autumn 2018
-                            <ul>
-                                <li>MATH 134: <em>Accelerated Honors Calculus</em></li>
-                                <li>CSE 143: <em>Computer Programming II</em></li>
-                                <li>CSE 390: <em>Honors Seminar</em></li>
-                                <li>PHYS 121: <em>Mechanics</em></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </details>
+    
+                    <details>
+                        <summary>Planned Coursework (Spring 2020)</summary>
+                        <ul style="margin-top: 0;">
+                            <li>CSE 446: <em>Machine Learning</em></li>
+                            <li>CSE 528: <em>Computational Neuroscience</em></li>
+                            <li>BIOL 130: <em>Introduction to Neuroscience</em></li>
+                            <li>ARCH 151: <em>Appreciation of Architecture II</em></li>
+                        </ul>
+                        <p>Note: Currently tentative; subject to change.</p>
+                    </details>
+                    
+                    <details>
+                        <summary>Previous Quarters</summary>
+                        <ul style="margin-top: 0.5em;">
+                            <li>Autumn 2020
+                                <ul>
+                                    <li>CSE 311: <em>Foundations of Computing I</em></li>
+                                    <li>CSE 351: <em>The Hardware/Software Interface</em></li>
+                                    <li>CSE 391: <em>System and Software Tools</em></li>
+                                    <li>AMATH 301: <em>Beginning Scientific Computing</em></li>
+                                    <li>PSYCH 210: <em>The Diversity of Human Sexuality</em></li>
+                                    <li>ARCH 150: <em>Appreciation of Architecture I</em></li>
+                                </ul>
+                            </li>
+                            <li style="margin-top: 1em;">Spring 2019
+                                <ul>
+                                    <li>MATH 136: <em>Accelerated Honors Calculus</em></li>
+                                    <li>AMATH 351: <em>Applied Linear Algebra and Numerical Analysis</em></li>
+                                    <li>PHYS 122: <em>Electromagnetism</em></li>
+                                    <li>LING 200: <em>Introduction to Linguistics</em></li>
+                                </ul>
+                            </li>
+                            <li style="margin-top: 1em;">Winter 2019
+                                <ul>
+                                    <li>MATH 135: <em>Accelerated Honors Calculus</em></li>
+                                    <li>ENGL 111: <em>Composition</em></li>
+                                    <li>PSYCH 101: <em>Introduction to Psychology</em></li>
+                                </ul>
+                            </li>
+                            <li style="margin-top: 1em;">Autumn 2018
+                                <ul>
+                                    <li>MATH 134: <em>Accelerated Honors Calculus</em></li>
+                                    <li>CSE 143: <em>Computer Programming II</em></li>
+                                    <li>CSE 390: <em>Honors Seminar</em></li>
+                                    <li>PHYS 121: <em>Mechanics</em></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </details>
+                </div>
             </div>
-        </div>
-    </section>
-
-    <section class="page border-red" id="programming">
-        <div class="col span-100">
+        </section>
+    
+        <section class="page border-red" id="programming">
+            <div class="col span-100">
+                <div class="panel-content">
+                    <h1 class="big-text span-letters animate-letters">programming</h1>
+    
+                    <p>I have been fascinated with computers and technology since a wee tot; the keyboard has become an extension of my mind.</p>
+    
+                    <p>In middle school, I began delving into web design and it became clear that learning computing languages was the next step. I attended several <a href="https://www.idtech.com/locations/california-summer-camps/stanford-university">programming camps</a> learning C++, Java and Objective-C, expanding to some <a href="https://www.coursera.org/">Coursera</a> courses on Swift. Before high school, I used the popular computer game <a href="https://minecraft.net/">Minecraft</a> to utilize and expand my Java programming skills. I became a well-recognized developer in the server community and acted as moderator for the <a href="https://bukkit.org/">Bukkit forums</a>, the largest Minecraft programming online forum, with nearly half a million registered users. Under the internet handle "chasechocolate" (yes, I love chocolate too!), I helped thousands of newcomers learn programming on the Bukkit forums. By the eighth grade, I had my first paid job developing for <a href="https://www.minehq.com/">MineHQ</a>, a large server network hosting over 100,000 unique players every week.</p>
+    
+                    <p>My current interests revolve around machine learning/artificial intelligence along with their societal implications. The premise of designing algorithms to make reliable guesses from incomplete data has me striving to learn more.</p>
+                </div>
+            </div>
+        </section>
+    
+        <section class="page border-purple" id="cycling">
             <div class="panel-content">
-                <h1 class="big-text span-letters animate-letters">programming</h1>
-
-                <p>I have been fascinated with computers and technology since a wee tot; the keyboard has become an extension of my mind.</p>
-
-                <p>In middle school, I began delving into web design and it became clear that learning computing languages was the next step. I attended several <a href="https://www.idtech.com/locations/california-summer-camps/stanford-university">programming camps</a> learning C++, Java and Objective-C, expanding to some <a href="https://www.coursera.org/">Coursera</a> courses on Swift. Before high school, I used the popular computer game <a href="https://minecraft.net/">Minecraft</a> to utilize and expand my Java programming skills. I became a well-recognized developer in the server community and acted as moderator for the <a href="https://bukkit.org/">Bukkit forums</a>, the largest Minecraft programming online forum, with nearly half a million registered users. Under the internet handle "chasechocolate" (yes, I love chocolate too!), I helped thousands of newcomers learn programming on the Bukkit forums. By the eighth grade, I had my first paid job developing for <a href="https://www.minehq.com/">MineHQ</a>, a large server network hosting over 100,000 unique players every week.</p>
-
-                <p>My current interests revolve around machine learning/artificial intelligence along with their societal implications. The premise of designing algorithms to make reliable guesses from incomplete data has me striving to learn more.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="page border-purple" id="cycling">
-        <div class="panel-content">
-            <h1 class="big-text span-letters animate-letters">cycling</h1>
-
-            <iframe class="strava-feed" id="strava-feed-inline" allowtransparency="true" scrolling="yes" src="https://www.strava.com/athletes/6093294/latest-rides/c28a846dbea27ae506a462398c13857d61eefd85"></iframe>
-
-            <p>I have ridden a bike for as long as I can remember. Coming from a family of enthusiastic recreational cyclists, I learned to stretch my athletic goals at an early age. I began riding century rides on my heavy steel mountain bike by the second grade, but it wasn't until high school that I experienced the liberating feeling of a road bike. My first competitive racing began with my mountain biking team in ninth grade. I still very much enjoy a good mountain bike ride, but the lure of speed and mileage that road racing offers is where my passion lies.</p>
-
-            <p>In 2015, I joined <a href="http://teamswift.org" target="blank">Team Swift</a>, a junior racing development team, and have enjoyed the benefits of professional training and expert fitness coaching, not to mention the camaraderie that a team sport has to offer. I am a Stravaholic (see my feed), and love the social aspect Strava brings to the sport.</p>
-
-            <iframe class="strava-feed" id="strava-feed-block" allowtransparency="true" scrolling="yes" src="https://www.strava.com/athletes/6093294/latest-rides/c28a846dbea27ae506a462398c13857d61eefd85"></iframe>
-
-            <div class="clearfix"></div>
-
-            <div id="race-reports">
-                <h2>2018 Race Reports</h2>
-                <ul class="tab-horizontal">
-                    <li class="tab-item">
-                        <div class="tab-title">San Bruno Hill Climb E4 <span class="date">(January 1, 2018)</span><span class="place">4th</span></div>
-                        <div class="tab-content">
-                            <p><a href="https://www.strava.com/activities/1336381300/">https://www.strava.com/activities/1336381300/</a></p>
-
-                            <p>Coming soon.</p>
-                        </div>
-                    </li>
-
-                    <li class="tab-item">
-                        <div class="tab-title">Snelling Road Race E4 <span class="date">(February 24, 2018)</span><span class="place">11th</span></div>
-                        <div class="tab-content">
-                            <p><a href="https://www.strava.com/activities/1424172258/">https://www.strava.com/activities/1424172258/</a></p>
-
-                            <p>Coming soon.</p>
-                        </div>
-                    </li>
-
-                    <li class="tab-item">
-                        <div class="tab-title">Ward's Ferry Road Race E4 <span class="date">(March 10, 2018)</span><span class="place silver">2nd</span></div>
-                        <div class="tab-content">
-                            <p>Coming soon.</p>
-                        </div>
-                    </li>
-
-                    <li class="tab-item">
-                        <div class="tab-title">San Dimas Stage Race E4/5 <span class="date">(March 23-25, 2018)</span><span class="place gold">1st GC</span></div>
-                        <div class="tab-content">
-                            <p><strong>Stage 1: Glendora Mountain Time Trial</strong> (1st, 17:38)<br><a href="https://www.strava.com/activities/1467479184">https://www.strava.com/activities/1467479184</a></p>
-
-                            <p>I love this course so much. After pre-riding the course the afternoon before, in the pouring rain, I was excited to put my legs to the test the next morning. I started at 8:34am, and arrived an hour early to get in a good warmup. My legs felt good, but not amazing, but I was ready to empty the tank and do my best. Last year, my time was 18:45, and my goal this year was 17:40. At Ward's Ferry RR, a road race two weeks prior with 7,000 ft. total elevation, I finished 2nd after being outsprinted by my former teammate Jonas Crean after a 50-mile breakaway, so I was confident in my form and my strength in the hills.
-                            </p>
-
-                            <p>At 8:34am, I was off. I went out strong for the bottom part, careful not to go out too hard. (In hindsight, I should have backed off the pace just 5 or 10 watts, but in the moment it's hard to resist!) The middle portion I backed off just a little, and at 10 minutes in, I stopped looking at power and went by feel. I hit the 1k to go sign at just over 15 minutes, and I knew I was on track for a 17:30. In the final 500m, I emptied the tank, digging deep and squeezing out every last watt in my legs. I finished with an official time of 17:37, over a minute faster from my time last year, and to my astonishment, also fast enough to put me in the lead by 17 seconds! I've never been in a position where I needed to defend a jersey, so it really helped to have coaches and teammates to talk to and get valuable information on tactics and strategies to stay in the lead.</p>
-
-                            <hr>
-
-                            <p><strong>Stage 2: San Dimas Community Hospital Road Race</strong> (7th)<br><a href="https://www.strava.com/activities/1469702042">https://www.strava.com/activities/1469702042</a></p>
-                            <p>Racing is always more exciting and motivating when you're the target. At a mere 5 laps (36 miles), I knew it was going to be a fast and hard day at the road race. There were a few well-represented teams, and I had numbers written down of the five riders within 30 seconds on GC. If I could stay safe and stay up front, I could stay in yellow.</p>
-
-                            <p>Our race was hard from the gun, reminding me of last year's junior 17-18 race. (Though slightly less painful... or maybe that came from the adrenaline rush brought by the jersey!) My coach, Sam Bassetti, who is racing in the pro field, also suggested going for some KOM points since I had 25 already, but on the first KOM lap, I realized I wasn't willing to risk a crash with the sketchy road conditions leading into it. I never contested any KOM points (we only had two KOM laps), and unfortunately another very strong rider won both KOM sprints giving him 30 points and the KOM jersey. The field was intact the whole race, with the exception of a small break that went after the KOM on lap 2. Both big teams had riders in the break, so I got on the front and chased it down before they could get a bigger gap. The field was together for the remainder of the race, and it came down to a field sprint. I jumped on the back of a small leadout train, and managed 7th with no time gap.</p>
-
-                            <hr>
-
-                            <p><strong>Stage 3: Incycle / Cannondale Old Town Grand Prix</strong><br><a href="https://www.strava.com/activities/1471608051"></a>https://www.strava.com/activities/1471608051</p>
-                            <p>The final stage of the race! My gap going into the crit was 21 seconds, and I was confident that if I could stay upright and finish in the front I could win the overall. I was at the front the entire race, and surprisingly no breaks went. The course had six 90-degree corners, with a slightly-downhill long stretch before the finishing corner. I didn't have my eyes on the stage win, and on the final lap, I lost some positioning after another rider cut a corner and almost sent me into the barriers. On the final stretch, I desperately sprinted back toward the front, and finished with a 7s gap. I thought I had taken the overall, but only realized after the fact that the rider in 2nd GC had taken the stage with a gap from the rest of the field. That meant that he took a 10s time bonus in addition to the gap he had on me. The following 20 minutes were extremely nerve-racking, as I was left not knowing if I had lost the jersey by a matter of seconds. I occupied myself by chatting with and congratulating my competitors, who surely put up a good fight. After what seemed like an eternity, the results were posted and I had kept yellow by the narrow margin of 6 seconds!</p>
-
-                            <p>This weekend I learned so much about racing and tactics, and was so stoked to have taken the win. This last stage was the closest, and I should have been following the wheel of the 2nd place rider in GC, and I'm glad my mistake did not cost me. Above all, I'm thankful for my coaches, Sam and Laura for giving me the tools and confidence I need to succeed, my teammates for the racing tips and good laughs, and my parents for schlepping all around California and supporting me on this journey. All smiles this weekend; see you next year, San Dimas!</p>
-                        </div>
-                    </li>
-
-                    <li class="tab-item">
-                        <div class="tab-title">Copperopolis Road Race E4 <span class="date">(March 31, 2018)</span><span class="place bronze">3rd</span></div>
-                        <div class="tab-content">
-                            <p><a href="https://www.strava.com/activities/1482330028">https://www.strava.com/activities/1482330028</a></p>
-
-                            <p>Hell hath no fury like Copperopolis. This race surely lives up to its name: The Paris-Roubaix of California. The roads are utterly horrible, and it's inevitable to spend the next three days picking tar from your scalp.</p>
-                            <p>Jonas Crean (my former teammate) was in my field, and we were doing just under 70 miles with nearly 6,000 ft. elevation. The field mostly stayed together for the first two laps, and on the final time up the climb, a very strong CBRE rider took to the front and dropped everyone except Jonas and I. We were barely hanging onto his wheel. We extended our lead on the flat parts of the course, and he was taking crazy strong and long pulls. I led the descent until 200m to go and was outsprinted at the line; Jonas won. Frankly I'm not too mad because the CBRE guy deserved to take it but I knew Jonas was going to pull the same tactic again and sprint around us. Tough race! Glad I was able to seriously empty the tank.</p>
-                            <p><a href="https://www.strava.com/activities/1482330028/">https://www.strava.com/activities/1482330028/</a></p>
-                        </div>
-                    </li>
-
-                    <li class="tab-item">
-                        <div class="tab-title">Stanford Road Race E3/4/Collegiate B <span class="date">(April 15, 2018)</span><span class="place silver">2nd</span></div>
-                        <div class="tab-content">
-                            <p><a href="https://www.strava.com/activities/1511061689">https://www.strava.com/activities/1511061689</a></p>
-
+                <h1 class="big-text span-letters animate-letters">cycling</h1>
+    
+                <iframe class="strava-feed" id="strava-feed-inline" allowtransparency="true" scrolling="yes" src="https://www.strava.com/athletes/6093294/latest-rides/c28a846dbea27ae506a462398c13857d61eefd85"></iframe>
+    
+                <p>I have ridden a bike for as long as I can remember. Coming from a family of enthusiastic recreational cyclists, I learned to stretch my athletic goals at an early age. I began riding century rides on my heavy steel mountain bike by the second grade, but it wasn't until high school that I experienced the liberating feeling of a road bike. My first competitive racing began with my mountain biking team in ninth grade. I still very much enjoy a good mountain bike ride, but the lure of speed and mileage that road racing offers is where my passion lies.</p>
+    
+                <p>In 2015, I joined <a href="http://teamswift.org" target="blank">Team Swift</a>, a junior racing development team, and have enjoyed the benefits of professional training and expert fitness coaching, not to mention the camaraderie that a team sport has to offer. I am a Stravaholic (see my feed), and love the social aspect Strava brings to the sport.</p>
+    
+                <iframe class="strava-feed" id="strava-feed-block" allowtransparency="true" scrolling="yes" src="https://www.strava.com/athletes/6093294/latest-rides/c28a846dbea27ae506a462398c13857d61eefd85"></iframe>
+    
+                <div class="clearfix"></div>
+    
+                <div id="race-reports">
+                    <h2>2018 Race Reports</h2>
+                    <ul class="tab-horizontal">
+                        <li class="tab-item">
+                            <div class="tab-title">San Bruno Hill Climb E4 <span class="date">(January 1, 2018)</span><span class="place">4th</span></div>
+                            <div class="tab-content">
+                                <p><a href="https://www.strava.com/activities/1336381300/">https://www.strava.com/activities/1336381300/</a></p>
+    
+                                <p>Coming soon.</p>
+                            </div>
+                        </li>
+    
+                        <li class="tab-item">
+                            <div class="tab-title">Snelling Road Race E4 <span class="date">(February 24, 2018)</span><span class="place">11th</span></div>
+                            <div class="tab-content">
+                                <p><a href="https://www.strava.com/activities/1424172258/">https://www.strava.com/activities/1424172258/</a></p>
+    
+                                <p>Coming soon.</p>
+                            </div>
+                        </li>
+    
+                        <li class="tab-item">
+                            <div class="tab-title">Ward's Ferry Road Race E4 <span class="date">(March 10, 2018)</span><span class="place silver">2nd</span></div>
+                            <div class="tab-content">
+                                <p>Coming soon.</p>
+                            </div>
+                        </li>
+    
+                        <li class="tab-item">
+                            <div class="tab-title">San Dimas Stage Race E4/5 <span class="date">(March 23-25, 2018)</span><span class="place gold">1st GC</span></div>
+                            <div class="tab-content">
+                                <p><strong>Stage 1: Glendora Mountain Time Trial</strong> (1st, 17:38)<br><a href="https://www.strava.com/activities/1467479184">https://www.strava.com/activities/1467479184</a></p>
+    
+                                <p>I love this course so much. After pre-riding the course the afternoon before, in the pouring rain, I was excited to put my legs to the test the next morning. I started at 8:34am, and arrived an hour early to get in a good warmup. My legs felt good, but not amazing, but I was ready to empty the tank and do my best. Last year, my time was 18:45, and my goal this year was 17:40. At Ward's Ferry RR, a road race two weeks prior with 7,000 ft. total elevation, I finished 2nd after being outsprinted by my former teammate Jonas Crean after a 50-mile breakaway, so I was confident in my form and my strength in the hills.
+                                </p>
+    
+                                <p>At 8:34am, I was off. I went out strong for the bottom part, careful not to go out too hard. (In hindsight, I should have backed off the pace just 5 or 10 watts, but in the moment it's hard to resist!) The middle portion I backed off just a little, and at 10 minutes in, I stopped looking at power and went by feel. I hit the 1k to go sign at just over 15 minutes, and I knew I was on track for a 17:30. In the final 500m, I emptied the tank, digging deep and squeezing out every last watt in my legs. I finished with an official time of 17:37, over a minute faster from my time last year, and to my astonishment, also fast enough to put me in the lead by 17 seconds! I've never been in a position where I needed to defend a jersey, so it really helped to have coaches and teammates to talk to and get valuable information on tactics and strategies to stay in the lead.</p>
+    
+                                <hr>
+    
+                                <p><strong>Stage 2: San Dimas Community Hospital Road Race</strong> (7th)<br><a href="https://www.strava.com/activities/1469702042">https://www.strava.com/activities/1469702042</a></p>
+                                <p>Racing is always more exciting and motivating when you're the target. At a mere 5 laps (36 miles), I knew it was going to be a fast and hard day at the road race. There were a few well-represented teams, and I had numbers written down of the five riders within 30 seconds on GC. If I could stay safe and stay up front, I could stay in yellow.</p>
+    
+                                <p>Our race was hard from the gun, reminding me of last year's junior 17-18 race. (Though slightly less painful... or maybe that came from the adrenaline rush brought by the jersey!) My coach, Sam Bassetti, who is racing in the pro field, also suggested going for some KOM points since I had 25 already, but on the first KOM lap, I realized I wasn't willing to risk a crash with the sketchy road conditions leading into it. I never contested any KOM points (we only had two KOM laps), and unfortunately another very strong rider won both KOM sprints giving him 30 points and the KOM jersey. The field was intact the whole race, with the exception of a small break that went after the KOM on lap 2. Both big teams had riders in the break, so I got on the front and chased it down before they could get a bigger gap. The field was together for the remainder of the race, and it came down to a field sprint. I jumped on the back of a small leadout train, and managed 7th with no time gap.</p>
+    
+                                <hr>
+    
+                                <p><strong>Stage 3: Incycle / Cannondale Old Town Grand Prix</strong><br><a href="https://www.strava.com/activities/1471608051"></a>https://www.strava.com/activities/1471608051</p>
+                                <p>The final stage of the race! My gap going into the crit was 21 seconds, and I was confident that if I could stay upright and finish in the front I could win the overall. I was at the front the entire race, and surprisingly no breaks went. The course had six 90-degree corners, with a slightly-downhill long stretch before the finishing corner. I didn't have my eyes on the stage win, and on the final lap, I lost some positioning after another rider cut a corner and almost sent me into the barriers. On the final stretch, I desperately sprinted back toward the front, and finished with a 7s gap. I thought I had taken the overall, but only realized after the fact that the rider in 2nd GC had taken the stage with a gap from the rest of the field. That meant that he took a 10s time bonus in addition to the gap he had on me. The following 20 minutes were extremely nerve-racking, as I was left not knowing if I had lost the jersey by a matter of seconds. I occupied myself by chatting with and congratulating my competitors, who surely put up a good fight. After what seemed like an eternity, the results were posted and I had kept yellow by the narrow margin of 6 seconds!</p>
+    
+                                <p>This weekend I learned so much about racing and tactics, and was so stoked to have taken the win. This last stage was the closest, and I should have been following the wheel of the 2nd place rider in GC, and I'm glad my mistake did not cost me. Above all, I'm thankful for my coaches, Sam and Laura for giving me the tools and confidence I need to succeed, my teammates for the racing tips and good laughs, and my parents for schlepping all around California and supporting me on this journey. All smiles this weekend; see you next year, San Dimas!</p>
+                            </div>
+                        </li>
+    
+                        <li class="tab-item">
+                            <div class="tab-title">Copperopolis Road Race E4 <span class="date">(March 31, 2018)</span><span class="place bronze">3rd</span></div>
+                            <div class="tab-content">
+                                <p><a href="https://www.strava.com/activities/1482330028">https://www.strava.com/activities/1482330028</a></p>
+    
+                                <p>Hell hath no fury like Copperopolis. This race surely lives up to its name: The Paris-Roubaix of California. The roads are utterly horrible, and it's inevitable to spend the next three days picking tar from your scalp.</p>
+                                <p>Jonas Crean (my former teammate) was in my field, and we were doing just under 70 miles with nearly 6,000 ft. elevation. The field mostly stayed together for the first two laps, and on the final time up the climb, a very strong CBRE rider took to the front and dropped everyone except Jonas and I. We were barely hanging onto his wheel. We extended our lead on the flat parts of the course, and he was taking crazy strong and long pulls. I led the descent until 200m to go and was outsprinted at the line; Jonas won. Frankly I'm not too mad because the CBRE guy deserved to take it but I knew Jonas was going to pull the same tactic again and sprint around us. Tough race! Glad I was able to seriously empty the tank.</p>
+                                <p><a href="https://www.strava.com/activities/1482330028/">https://www.strava.com/activities/1482330028/</a></p>
+                            </div>
+                        </li>
+    
+                        <li class="tab-item">
+                            <div class="tab-title">Stanford Road Race E3/4/Collegiate B <span class="date">(April 15, 2018)</span><span class="place silver">2nd</span></div>
+                            <div class="tab-content">
+                                <p><a href="https://www.strava.com/activities/1511061689">https://www.strava.com/activities/1511061689</a></p>
+    
+                                <!-- TODO: Formal race report -->
+                                <p>2nd! Was really nice to have that steep climb. The penultimate time up it Jovanni (one of my friends who is a top level rower. Big guy, 6'5", 20m power is 460w) attacked and had a solid gap. I bridged up and brought two others who wouldn't pull; one was visibly shattered and the other said something about a teammate which made no sense. Nonetheless, we started working together once I bridged. I attacked on the final climb and dropped the two others. Jovanni was on my wheel and we took turns pulling. I attacked him on one of the kickers and got a small gap but with the headwind it was hard to stay away. He outsprinted me at the end. It was a very hard race and I'm super happy with my performance. Jo is a very strong rider&mdash;he's got the <a href="https://www.strava.com/segments/611413">King's Mountain</a> KOM and an <a href="https://www.strava.com/segments/8109834">Old la Honda</a> top 10&mdash;so it was nice to be able to crush it with him today. Plus him and I were the only guys in the race not on collegiate teams so it was fun to crush all the other college kids haha.</p>
+                            </div>
+                        </li>
+    
+                        <li class="tab-item">
+                            <div class="tab-title">Sea Otter Road Race E4 <span class="date">(April 20, 2018)</span><span class="place">5th</span></div>
                             <!-- TODO: Formal race report -->
-                            <p>2nd! Was really nice to have that steep climb. The penultimate time up it Jovanni (one of my friends who is a top level rower. Big guy, 6'5", 20m power is 460w) attacked and had a solid gap. I bridged up and brought two others who wouldn't pull; one was visibly shattered and the other said something about a teammate which made no sense. Nonetheless, we started working together once I bridged. I attacked on the final climb and dropped the two others. Jovanni was on my wheel and we took turns pulling. I attacked him on one of the kickers and got a small gap but with the headwind it was hard to stay away. He outsprinted me at the end. It was a very hard race and I'm super happy with my performance. Jo is a very strong rider&mdash;he's got the <a href="https://www.strava.com/segments/611413">King's Mountain</a> KOM and an <a href="https://www.strava.com/segments/8109834">Old la Honda</a> top 10&mdash;so it was nice to be able to crush it with him today. Plus him and I were the only guys in the race not on collegiate teams so it was fun to crush all the other college kids haha.</p>
-                        </div>
-                    </li>
-
-                    <li class="tab-item">
-                        <div class="tab-title">Sea Otter Road Race E4 <span class="date">(April 20, 2018)</span><span class="place">5th</span></div>
-                        <!-- TODO: Formal race report -->
-                        <div class="tab-content">
-                            <p><a href="https://www.strava.com/activities/1521173738">https://www.strava.com/activities/1521173738</a></p>
-
-                            <p>Unfortunately, luck was not on my side this race.</p>
-
-                            <p>Here's the scoop: I made the break on second lap. 4 of us. I'm the strongest climber. I flatted on the third lap and ride 5 minutes as my rear tire slowly loses air waiting for neutral. Guy gives me a neutral SRAM wheel and tows me for 4 ish min. I'm on the limit and chase for another 3-4 min and barely catch back on. Then, my rear wheel locks up and I go over my bars at 25 mph and somehow manage to land on my feet. Slow motion crash. I wait for 2 minutes for the neutral car and get another wheel. In the break but I'm on the front pulling for two more laps. Literally one guy is pulling with me. Some guy outsprints me at the end. 5th. Pretty disappointed because I’m confident that I would have won. My time up the last climb was 30s faster than the winners time. The SRAM wheels were pretty terrible and they must’ve not been compatible with my shimano because they were making all these noises and not pedaling smooth. I think the officials felt pretty bad because they were all talking about the incident after the race. Oh well!</p>
-                        </div>
-                    </li>
-
-                    <li class="tab-item">
-                        <div class="tab-title">Wente Road Race E3/4 <span class="date">(April 29, 2018)</span><span class="place">5th</span></div>
-                        <!-- TODO: Formal race report -->
-                        <div class="tab-content">
-                            <p><a href="https://www.strava.com/activities/1539651704">https://www.strava.com/activities/1539651704</a></p>
-                            <p>I went into this race with absolutely zero expectations. I sat in on the first two laps then hit it up the 3rd climb hard. I went off the front for a half a lap with Aidan McNeil (Team Swift) and Alex Hanson (CBRE; I broke away with him at Copperopolis). I knew the three of us were the strongest climbers in the field, but we were caught on the descent and it all came back together. The whole field slowed before the finish line on the penultimate lap, and Aidan broke away with another rider. The final time up the climb, Alex surged to chase them, and I regret not following his wheel, since he was able to catch up to Aidan. Instead, I sat in the field and started chasing when it was too late. Going into the sprint, I was on Creighton's wheel (my former teammate who is a good sprinter). Right before the final corner, Jonas and Creighton attacked and a bike-length gap opened up. I was sprinting hard to the line but couldn't close the gap, and another strong rider came around me shortly before the line. However, I was able to hang in for 3rd in the bunch sprint / 5th overall despite sprinting not being my forte. I'm happy with the result, and my parents are pretty happy about the free bottle of wine!</p>
-                        </div>
-                    </li>
-
-                    <li class="tab-item">
-                        <div class="tab-title">Berkeley Hills Road Race E4 <span class="date">(May 12, 2018)</span><span class="place silver">2nd</span></div>
-                        <div class="tab-content">
-                            <p><a href="https://www.strava.com/activities/1567842140">https://www.strava.com/activities/1567842140</a></p>
-                            <p>Sat up front the first two laps. I burned a match pulling for 8-ish minutes on the back stretch before the climb to bring back a 4-man break (all the big teams were represented so nobody was doing any work). It came down to that last climb. I knew that two riders were very strong climbers and I picked a wheel to sit on. Unfortunately the rider who won I did not expect, and he put in an acceleration that I could not follow. He opened up a 3-ish bike length gap and held it until the finish. I am still very stoked with the result, since I'd rather focus on improving my abilities on longer climbs. Oh, and the prizes exceeded the entry fee, which is always a good bonus!</p>
-
-                            <p>This was my last race as a Cat 4 (I had 18 points going into it), and I am very happy to finally achieve my Cat 3 upgrade.</p>
-                        </div>
-                    </li>
-
-                    <li class="tab-item">
-                        <div class="tab-title">Red Kite Memorial Day Classic Stage Race E3 <span class="date">(May 26-28, 2018)</span><span class="place">7th GC</span></div>
-                        <div class="tab-content">
-                            <p><strong>Stage 1: Bump Circuit Race</strong> (10th)<br><a href="https://www.strava.com/activities/1598050681">https://www.strava.com/activities/1598050681</a></p>
-
-                            <p>This was my first category 3 race, so I didn't know what to expect in terms of the race dynamics. Our race was only 3 laps of the circuit, or just under 30 miles, so it was fast and furious from the gun. We hit the climb hard every lap. On the second lap, there were KOM points, and two riders got away before the climb, one of whom was a professional triathlete (Jason Pedersen). They stayed away for the remainder of the race. Just before the final turn, the rider in front of me almost overlapped wheels with the rider in front of him, narrowly avoiding a bad crash. A gap opened up, and I unfortunately was unable to close it in time. I got 8th in the field sprint, good for 10th overall. I tried to conserve as much energy as possible this race since I knew that tomorrow would be a tough day.</p>
-
-                            <hr>
-
-                            <p><strong>Stage 2: Mount Hamilton Road Race</strong> (4th)<br><a href="https://www.strava.com/activities/1600317273">https://www.strava.com/activities/1600317273</a></p>
-                            <p>I got to the race with just enough time to get in a quick warmup and line up at the start. I knew Jason Pedersen would be a rider to watch out for; my plan was to make the third and final climb up Hamilton hard, and get in a solid group of riders. Unfortunately my legs were not as peppy as I was hoping, and instead of doing the attacking, I was just trying to survive. Jason attacked on the third climb and managed to hold it off for another 50 miles&mdash;impressive. Four riders got a tap at about 1k from the KOM, but I was with two other strong riders who I knew would be motivated to chase. After a sketchy descent on the backside of Hamilton, we began furiously chasing, and managed to catch a group of riders at the top of Mines Road. One of the riders in the first chase group had attacked previously, so it was now six of us. We were pacelining down the less-steep section of Mines Road, and I timed my final pull so I could get to the back right before the steep descent to the line. Once the descent ended, it was about 500m to the line, and I let a small gap open in front of me so I could carry some momentum as the road flattened out&mdash;when the first rider attacked, I was able to jump on their wheel without any heavy effort. Since the centerline rule was still in effect, I got boxed in and started my sprint late, but managed 2nd in our group or 4th overall. I'm pretty happy since I would not consider myself a sprinter!</p>
-
-                            <hr>
-
-                            <p><strong>Stage 3: Del Valle Time Trial</strong> (6th, 15:04)<br><a href="https://www.strava.com/activities/1601897599">https://www.strava.com/activities/1601897599</a></p>
-                            <p>Last year when I did this race in the cat 4's, it was the prologue, but having it after a heavy weekend of racing meant fatigued legs. The course was 4.5 miles, with the first 3 miles at around 1-2% grade, and the final mile and a half at 7%. I do not have a time trial bike, so I knew I needed to adopt an aero position on my road bike to set as fast of a time as possible. My goal was to crack 15 minutes&mdash;I had done a 15:20 last year&mdash;. I got in a solid warmup, and headed over to the start. The officials did not hold your bike, and unfortunately I lost a precious second of two fumbling to get clipped in. The way out, I was averaging 310w, my FTP; I had not practiced flat time trials and didn't want to risk blowing up on the climb. When I hit the climb, I knew I was on track for a decent time. I ignored the numbers on my Garmin, and rode as hard as possible. Unfortunately there were not any 1k/200m to go signs, but I was very happy with my pacing. I crossed the line at just over 15 minutes (average 325w), but had surely emptied the tank. I am now tied for 5th on GC with 28 points. Since there are so many points up for grabs on the crit, anything could happen!</p>
-
-                            <hr>
-
-                            <p><strong>Stage 4: Memorial Day Criterium</strong> (19th)<br><a href="https://www.strava.com/activities/1602702011"></a>https://www.strava.com/activities/1602702011</p>
-                            <p>After killing 5 hours in Livermore, I was ready to race again. The NorCal weather has been pretty chilly this spring (come on, 55 degrees is cold!), so the 90-degree temperatures in the East Bay were certainly a shock to the system. I was tied for 5th in GC, so knew I needed a good result to manage a podium. I got in a solid warmup, and the legs were feeling better than I had expected. On the second lap of the crit, I attacked, but the field came back together by the next lap. A two-man break got away and managed to hold off until the end; it came down to a field sprint for 3rd. I had good positioning going into the final corners, but my tendency to avoid crashes was too strong, and I came in 19th/21&mdash;a pretty bad result. I should have launched an attack on the second to last corner to try to stay away before the hectic field sprint, or at the very least followed a good wheel. Our group was 3 or 4 guys wide in the corners so it made it pretty sketchy. Points-based stage races are certainly different, and as someone who rarely races crits, I learned a lot about the race dynamics: always follow attacks, don't be afraid to crash.</p>
-                        </div>
-                    </li>
-
-                    <!-- <li class="tab-item">
-                        <div class="tab-title">XXX <span class="date">(DATE)</span><span class="place">PLACE</span></div>
-                        <div class="tab-content">
-                            <p>Coming soon.</p>
-                        </div>
-                    </li> -->
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section class="page border-green" id="school">
-        <div class="panel-content">
-            <h1 class="big-text span-letters animate-letters">school</h1>
-
-            <div class="boxed-content-grid">
-                <div>
-                    <h3>Number Theory</h3>
-                    <p>Check out my <a href="school/numtheory">website I made for an elementary number theory</a> course I'm taking this year.</p>
-                </div>
-
-                <div>
-                    <h3>History, Culture, & Identity</h3>
-                    <p>Interested in artificial intelligence, sci-fi movies, and human society/culture? <a href="school/hci-ai">Learn more about the implications of AI in society.</a></p>
-                </div>
-
-                <div>
-                    <h3>Tutoring</h3>
-                    <p>Are you a high school student looking for a math, science, or computer science tutor to help you excel in your coursework and cultivate a passion for learning? I'd love to help you out. <a href="mailto:chase@chaseking.me?Subject=Tutor">Send me an email</a> and I will be in touch shortly.</p>
-                </div>
-
-                <div>
-                    <h3>Math Night 2018</h3>
-                    <p>I delivered a presentation on Euler's Identity at the Marin Academy annual Math Night. <a href="https://www.youtube.com/watch?v=td8GOO_5Wgs">Check it out here.</a></p>
+                            <div class="tab-content">
+                                <p><a href="https://www.strava.com/activities/1521173738">https://www.strava.com/activities/1521173738</a></p>
+    
+                                <p>Unfortunately, luck was not on my side this race.</p>
+    
+                                <p>Here's the scoop: I made the break on second lap. 4 of us. I'm the strongest climber. I flatted on the third lap and ride 5 minutes as my rear tire slowly loses air waiting for neutral. Guy gives me a neutral SRAM wheel and tows me for 4 ish min. I'm on the limit and chase for another 3-4 min and barely catch back on. Then, my rear wheel locks up and I go over my bars at 25 mph and somehow manage to land on my feet. Slow motion crash. I wait for 2 minutes for the neutral car and get another wheel. In the break but I'm on the front pulling for two more laps. Literally one guy is pulling with me. Some guy outsprints me at the end. 5th. Pretty disappointed because I’m confident that I would have won. My time up the last climb was 30s faster than the winners time. The SRAM wheels were pretty terrible and they must’ve not been compatible with my shimano because they were making all these noises and not pedaling smooth. I think the officials felt pretty bad because they were all talking about the incident after the race. Oh well!</p>
+                            </div>
+                        </li>
+    
+                        <li class="tab-item">
+                            <div class="tab-title">Wente Road Race E3/4 <span class="date">(April 29, 2018)</span><span class="place">5th</span></div>
+                            <!-- TODO: Formal race report -->
+                            <div class="tab-content">
+                                <p><a href="https://www.strava.com/activities/1539651704">https://www.strava.com/activities/1539651704</a></p>
+                                <p>I went into this race with absolutely zero expectations. I sat in on the first two laps then hit it up the 3rd climb hard. I went off the front for a half a lap with Aidan McNeil (Team Swift) and Alex Hanson (CBRE; I broke away with him at Copperopolis). I knew the three of us were the strongest climbers in the field, but we were caught on the descent and it all came back together. The whole field slowed before the finish line on the penultimate lap, and Aidan broke away with another rider. The final time up the climb, Alex surged to chase them, and I regret not following his wheel, since he was able to catch up to Aidan. Instead, I sat in the field and started chasing when it was too late. Going into the sprint, I was on Creighton's wheel (my former teammate who is a good sprinter). Right before the final corner, Jonas and Creighton attacked and a bike-length gap opened up. I was sprinting hard to the line but couldn't close the gap, and another strong rider came around me shortly before the line. However, I was able to hang in for 3rd in the bunch sprint / 5th overall despite sprinting not being my forte. I'm happy with the result, and my parents are pretty happy about the free bottle of wine!</p>
+                            </div>
+                        </li>
+    
+                        <li class="tab-item">
+                            <div class="tab-title">Berkeley Hills Road Race E4 <span class="date">(May 12, 2018)</span><span class="place silver">2nd</span></div>
+                            <div class="tab-content">
+                                <p><a href="https://www.strava.com/activities/1567842140">https://www.strava.com/activities/1567842140</a></p>
+                                <p>Sat up front the first two laps. I burned a match pulling for 8-ish minutes on the back stretch before the climb to bring back a 4-man break (all the big teams were represented so nobody was doing any work). It came down to that last climb. I knew that two riders were very strong climbers and I picked a wheel to sit on. Unfortunately the rider who won I did not expect, and he put in an acceleration that I could not follow. He opened up a 3-ish bike length gap and held it until the finish. I am still very stoked with the result, since I'd rather focus on improving my abilities on longer climbs. Oh, and the prizes exceeded the entry fee, which is always a good bonus!</p>
+    
+                                <p>This was my last race as a Cat 4 (I had 18 points going into it), and I am very happy to finally achieve my Cat 3 upgrade.</p>
+                            </div>
+                        </li>
+    
+                        <li class="tab-item">
+                            <div class="tab-title">Red Kite Memorial Day Classic Stage Race E3 <span class="date">(May 26-28, 2018)</span><span class="place">7th GC</span></div>
+                            <div class="tab-content">
+                                <p><strong>Stage 1: Bump Circuit Race</strong> (10th)<br><a href="https://www.strava.com/activities/1598050681">https://www.strava.com/activities/1598050681</a></p>
+    
+                                <p>This was my first category 3 race, so I didn't know what to expect in terms of the race dynamics. Our race was only 3 laps of the circuit, or just under 30 miles, so it was fast and furious from the gun. We hit the climb hard every lap. On the second lap, there were KOM points, and two riders got away before the climb, one of whom was a professional triathlete (Jason Pedersen). They stayed away for the remainder of the race. Just before the final turn, the rider in front of me almost overlapped wheels with the rider in front of him, narrowly avoiding a bad crash. A gap opened up, and I unfortunately was unable to close it in time. I got 8th in the field sprint, good for 10th overall. I tried to conserve as much energy as possible this race since I knew that tomorrow would be a tough day.</p>
+    
+                                <hr>
+    
+                                <p><strong>Stage 2: Mount Hamilton Road Race</strong> (4th)<br><a href="https://www.strava.com/activities/1600317273">https://www.strava.com/activities/1600317273</a></p>
+                                <p>I got to the race with just enough time to get in a quick warmup and line up at the start. I knew Jason Pedersen would be a rider to watch out for; my plan was to make the third and final climb up Hamilton hard, and get in a solid group of riders. Unfortunately my legs were not as peppy as I was hoping, and instead of doing the attacking, I was just trying to survive. Jason attacked on the third climb and managed to hold it off for another 50 miles&mdash;impressive. Four riders got a tap at about 1k from the KOM, but I was with two other strong riders who I knew would be motivated to chase. After a sketchy descent on the backside of Hamilton, we began furiously chasing, and managed to catch a group of riders at the top of Mines Road. One of the riders in the first chase group had attacked previously, so it was now six of us. We were pacelining down the less-steep section of Mines Road, and I timed my final pull so I could get to the back right before the steep descent to the line. Once the descent ended, it was about 500m to the line, and I let a small gap open in front of me so I could carry some momentum as the road flattened out&mdash;when the first rider attacked, I was able to jump on their wheel without any heavy effort. Since the centerline rule was still in effect, I got boxed in and started my sprint late, but managed 2nd in our group or 4th overall. I'm pretty happy since I would not consider myself a sprinter!</p>
+    
+                                <hr>
+    
+                                <p><strong>Stage 3: Del Valle Time Trial</strong> (6th, 15:04)<br><a href="https://www.strava.com/activities/1601897599">https://www.strava.com/activities/1601897599</a></p>
+                                <p>Last year when I did this race in the cat 4's, it was the prologue, but having it after a heavy weekend of racing meant fatigued legs. The course was 4.5 miles, with the first 3 miles at around 1-2% grade, and the final mile and a half at 7%. I do not have a time trial bike, so I knew I needed to adopt an aero position on my road bike to set as fast of a time as possible. My goal was to crack 15 minutes&mdash;I had done a 15:20 last year&mdash;. I got in a solid warmup, and headed over to the start. The officials did not hold your bike, and unfortunately I lost a precious second of two fumbling to get clipped in. The way out, I was averaging 310w, my FTP; I had not practiced flat time trials and didn't want to risk blowing up on the climb. When I hit the climb, I knew I was on track for a decent time. I ignored the numbers on my Garmin, and rode as hard as possible. Unfortunately there were not any 1k/200m to go signs, but I was very happy with my pacing. I crossed the line at just over 15 minutes (average 325w), but had surely emptied the tank. I am now tied for 5th on GC with 28 points. Since there are so many points up for grabs on the crit, anything could happen!</p>
+    
+                                <hr>
+    
+                                <p><strong>Stage 4: Memorial Day Criterium</strong> (19th)<br><a href="https://www.strava.com/activities/1602702011"></a>https://www.strava.com/activities/1602702011</p>
+                                <p>After killing 5 hours in Livermore, I was ready to race again. The NorCal weather has been pretty chilly this spring (come on, 55 degrees is cold!), so the 90-degree temperatures in the East Bay were certainly a shock to the system. I was tied for 5th in GC, so knew I needed a good result to manage a podium. I got in a solid warmup, and the legs were feeling better than I had expected. On the second lap of the crit, I attacked, but the field came back together by the next lap. A two-man break got away and managed to hold off until the end; it came down to a field sprint for 3rd. I had good positioning going into the final corners, but my tendency to avoid crashes was too strong, and I came in 19th/21&mdash;a pretty bad result. I should have launched an attack on the second to last corner to try to stay away before the hectic field sprint, or at the very least followed a good wheel. Our group was 3 or 4 guys wide in the corners so it made it pretty sketchy. Points-based stage races are certainly different, and as someone who rarely races crits, I learned a lot about the race dynamics: always follow attacks, don't be afraid to crash.</p>
+                            </div>
+                        </li>
+    
+                        <!-- <li class="tab-item">
+                            <div class="tab-title">XXX <span class="date">(DATE)</span><span class="place">PLACE</span></div>
+                            <div class="tab-content">
+                                <p>Coming soon.</p>
+                            </div>
+                        </li> -->
+                    </ul>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="page border-darkblue" id="karate">
-        <!-- <div class="col span-45"> -->
+        </section>
+    
+        <section class="page border-green" id="school">
             <div class="panel-content">
-                <h1 class="big-text span-letters animate-letters">karate</h1>
-
-                <p>Like most kids, exploring a variety of sports was part of my childhood. I began karate when I was in kindergarten, and it was the sport that stuck with me. I train at <a href="https://taylorshouseofkarate.com/">Taylor's House of Karate</a> in San Rafael, California, with an amazing and diverse group of dedicated professionals. They have been the ultimate role models for me, exuding respect, dedication, and perseverance. I obtained my skunk belt (the belt before a black belt) the summer before I started high school. The following year required a lot of dedication with both personal training and teaching the lower belt students 14-18 hours per week for a full year.</p>
-
-                <p>The day after completing my freshman year in high school, I earned a first degree black belt after a memorably grueling 4-hour test. This was a physical and mental milestone for me, and opened the doors to expanding my teaching role at the school and giving back to the family and community who supported me in reaching this level. The endurance conditioning that cycling added was instrumental in my success.</p>
-
-                <!-- <div class="slide-toggle">
-                    <a href="#" class="page-previous" data-tooltip="Previous Page"><i class="fas fa-fw fa-arrow-left"></i></a>
-                    <a href="#" class="slide-back" data-tooltip="Previous Slide"><i class="fas fa-fw fa-chevron-up"></i></a>
-                    <a href="#" class="slide-forward" data-tooltip="Next Slide"><i class="fas fa-fw fa-chevron-down"></i></a>
-                    <a href="#" class="page-next" data-tooltip="Next Page"><i class="fas fa-fw fa-arrow-right"></i></a>
-                </div> -->
-            </div>
-        <!-- </div> -->
-
-        <!-- <div class="col span-55">
-            <div class="flex-fill vertical-grid">
-                <div class="background-image" style="background-image: url('img/karate-fighting.jpg');"></div>
-
-                <div class="flex-fill horizontal-grid stretch" style="flex: 4 4 auto">
-                    <div class="overflow-box" style="width: 60%">
-                        <p class="title-tagline">Yep, that's me.</p>
-                        <p>This photo was taken three-hours into my skunk belt karate test. I was fighting Junior Salientes, a world-class sparring champion.</p>
+                <h1 class="big-text span-letters animate-letters">school</h1>
+    
+                <div class="boxed-content-grid">
+                    <div>
+                        <h3>Number Theory</h3>
+                        <p>Check out my <a href="school/numtheory">website I made for an elementary number theory</a> course I'm taking this year.</p>
                     </div>
-
-                    <div class="panel-content-small" style="background: #E0F3CA; flex: 1">
-                        <p><strong>Back to top</strong></p>
-                        <a class="circle-icon-button" data-page="about"><i class="fas fa-fw fa-chevron-up"></i></a>
+    
+                    <div>
+                        <h3>History, Culture, & Identity</h3>
+                        <p>Interested in artificial intelligence, sci-fi movies, and human society/culture? <a href="school/hci-ai">Learn more about the implications of AI in society.</a></p>
+                    </div>
+    
+                    <div>
+                        <h3>Tutoring</h3>
+                        <p>Are you a high school student looking for a math, science, or computer science tutor to help you excel in your coursework and cultivate a passion for learning? I'd love to help you out. <a href="mailto:chase@chaseking.me?Subject=Tutor">Send me an email</a> and I will be in touch shortly.</p>
+                    </div>
+    
+                    <div>
+                        <h3>Math Night 2018</h3>
+                        <p>I delivered a presentation on Euler's Identity at the Marin Academy annual Math Night. <a href="https://www.youtube.com/watch?v=td8GOO_5Wgs">Check it out here.</a></p>
                     </div>
                 </div>
             </div>
-        </div> -->
-    </section>
-
-    <section id="photos" class="page border-yellow">
-        <div class="panel-content">
-            <h1 class="big-text span-letters animate-letters">photos</h1>
-
-            <div class="grid" data-masonry='{ "itemSelector": ".grid-item", "percentPosition": false, "columnWidth": ".grid-sizer" }' -->
-                <div class="grid-sizer"></div>
-                <div class="grid-item span-2"><img src="img/teamswift.jpg" alt="Team Swift 2017"></div>
-                <div class="grid-item"><img src="img/prof2.jpg" alt="Karate Kyle"></div>
-                <div class="grid-item span-2"><img src="img/lkhc-mines.jpg" alt="LKHC Mines Road"></div>
-                <div class="grid-item"><img src="img/karate-board.jpg" alt="Karate board-breaking"></div>
-
-                <div class="grid-item"><img src="img/lkhc-tunitas.jpg" alt="LKHC Tunitas Creek"></div>
-                <div class="grid-item span-2"><img src="img/karate-youngandold.jpg" alt="Karate young vs. old"></div>
-                <div class="grid-item"><img src="img/tamhc2015.jpg" alt="Mt. Tam Hill Climb 2015"></div>
-                <div class="grid-item"><img src="img/prof1.jpg" alt="Idaho blueberries"></div>
-                <div class="grid-item span-2"><img src="img/karate-fighting.jpg" alt="Karate sparring"></div>
-                <div class="grid-item"><img src="img/downieville.jpg" alt="Yuba Pass in Downieville" data-action="zoom"></div>
-                <div class="grid-item"><img src="img/lkhc-tunitas-2.jpg" alt="LKHC Tunitas Creek (2)"></div>
-                <!-- <div class="grid-item"><img src="img/.jpg" alt=""></div> -->
+        </section>
+    
+        <section class="page border-darkblue" id="karate">
+            <!-- <div class="col span-45"> -->
+                <div class="panel-content">
+                    <h1 class="big-text span-letters animate-letters">karate</h1>
+    
+                    <p>Like most kids, exploring a variety of sports was part of my childhood. I began karate when I was in kindergarten, and it was the sport that stuck with me. I train at <a href="https://taylorshouseofkarate.com/">Taylor's House of Karate</a> in San Rafael, California, with an amazing and diverse group of dedicated professionals. They have been the ultimate role models for me, exuding respect, dedication, and perseverance. I obtained my skunk belt (the belt before a black belt) the summer before I started high school. The following year required a lot of dedication with both personal training and teaching the lower belt students 14-18 hours per week for a full year.</p>
+    
+                    <p>The day after completing my freshman year in high school, I earned a first degree black belt after a memorably grueling 4-hour test. This was a physical and mental milestone for me, and opened the doors to expanding my teaching role at the school and giving back to the family and community who supported me in reaching this level. The endurance conditioning that cycling added was instrumental in my success.</p>
+    
+                    <!-- <div class="slide-toggle">
+                        <a href="#" class="page-previous" data-tooltip="Previous Page"><i class="fas fa-fw fa-arrow-left"></i></a>
+                        <a href="#" class="slide-back" data-tooltip="Previous Slide"><i class="fas fa-fw fa-chevron-up"></i></a>
+                        <a href="#" class="slide-forward" data-tooltip="Next Slide"><i class="fas fa-fw fa-chevron-down"></i></a>
+                        <a href="#" class="page-next" data-tooltip="Next Page"><i class="fas fa-fw fa-arrow-right"></i></a>
+                    </div> -->
+                </div>
+            <!-- </div> -->
+    
+            <!-- <div class="col span-55">
+                <div class="flex-fill vertical-grid">
+                    <div class="background-image" style="background-image: url('img/karate-fighting.jpg');"></div>
+    
+                    <div class="flex-fill horizontal-grid stretch" style="flex: 4 4 auto">
+                        <div class="overflow-box" style="width: 60%">
+                            <p class="title-tagline">Yep, that's me.</p>
+                            <p>This photo was taken three-hours into my skunk belt karate test. I was fighting Junior Salientes, a world-class sparring champion.</p>
+                        </div>
+    
+                        <div class="panel-content-small" style="background: #E0F3CA; flex: 1">
+                            <p><strong>Back to top</strong></p>
+                            <a class="circle-icon-button" data-page="about"><i class="fas fa-fw fa-chevron-up"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </section>
+    
+        <section id="photos" class="page border-yellow">
+            <div class="panel-content">
+                <h1 class="big-text span-letters animate-letters">photos</h1>
+    
+                <div class="grid" data-masonry='{ "itemSelector": ".grid-item", "percentPosition": false, "columnWidth": ".grid-sizer" }' -->
+                    <div class="grid-sizer"></div>
+                    <div class="grid-item span-2"><img src="img/teamswift.jpg" alt="Team Swift 2017"></div>
+                    <div class="grid-item"><img src="img/prof2.jpg" alt="Karate Kyle"></div>
+                    <div class="grid-item span-2"><img src="img/lkhc-mines.jpg" alt="LKHC Mines Road"></div>
+                    <div class="grid-item"><img src="img/karate-board.jpg" alt="Karate board-breaking"></div>
+    
+                    <div class="grid-item"><img src="img/lkhc-tunitas.jpg" alt="LKHC Tunitas Creek"></div>
+                    <div class="grid-item span-2"><img src="img/karate-youngandold.jpg" alt="Karate young vs. old"></div>
+                    <div class="grid-item"><img src="img/tamhc2015.jpg" alt="Mt. Tam Hill Climb 2015"></div>
+                    <div class="grid-item"><img src="img/prof1.jpg" alt="Idaho blueberries"></div>
+                    <div class="grid-item span-2"><img src="img/karate-fighting.jpg" alt="Karate sparring"></div>
+                    <div class="grid-item"><img src="img/downieville.jpg" alt="Yuba Pass in Downieville" data-action="zoom"></div>
+                    <div class="grid-item"><img src="img/lkhc-tunitas-2.jpg" alt="LKHC Tunitas Creek (2)"></div>
+                    <!-- <div class="grid-item"><img src="img/.jpg" alt=""></div> -->
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer>
         <div class="links">
