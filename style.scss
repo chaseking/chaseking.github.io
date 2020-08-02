@@ -825,7 +825,7 @@ header {
 
 p {
     font-family: $fontParagraph;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.5em;
     letter-spacing: 0.025em;
     text-align: justify;
@@ -837,7 +837,7 @@ p {
 
 @media screen and (min-width: 512px) {
     p {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .big-text {
