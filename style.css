@@ -666,8 +666,6 @@ footer .copyright p {
   padding: 0 1em;
   color: black;
   border: 1px solid transparent;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
 }
 
 .tab-horizontal li.tab-item .tab-content p {
@@ -889,7 +887,6 @@ header nav ul li a:hover {
 @media screen and (min-width: 768px) {
   header {
     border-bottom-right-radius: 20px;
-    right: auto;
   }
   header .header-container {
     -webkit-box-orient: horizontal;
@@ -1070,7 +1067,7 @@ header .nav-toggle .hamburger::after {
 
 p {
   font-family: "Noto Serif", "Source Sans Pro", sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.5em;
   letter-spacing: 0.025em;
   text-align: justify;

@@ -420,8 +420,8 @@ footer {
             // color: white;
             color: black;
             border: 1px solid transparent;
-            border-bottom-left-radius: 5px;
-            border-bottom-right-radius: 5px;
+            // border-bottom-left-radius: 5px;
+            // border-bottom-right-radius: 5px;
 
             p {
                 opacity: 0;
@@ -642,7 +642,7 @@ header {
     @media screen and (min-width: 768px){
         // background: transparent;
         border-bottom-right-radius: 20px; //Make it a little smoother...
-        right: auto;
+        // right: auto;
 
         .header-container {
             flex-direction: row;
