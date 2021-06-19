@@ -1067,10 +1067,10 @@ header .nav-toggle .hamburger::after {
 
 p {
   font-family: "Noto Serif", "Source Sans Pro", sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.5em;
   letter-spacing: 0.025em;
-  text-align: left;
+  text-align: justify;
 }
 
 @media screen and (min-width: 512px) {
