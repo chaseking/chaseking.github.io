@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display|Rubik|Roboto');
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    background: rgb(225, 227, 230);
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Playfair Display", serif;
+}
+
+header {
+    background: #7D5B53;
+    color: white;
+    padding: 2em;
+    box-shadow: 0 5px 5px rgba(#7D5B53, 0.3);
+
+    .title {
+        font-size: 48px;
+
+        &::before {
+            height: 6px;
+            width: 100px;
+            background: #E1885B;
+            display: block;
+            content: "";
+        }
+    }
+
+    .author {
+        font-size: 18px;
+        font-weight: normal;
+    }
+
+    .recipe-tags {
+        .recipe-tag {
+            text-transform: uppercase;
+            font-family: "Rubik", sans-serif;
+            font-size: 18px;
+            letter-spacing: 1px;
+            font-weight: normal;
+            color: rgb(228, 180, 41);
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+main {
+    width: 1100px;
+    margin: 15px auto;
+    padding: 10px 40px;
+    background: white;
+    box-shadow: 5px 5px 10px rgba(black, 0.3);
+
+    .section {
+        h2 {
+            margin: 25px 0 0;
+            padding: 0;
+
+            &::before {
+                height: 3px;
+                width: 100px;
+                background: #F6D79D;
+                display: block;
+                content: "";
+            }
+        }
+    }
+
+    ol.directions-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 5px 0 0 15px;
+
+        > li {
+            counter-increment: ol-counter;
+            margin: 10px 0;
+            padding-left: 35px;
+            position: relative;
+            min-height: 40px;
+
+            &::before {
+                position: absolute;
+                left: 0;
+                top: -6px;
+                content: counter(ol-counter);
+                font-size: 180%;
+                color: gray;
+                font-weight: bold;
+                text-align: center;
+                display: inline-block;
+                font-family: "Rubik", serif;
+            }
+        }
+    }
+}

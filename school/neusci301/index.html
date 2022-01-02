@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>NEUSCI 301 Playground</title>
+
+    <!-- Materialize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script> -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110077560-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-110077560-1');
+    </script>
+
+    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async>
+    
+    </script> -->
+    
+    <script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        },
+        svg: {
+            fontCache: 'global'
+        }
+    };
+    </script>
+    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> -->
+    <script src="mathjax-config.js" defer></script>
+    <script type="text/javascript" id="MathJax-script" defer
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>NEUSCI 301 Playground</h1>
+        <h2>Fall 2021 &ndash; By <a href="https://chaseking.me">Chase King</a></h2>
+    </header>
+
+    <main>
+        <!-- <div style="padding: 30px 50px;"> -->
+        <div class="container">
+            <div id="about" class="section">
+                <h5>About This Page</h5>
+                <p>This page holds random notes I took and simulations I made while enrolled in NEUSCI 301 (Introduction to Cellular and Molecular Neuroscience) this quarter at UW. I hope you're able to find some of this useful for learning or studying. You can take a look at the source code <a href="https://github.com/chaseking/chaseking.github.io/tree/master/school/neusci301">here</a>.</p>
+            </div>
+
+            <div class="divider"></div>
+
+            <div id="forces_on_ions" class="section">
+                <h4>Forces acting on ions moving through ion channels</h4>
+
+                <h5>Forces</h5>
+                <ul class="browser-default">
+                    <li><strong>Concentration gradient:</strong> ions tend to move from high to low concentration</li>
+                    <li><strong>Voltage gradient:</strong> positive ions move toward regions of negative voltage, and negative ions move toward regions of positive voltage</li>
+                </ul>
+
+                <h5>Nernst Equation</h5>
+                <p style="font-size: 28px">$$V_\text{ion} = \frac{62 \text{ mV}}{\text{valence}} \times \log\left( \text{ion concentration ratio} \right)$$</p>
+                <p><strong>To determine the sign</strong>, first determine (1) the direction of concentration gradient (which flows from high to low concentration), and (2) the charge of the ion. Then determine whether there should be negative or positive charge inside the cell to prevent the ion from moving along its concentration gradient (recalling that opposite charges attract).</p>
+                <p><strong>To determine the magnitude</strong>, first consider the valence of the ion. If the valence is $\pm 1$, the concentration ratio must be greater than 10 to ensure $|V_m| > 62 \text{ mV}$ (since $\log(10) = 1$). If the valence is $\pm 2$, the concentration ratio must be greater than 100 to ensure $|V_m| > 62 \text{ mV}$ (since $\log(100) = 2$).</p>
+                <p><strong>Example 1:</strong> Suppose we have 10x as much K$^+$ outside the cell as we do inside the cell. Then the concentration gradient goes from outside the cell to inside the cell. In other words, K$^+$ naturally wants to move into the cell (where there is a lower concentration). Then the sign of $V_m$ must be positive to repel the positive K$^+$ when it tries to enter the cell. Moreover, since the valence is 1 and the concentration ratio is 10, we know $|V_m| = 62 \text{ mV}$ (since $\log(10) = 1$). Hence we arrive at $V_m = +62 \text{ mV}$.</p>
+                <p><strong>Example 2:</strong> Suppose we have 20x as much Cl$^-$ inside the cell as we do outside. Then the concentration gradient goes from in to out. In other words, Cl$^-$ naturally wants to move out of the cell. Then the sign of $V_m$ must be positive to attract the negative Cl$^-$ when it tries to leave the cell. Moreover, since the valence is 1 and the concentration ratio is greater than 10, we know $|V_m| > 62 \text{ mV}$. Hence we arrive at $V_m = +62 \text{ mV}$.</p>
+                
+                <h5>Rate and direction of ion flow</h5>
+                <p>First, there needs to be a channel open for any ions to move. If this requirement is met, we also must have a membrane potential that is different from the Nernst potential. We then have</p>
+                <ul class="browser-default">
+                    <li>Membrane potential is <em>positive to</em> the Nernst potential: Then there is not enough negative charge in the cell to attract positive ions, so <em>positive ions will move out of the cell</em>.</li>
+                    <li>Membrane potential is <em>negative to</em> the Nernst potential: Then there is more than enough negative charge in the cell to attract positive ions, <em>so positive ions will move into the cell</em>.</li>
+                </ul>
+                <p>Before formulating these in into an equation, we introduce the concept of <strong>conductance</strong> which is a measure of the ease with which an ion can cross the membrane (essentially measures the number of open channels and the ease of movement through a single channel). A high conductance means ions can easily move through the membrane, and zero conductance means there can be no movement (e.g., no open channels). (Conductance is the inverse of resistance.) We also have the <strong>driving force</strong>, which is the difference between the actual voltage and the Nernst potential for that ion: $V_m - V_\text{ion}$. Note that if the driving force is positive, then we fall in the first case above so positive ions move out of the cell. Since <strong>current</strong> is defined to be positive in the direction of movement of positive ions, we then have positive current when the driving force is positive, and vice-versa. Using Ohm's Law, we can formulate this relationship as:</p>
+                <p style="font-size: 28px">$$I_\text{ion} = g_\text{ion} \underbrace{\left( V_m - V_\text{ion} \right)}_\text{driving force}$$</p>
+                where $I$ is the current, $g$ is the conductance, $V_m$ is the actual membrane potential, and $V_\text{ion}$ is the Nernst potential. By convention the current is positive when positive ions are flowing out of the cell.
+
+                <canvas id="myChart" width="200" height="200"></canvas>
+            </div>
+
+            <div class="divider"></div>
+        </div>
+    </main>
+
+    <footer>
+        Made while taking NEUSCI 301 at UW (Winter 2021) by <a href="http://chaseking.me" target="blank">Chase King</a>.
+    </footer>
+
+    <script type="text/javascript" src="index.js"></script>
+</body>
+</html>
